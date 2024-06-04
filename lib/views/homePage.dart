@@ -10,10 +10,13 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
-  String walletIcon= "assets\\walletIcon.png";
-  
+
+String walletIcon = "assets\\walletIcon.png";
+Widget groupView = updateview();
+int groups = 0;
+List<groupContainer> groupsList = [];
+
 class _HomePageState extends State<HomePage> {
-  
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
@@ -21,87 +24,111 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: Container(
       decoration: BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
+      child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
         Container(
           width: width,
-          height: height/11,
+          height: height / 11,
           color: Color.fromARGB(0, 0, 0, 0),
-          child: Row(mainAxisAlignment: MainAxisAlignment.end,
-          children: [IconButton(
-                    iconSize: 40.0,
-                    padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                    // Use the FluentIcons + name of the icon you want
-                    icon: Icon(FluentIcons.alert_16_filled),
-                    onPressed: () {
-                      print("Button pressed");
-                    }),],),
-
-
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              IconButton(
+                  iconSize: 40.0,
+                  padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                  // Use the FluentIcons + name of the icon you want
+                  icon: Icon(FluentIcons.alert_16_filled),
+                  onPressed: () {
+                    print("Button pressed");
+                  }),
+            ],
+          ),
         ),
         Container(
           width: width,
-          height: height-2*(height/11),
-          color: Color.fromARGB(255, 255, 0, 0),
-          child: ,
-
+          height: height - 2 * (height / 11),
+          color: Color.fromARGB(0, 255, 255, 255),
+          child: groupView,
         ),
         Container(
           width: width,
-          height: height/11,
+          height: height / 11,
           color: const Color.fromARGB(255, 255, 255, 255),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(padding: EdgeInsets.fromLTRB(10, 0, 0, 0),child:Container(
-                width: 45,
-                height: 45,
-                
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(0, 255, 255, 255),
-                  boxShadow: [/*BoxShadow(color: Color.fromARGB(73, 208, 208, 208), blurRadius: 10, spreadRadius: 0.01)*/],
-                
-                  image: DecorationImage(
-                  image: AssetImage(walletIcon),
-                  fit: BoxFit.scaleDown,
+              Padding(
+                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Container(
+                    width: 45,
+                    height: 45,
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(0, 255, 255, 255),
+                      boxShadow: [
+                        /*BoxShadow(color: Color.fromARGB(73, 208, 208, 208), blurRadius: 10, spreadRadius: 0.01)*/
+                      ],
+                      image: DecorationImage(
+                        image: AssetImage(walletIcon),
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ),
+                  )),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 10, 10, 10),
+                child: SizedBox(
+                  width: 45,
+                  height: 45,
+                  child: ElevatedButton(
+                    child: Align(
+                        alignment: Alignment.center, child: Icon(Icons.add)),
+                    onPressed: () {
+                      groupContainer f = groupContainer();
+                      setState(() {
+                        groupsList.add(f);
+                        groupView = updateview();
+                      });
+                      print("ao");
+                    },
+                    style: ButtonStyle(
+                      iconSize: MaterialStateProperty.all(25),
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                          EdgeInsets.all(10)),
+                      alignment: Alignment.center,
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromARGB(255, 169, 169, 169)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(22.5),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-                ),
-                
-              )),
-              
-              Padding(padding:  EdgeInsets.fromLTRB(0, 10, 10, 10),
-              child:
-              SizedBox(
-                width: 45,
-                height: 45,
-                child:ElevatedButton(
-                
-                child: Align(alignment: Alignment.center, child: Icon(Icons.add)),
-                
-                onPressed: () {
-                  print("Aio");
-                },
-                style: ButtonStyle(
-                  iconSize: MaterialStateProperty.all(25),
-                  padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
-                  alignment: Alignment.center,
-                 
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(const Color.fromARGB(255, 169, 169, 169)),
-                  shape:MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(22.5),
-              ),
-            ),
-                ),
-              ) ,)
-              ,)
-              
+              )
             ],
           ),
         )
       ]),
+    ));
+  }
+}
+
+Widget updateview() {
+  return ListView.builder(
+    itemCount: groupsList.length, // Replace with your data list length
+    itemBuilder: (BuildContext context, int index) {
+      //print(index);
+      return groupsList[index];
+    },
+  );
+}
+
+class groupContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(padding:  EdgeInsets.fromLTRB(0, 0, 0, 10),child: Container(
+      color: Colors.black,
+      width: width - 20,
+      height: 100,
     ));
   }
 }
