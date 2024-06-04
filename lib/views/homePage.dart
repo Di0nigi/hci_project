@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hci_project/main.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:hci_project/views/newGroupPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,6 +16,7 @@ String arrowIcon = "assets\\arrowIcon.png";
 Widget groupView = updateview();
 int groups = 0;
 List<groupContainer> groupsList = [];
+newGroupPage newGP = newGroupPage();
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> {
         ),
         Container(
           width: width - 30,
-          height: height - (height / 11)-(height / 10),
+          height: height - (height / 11) - (height / 10),
           color: Color.fromARGB(0, 255, 255, 255),
           child: Center(
             child: groupView,
@@ -83,6 +85,14 @@ class _HomePageState extends State<HomePage> {
                     child: Align(
                         alignment: Alignment.center, child: Icon(Icons.add)),
                     onPressed: () {
+                      showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Scaffold(
+                              body: newGP,
+                            );
+                          });
                       groupContainer f = groupContainer(
                           title: "India Trip", numMembers: 5, amount: 220);
                       setState(() {
@@ -92,12 +102,12 @@ class _HomePageState extends State<HomePage> {
                       });
                     },
                     style: ButtonStyle(
-                      iconSize: MaterialStateProperty.all(25),
+                      iconSize: MaterialStateProperty.all(40),
                       padding: MaterialStateProperty.all<EdgeInsets>(
                           EdgeInsets.all(10)),
                       alignment: Alignment.center,
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(255, 127, 127, 127)),
+                          Color.fromARGB(255, 0, 0, 0)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
@@ -199,18 +209,6 @@ class groupContainer extends StatelessWidget {
           )),
       onTap: () {
         print("clicked");
-        showModalBottomSheet(
-          isScrollControlled: true,
-            context: context,
-            builder: (BuildContext context) {
-              return Scaffold(
-                body: Container(
-                  color: Colors.black,
-                  height: height,
-                  width: width,
-                ),
-              );
-            });
       },
     );
   }
