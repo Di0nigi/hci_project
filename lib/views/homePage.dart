@@ -93,13 +93,7 @@ class _HomePageState extends State<HomePage> {
                               body: newGP,
                             );
                           });
-                      groupContainer f = groupContainer(
-                          title: "India Trip", numMembers: 5, amount: 220);
-                      setState(() {
-                        groupsList.add(f);
-                        groupView = updateview();
-                        print("ao");
-                      });
+                      
                     },
                     style: ButtonStyle(
                       iconSize: MaterialStateProperty.all(40),
