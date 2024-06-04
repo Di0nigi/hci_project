@@ -3,15 +3,15 @@ import 'package:hci_project/main.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
-
-  final String title;
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 String walletIcon = "assets\\walletIcon.png";
+String userIcon = "assets\\userIcon.png";
+String arrowIcon = "assets\\arrowIcon.png";
 Widget groupView = updateview();
 int groups = 0;
 List<groupContainer> groupsList = [];
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               IconButton(
                   iconSize: 40.0,
-                  padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 25, 10, 0),
                   // Use the FluentIcons + name of the icon you want
                   icon: Icon(FluentIcons.alert_16_filled),
                   onPressed: () {
@@ -44,23 +44,25 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         Container(
-          width: width,
-          height: height - 2 * (height / 11),
+          width: width - 30,
+          height: height - (height / 11)-(height / 10),
           color: Color.fromARGB(0, 255, 255, 255),
-          child: groupView,
+          child: Center(
+            child: groupView,
+          ),
         ),
         Container(
           width: width,
-          height: height / 11,
+          height: height / 10,
           color: const Color.fromARGB(255, 255, 255, 255),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                   child: Container(
-                    width: 45,
-                    height: 45,
+                    width: 55,
+                    height: 55,
                     decoration: BoxDecoration(
                       color: Color.fromARGB(0, 255, 255, 255),
                       boxShadow: [
@@ -73,20 +75,21 @@ class _HomePageState extends State<HomePage> {
                     ),
                   )),
               Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 10, 10),
+                padding: EdgeInsets.fromLTRB(0, 10, 20, 10),
                 child: SizedBox(
-                  width: 45,
-                  height: 45,
+                  width: 60,
+                  height: 60,
                   child: ElevatedButton(
                     child: Align(
                         alignment: Alignment.center, child: Icon(Icons.add)),
                     onPressed: () {
-                      groupContainer f = groupContainer();
+                      groupContainer f = groupContainer(
+                          title: "India Trip", numMembers: 5, amount: 220);
                       setState(() {
                         groupsList.add(f);
                         groupView = updateview();
+                        print("ao");
                       });
-                      print("ao");
                     },
                     style: ButtonStyle(
                       iconSize: MaterialStateProperty.all(25),
@@ -94,10 +97,10 @@ class _HomePageState extends State<HomePage> {
                           EdgeInsets.all(10)),
                       alignment: Alignment.center,
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 169, 169, 169)),
+                          Color.fromARGB(255, 127, 127, 127)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(22.5),
+                          borderRadius: BorderRadius.circular(50),
                         ),
                       ),
                     ),
@@ -123,12 +126,92 @@ Widget updateview() {
 }
 
 class groupContainer extends StatelessWidget {
+  final String title;
+  final int numMembers;
+  final int amount;
+
+  groupContainer(
+      {required this.title, required this.numMembers, required this.amount});
+
   @override
   Widget build(BuildContext context) {
-    return Padding(padding:  EdgeInsets.fromLTRB(0, 0, 0, 10),child: Container(
-      color: Colors.black,
-      width: width - 20,
-      height: 100,
-    ));
+    return GestureDetector(
+      child: Padding(
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+          child: Container(
+            height: 100,
+            decoration: BoxDecoration(
+                color: Color.fromARGB(0, 255, 0, 0),
+                border: Border.all(width: 3),
+                borderRadius: BorderRadius.circular(10)),
+            padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      this.title,
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'impact',
+                          fontSize: 35),
+                    ),
+                    Padding(padding: EdgeInsets.all(2)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          this.numMembers.toString(),
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontFamily: 'impact',
+                              fontSize: 30),
+                        ),
+                        Container(
+                          width: 20,
+                          height: 20,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(userIcon))),
+                        ),
+                        Padding(padding: EdgeInsets.fromLTRB(50, 0, 0, 0)),
+                        Text(
+                          this.amount.toString(),
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontFamily: 'impact',
+                              fontSize: 30),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                Container(
+                  width: 30,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(arrowIcon), fit: BoxFit.fitWidth)),
+                )
+              ],
+            ),
+          )),
+      onTap: () {
+        print("clicked");
+        showModalBottomSheet(
+          isScrollControlled: true,
+            context: context,
+            builder: (BuildContext context) {
+              return Scaffold(
+                body: Container(
+                  color: Colors.black,
+                  height: height,
+                  width: width,
+                ),
+              );
+            });
+      },
+    );
   }
 }
