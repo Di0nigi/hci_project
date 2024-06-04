@@ -9,11 +9,27 @@ class newGroupPage extends StatefulWidget {
   State<newGroupPage> createState() => _newGroupPageState();
 }
 
+List<bool> contactBool = [];
+List<String> contactList = [
+  "Annalaura",
+  "Saad",
+  "Emanuele",
+  "Dionigi",
+  "Kilian",
+  "Christian",
+  "Zoe",
+  "Jason"
+];
+Widget nameList = buildNameList();
 final Controller = TextEditingController();
 
 class _newGroupPageState extends State<newGroupPage> {
   @override
   Widget build(BuildContext context) {
+    for (int i = 0; i < contactList.length; i++) {
+      bool f = false;
+      contactBool.add(f);
+    }
     return Scaffold(
       body: Container(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -142,7 +158,7 @@ class _newGroupPageState extends State<newGroupPage> {
                   ),
                 ),
                 onPressed: () {
-                   Navigator.of(context).push(_createRoute());
+                  Navigator.of(context).push(_createRoute());
                 },
               ),
             ),
@@ -169,6 +185,88 @@ class _newGroupPage2State extends State<newGroupPage2> {
       body: Container(
         width: width,
         height: height,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(padding: EdgeInsets.all(20)),
+            Container(
+                width: 122,
+                height: 40,
+                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                child: ElevatedButton(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.arrow_back_rounded),
+                        Text(
+                          "Back",
+                          style: TextStyle(
+                              fontFamily: "Roboto",
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              letterSpacing: 1),
+                        ),
+                      ],
+                    ), /*child: */
+                  ),
+                  style: ButtonStyle(
+                    //iconSize: MaterialStateProperty.all(25),
+                    padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.all(10)),
+                    alignment: Alignment.center,
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Color.fromARGB(255, 0, 0, 0)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )),
+            Padding(padding: EdgeInsets.all(20)),
+            Container(
+              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              child: Text(
+                "Choose the members",
+                style: TextStyle(
+                  fontFamily: "Roboto",
+                  fontSize: 37,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(10)),
+            Container(
+              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              width: width - 20,
+              child: TextField(
+                style: TextStyle(
+                    fontFamily: "Roboto",
+                    fontSize: 15,
+                    color: Color.fromARGB(83, 0, 0, 0),
+                    letterSpacing: 1),
+                controller: Controller,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  labelText: 'Search a contact...',
+                ),
+              ),
+            ),
+            Container(
+                color: Color.fromARGB(0, 0, 0, 0),
+                width: width,
+                height: height - 300,
+                child: nameList)
+          ],
+        ),
       ),
     );
   }
@@ -176,7 +274,8 @@ class _newGroupPage2State extends State<newGroupPage2> {
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const newGroupPage2(),
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        const newGroupPage2(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(1.0, 0.0);
       const end = Offset.zero;
@@ -191,3 +290,28 @@ Route _createRoute() {
     },
   );
 }
+
+Widget buildNameList() {
+  return ListView.builder(
+    itemCount: contactList.length, // Replace with your data list length
+    itemBuilder: (BuildContext context, int index) {
+      return Container(
+          padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+          width: width - 50,
+          height: 50,
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Text(contactList[index]),
+            Checkbox(
+              value: contactBool[index],
+               onChanged: (bool? value ) {
+                 
+                
+        }
+            ),
+          ]));
+    },
+  );
+}
+
+
