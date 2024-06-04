@@ -5,6 +5,9 @@ void main() {
   runApp(const MyApp());
 }
 
+double width = 0;
+double height = 0;
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -17,4 +20,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
