@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hci_project/main.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:hci_project/views/homePage.dart';
 
 class newGroupPage extends StatefulWidget {
   const newGroupPage({super.key});
@@ -23,9 +24,12 @@ List<String> contactList = [
 Widget nameList = buildNameList();
 final Controller = TextEditingController();
 
+var firstScreenContext;
+
 class _newGroupPageState extends State<newGroupPage> {
   @override
   Widget build(BuildContext context) {
+    firstScreenContext = context;
     for (int i = 0; i < contactList.length; i++) {
       bool f = false;
       contactBool.add(f);
@@ -263,8 +267,53 @@ class _newGroupPage2State extends State<newGroupPage2> {
             Container(
                 color: Color.fromARGB(0, 0, 0, 0),
                 width: width,
-                height: height - 300,
-                child: nameList)
+                height: height - 400,
+                child: nameList),
+            Padding(padding: EdgeInsets.all(41)),
+            Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  width: 120,
+                  height: 40,
+                  child: ElevatedButton(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Done",
+                            style: TextStyle(
+                                fontFamily: "Roboto",
+                                fontSize: 20,
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                letterSpacing: 1),
+                          ),
+                          Icon(Icons.check_rounded)
+                        ],
+                      ),
+                    ),
+                    style: ButtonStyle(
+                      //iconSize: MaterialStateProperty.all(25),
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                          EdgeInsets.all(10)),
+                      alignment: Alignment.center,
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Color.fromARGB(255, 0, 0, 0)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                       Navigator.pop(firstScreenContext);
+                      Navigator.of(context).push(_createDownRoute());
+                     
+                    },
+                  ),
+                ))
           ],
         ),
       ),
@@ -291,6 +340,25 @@ Route _createRoute() {
   );
 }
 
+Route _createDownRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const HomePage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, -1.0); // Starting from the top
+      const end = Offset.zero; // Ending at the default position
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+
 Widget buildNameList() {
   return ListView.builder(
     itemCount: contactList.length, // Replace with your data list length
@@ -302,16 +370,8 @@ Widget buildNameList() {
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(contactList[index]),
-            Checkbox(
-              value: contactBool[index],
-               onChanged: (bool? value ) {
-                 
-                
-        }
-            ),
+            Checkbox(value: contactBool[index], onChanged: (bool? value) {}),
           ]));
     },
   );
 }
-
-
