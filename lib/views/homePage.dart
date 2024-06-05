@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hci_project/main.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:hci_project/views/groupPage.dart';
 import 'package:hci_project/views/newGroupPage.dart';
 import 'package:hci_project/views/notificationPage.dart';
 
@@ -203,7 +204,7 @@ class groupContainer extends StatelessWidget {
             ),
           )),
       onTap: () {
-        print("clicked");
+        Navigator.of(context).push(_createGroupRoute());
       },
     );
   }
@@ -218,6 +219,25 @@ Route _createNotificatioRoute() {
       const begin = Offset(1.0, 0.0);
       const end = Offset.zero;
       const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route _createGroupRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const groupPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
 
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 

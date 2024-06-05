@@ -496,12 +496,14 @@ class _newGroupPage3State extends State<newGroupPage3> {
                     ),
                     onPressed: () {
                       setState(() {
-                        groupContainer g = groupContainer(
-                            amount: 0,
-                            title: TitleController.text,
-                            numMembers: people);
-                        groupsList.add(g);
-                        groupView=updateview();
+                        if (TitleController.text != "") {
+                          groupContainer g = groupContainer(
+                              amount: 0,
+                              title: TitleController.text,
+                              numMembers: people);
+                          groupsList.add(g);
+                          groupView = updateview();
+                        }
                       });
 
                       Navigator.of(context).push(_createDownRoute());
@@ -577,6 +579,7 @@ Route _createDownRoute() {
     },
   );
 }
+
 /*
 Widget buildNameList() {
   return 
