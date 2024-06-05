@@ -10,6 +10,12 @@ class newGroupPage extends StatefulWidget {
   State<newGroupPage> createState() => _newGroupPageState();
 }
 
+List<Option> _options = [
+    Option(label: 'Visa', value: 1),
+    Option(label: 'Mastercard>', value: 2),
+    Option(label: 'Postepay', value: 3),
+  ];
+
 List<bool> contactBool = [];
 List<String> contactList = [
   "Annalaura",
@@ -22,9 +28,11 @@ List<String> contactList = [
   "Jason"
 ];
 //Widget nameList = buildNameList();
-final Controller = TextEditingController();
+final TitleController = TextEditingController();
+final MemberController = TextEditingController();
 
 bool checkVal = false;
+int? _selectedValue;
 
 var firstScreenContext;
 
@@ -116,7 +124,7 @@ class _newGroupPageState extends State<newGroupPage> {
                   fontSize: 15,
                   color: Color.fromARGB(83, 0, 0, 0),
                   letterSpacing: 1),
-              controller: Controller,
+              controller: TitleController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.0),
@@ -257,7 +265,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
                     fontSize: 15,
                     color: Color.fromARGB(83, 0, 0, 0),
                     letterSpacing: 1),
-                controller: Controller,
+                controller: MemberController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
@@ -293,7 +301,164 @@ class _newGroupPage2State extends State<newGroupPage2> {
                 alignment: Alignment.bottomRight,
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  width: 120,
+                  width: 150,
+                  height: 40,
+                  child: ElevatedButton(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Continue",
+                            style: TextStyle(
+                                fontFamily: "Roboto",
+                                fontSize: 20,
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                letterSpacing: 1),
+                          ),
+                          Icon(Icons.arrow_forward_rounded)
+                        ],
+                      ),
+                    ),
+                    style: ButtonStyle(
+                      //iconSize: MaterialStateProperty.all(25),
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                          EdgeInsets.all(10)),
+                      alignment: Alignment.center,
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Color.fromARGB(255, 0, 0, 0)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(_createRoute2());
+                    },
+                  ),
+                ))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// SECOND ADDGROUP SCREEN
+
+class newGroupPage3 extends StatefulWidget {
+  const newGroupPage3({super.key});
+
+  @override
+  State<newGroupPage3> createState() => _newGroupPage3State();
+}
+
+class _newGroupPage3State extends State<newGroupPage3> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        width: width,
+        height: height,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(padding: EdgeInsets.all(20)),
+            Container(
+                width: 122,
+                height: 40,
+                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                child: ElevatedButton(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.arrow_back_rounded),
+                        Text(
+                          "Back",
+                          style: TextStyle(
+                              fontFamily: "Roboto",
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              letterSpacing: 1),
+                        ),
+                      ],
+                    ), /*child: */
+                  ),
+                  style: ButtonStyle(
+                    //iconSize: MaterialStateProperty.all(25),
+                    padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.all(10)),
+                    alignment: Alignment.center,
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Color.fromARGB(255, 0, 0, 0)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )),
+            Padding(padding: EdgeInsets.all(20)),
+            Container(
+              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              child: Text(
+                "Choose the default payment method",
+                style: TextStyle(
+                  fontFamily: "Roboto",
+                  fontSize: 37,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(7)),
+            Container(
+              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              child: Text(
+                "When a friend pays for you, your share of the expense is going to be automatically taken from this card.",
+                style: TextStyle(
+                  fontFamily: "Roboto",
+                  fontSize: 15,
+                  color: Color.fromARGB(255, 125, 125, 125),
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(10)),
+            Container(
+              color: Color.fromARGB(0, 0, 0, 0),
+              width: width,
+              height: height - 400,
+              child: ListView.builder(
+                itemCount: _options.length,
+                itemBuilder: (context, index) {
+                  final option = _options[index];
+                  return RadioListTile<int>(
+                    title: Text(option.label),
+                    value: option.value,
+                    groupValue: _selectedValue,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedValue = value;
+                      });
+                    },
+                  );
+                },
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(23)),
+            Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  width: 110,
                   height: 40,
                   child: ElevatedButton(
                     child: Align(
@@ -327,7 +492,6 @@ class _newGroupPage2State extends State<newGroupPage2> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pop(firstScreenContext);
                       Navigator.of(context).push(_createDownRoute());
                     },
                   ),
@@ -339,10 +503,42 @@ class _newGroupPage2State extends State<newGroupPage2> {
   }
 }
 
+
+class Option {
+  final String label;
+  final int value;
+
+  Option({required this.label, required this.value});
+}
+
+
+
+
+
+
 Route _createRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) =>
         const newGroupPage2(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route _createRoute2() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        const newGroupPage3(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(1.0, 0.0);
       const end = Offset.zero;
@@ -400,9 +596,8 @@ class customCheckBoxState extends State<customCheckBox> {
         onChanged: (bool? value) {
           setState(() {
             val = value!;
-            
           });
-          
+
           print(val);
         });
   }
