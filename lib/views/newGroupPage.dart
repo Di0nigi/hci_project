@@ -21,8 +21,10 @@ List<String> contactList = [
   "Zoe",
   "Jason"
 ];
-Widget nameList = buildNameList();
+//Widget nameList = buildNameList();
 final Controller = TextEditingController();
+
+bool checkVal = false;
 
 var firstScreenContext;
 
@@ -268,7 +270,24 @@ class _newGroupPage2State extends State<newGroupPage2> {
                 color: Color.fromARGB(0, 0, 0, 0),
                 width: width,
                 height: height - 400,
-                child: nameList),
+                child: ListView.builder(
+                  itemCount:
+                      contactList.length, // Replace with your data list length
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                        padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                        width: width - 50,
+                        height: 50,
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(contactList[index]),
+                              customCheckBox(
+                                val: contactBool[index],
+                              )
+                            ]));
+                  },
+                )),
             Padding(padding: EdgeInsets.all(41)),
             Align(
                 alignment: Alignment.bottomRight,
@@ -308,9 +327,8 @@ class _newGroupPage2State extends State<newGroupPage2> {
                       ),
                     ),
                     onPressed: () {
-                       Navigator.pop(firstScreenContext);
+                      Navigator.pop(firstScreenContext);
                       Navigator.of(context).push(_createDownRoute());
-                     
                     },
                   ),
                 ))
@@ -344,8 +362,8 @@ Route _createDownRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => const HomePage(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(0.0, -1.0); // Starting from the top
-      const end = Offset.zero; // Ending at the default position
+      const begin = Offset(0.0, -1.0);
+      const end = Offset.zero;
       const curve = Curves.ease;
 
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
@@ -357,21 +375,35 @@ Route _createDownRoute() {
     },
   );
 }
-
-
+/*
 Widget buildNameList() {
-  return ListView.builder(
-    itemCount: contactList.length, // Replace with your data list length
-    itemBuilder: (BuildContext context, int index) {
-      return Container(
-          padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-          width: width - 50,
-          height: 50,
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(contactList[index]),
-            Checkbox(value: contactBool[index], onChanged: (bool? value) {}),
-          ]));
-    },
-  );
+  return 
+}*/
+
+class customCheckBox extends StatefulWidget {
+  final val;
+  const customCheckBox({super.key, this.val});
+
+  @override
+  State<customCheckBox> createState() => customCheckBoxState(val: this.val);
+}
+
+class customCheckBoxState extends State<customCheckBox> {
+  var val = false;
+
+  customCheckBoxState({required this.val}) {}
+
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+        value: val,
+        onChanged: (bool? value) {
+          setState(() {
+            val = value!;
+            
+          });
+          
+          print(val);
+        });
+  }
 }
