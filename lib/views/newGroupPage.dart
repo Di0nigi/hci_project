@@ -11,10 +11,10 @@ class newGroupPage extends StatefulWidget {
 }
 
 List<Option> _options = [
-    Option(label: 'Visa', value: 1),
-    Option(label: 'Mastercard>', value: 2),
-    Option(label: 'Postepay', value: 3),
-  ];
+  Option(label: 'Visa', value: 1),
+  Option(label: 'Mastercard', value: 2),
+  Option(label: 'Postepay', value: 3),
+];
 
 List<bool> contactBool = [];
 List<String> contactList = [
@@ -33,6 +33,7 @@ final MemberController = TextEditingController();
 
 bool checkVal = false;
 int? _selectedValue;
+int people = 0;
 
 var firstScreenContext;
 
@@ -122,7 +123,7 @@ class _newGroupPageState extends State<newGroupPage> {
               style: TextStyle(
                   fontFamily: "Roboto",
                   fontSize: 15,
-                  color: Color.fromARGB(83, 0, 0, 0),
+                  color: Color.fromARGB(255, 0, 0, 0),
                   letterSpacing: 1),
               controller: TitleController,
               decoration: InputDecoration(
@@ -193,6 +194,8 @@ class newGroupPage2 extends StatefulWidget {
 }
 
 class _newGroupPage2State extends State<newGroupPage2> {
+  int people = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -263,7 +266,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
                 style: TextStyle(
                     fontFamily: "Roboto",
                     fontSize: 15,
-                    color: Color.fromARGB(83, 0, 0, 0),
+                    color: Color.fromARGB(255, 0, 0, 0),
                     letterSpacing: 1),
                 controller: MemberController,
                 decoration: InputDecoration(
@@ -492,6 +495,15 @@ class _newGroupPage3State extends State<newGroupPage3> {
                       ),
                     ),
                     onPressed: () {
+                      setState(() {
+                        groupContainer g = groupContainer(
+                            amount: 0,
+                            title: TitleController.text,
+                            numMembers: people);
+                        groupsList.add(g);
+                        groupView=updateview();
+                      });
+
                       Navigator.of(context).push(_createDownRoute());
                     },
                   ),
@@ -503,18 +515,12 @@ class _newGroupPage3State extends State<newGroupPage3> {
   }
 }
 
-
 class Option {
   final String label;
   final int value;
 
   Option({required this.label, required this.value});
 }
-
-
-
-
-
 
 Route _createRoute() {
   return PageRouteBuilder(
@@ -594,11 +600,19 @@ class customCheckBoxState extends State<customCheckBox> {
     return Checkbox(
         value: val,
         onChanged: (bool? value) {
+          if (val == false) {
+            people += 1;
+          }
+          if (val == true) {
+            people -= 1;
+          }
+
           setState(() {
             val = value!;
           });
 
           print(val);
+          print(people);
         });
   }
 }

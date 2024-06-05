@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hci_project/main.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:hci_project/views/newGroupPage.dart';
+import 'package:hci_project/views/notificationPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                   // Use the FluentIcons + name of the icon you want
                   icon: Icon(FluentIcons.alert_16_filled),
                   onPressed: () {
-                    print("Button pressed");
+                    Navigator.of(context).push( _createNotificatioRoute());
                   }),
             ],
           ),
@@ -206,4 +207,24 @@ class groupContainer extends StatelessWidget {
       },
     );
   }
+}
+
+
+Route _createNotificatioRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        const notificationPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
