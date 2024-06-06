@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     height = MediaQuery.of(context).size.height;
     return Scaffold(
         body: Container(
-      decoration: BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
+      decoration: BoxDecoration(color: Color.fromARGB(0, 255, 255, 255)),
       child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
         Container(
           width: width,
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
         Container(
           width: width,
           height: height / 10,
-          color: const Color.fromARGB(255, 255, 255, 255),
+          color: Color.fromARGB(0, 255, 255, 255),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

@@ -255,6 +255,7 @@ class expenseContainer extends StatelessWidget {
                         ),],
                 ),
                 Container(
+                  
                   width: 30,
                   decoration: BoxDecoration(
                       image: DecorationImage(
@@ -264,7 +265,7 @@ class expenseContainer extends StatelessWidget {
             ),
           )),
       onTap: () {
-         Navigator.of(context).push(_createExpenseRoute());
+         Navigator.of(context).push(_createExpenseRoute(this.title, this.date, this.totalAmount.toString(), this.author));
       },
     );
   }
@@ -273,9 +274,9 @@ class expenseContainer extends StatelessWidget {
 
 
 
-Route _createExpenseRoute() {
+Route _createExpenseRoute( String title, String date, String amount, String author) {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => expensePage(),
+    pageBuilder: (context, animation, secondaryAnimation) => expensePage(title: title, date: date, amount: amount,author: author,),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(1.0, 0.0);
       const end = Offset.zero;

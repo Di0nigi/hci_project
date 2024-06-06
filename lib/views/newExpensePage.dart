@@ -361,26 +361,6 @@ class _newExpensePage2State extends State<newExpensePage2> {
   }
 }
 
-// THIRD NEWEXPENSEPAGE
-
-class newExpensePage3 extends StatefulWidget {
-  const newExpensePage3({super.key});
-
-  @override
-  State<newExpensePage3> createState() => _newExpensePage3State();
-}
-
-class _newExpensePage3State extends State<newExpensePage3> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: width,
-        height: height,
-      ),
-    );
-  }
-}
 
 class Option {
   final String label;
