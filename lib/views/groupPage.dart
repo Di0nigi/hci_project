@@ -9,7 +9,7 @@ class groupPage extends StatefulWidget {
   State<groupPage> createState() => _groupPageState();
 }
 
-String arrowIcon = "assets\\arrowIcon.png";
+String arrowIcon = "assets/arrowIcon.png";
 
 List<expenseContainer> expenseList = [
   expenseContainer(title: "thai dinner", date: "20/2/24", author: "Billy", totalAmount: 25, yourAmount: 5)

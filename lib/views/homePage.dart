@@ -12,9 +12,9 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-String walletIcon = "assets\\walletIcon.png";
-String userIcon = "assets\\userIcon.png";
-String arrowIcon = "assets\\arrowIcon.png";
+String walletIcon = "assets/walletIcon.png";
+String userIcon = "assets/userIcon.png";
+String arrowIcon = "assets/arrowIcon.png";
 Widget groupView = updateview();
 int groups = 0;
 List<groupContainer> groupsList = [
