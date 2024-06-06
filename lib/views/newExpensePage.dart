@@ -87,7 +87,7 @@ class _newExpensePageState extends State<newExpensePage> {
               )),
           Container(
             width: width,
-            height: height / 8,
+            height:  height / 5.5,
             padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -130,7 +130,7 @@ class _newExpensePageState extends State<newExpensePage> {
             color: Color.fromARGB(0, 255, 0, 0),
             width: width,
             height:
-                height - height / 8 - height / 8 - height / 13 - height / 15,
+                height - height / 8 - height / 5.5 - height / 13 - height / 15,
             child: ListView.builder(
               itemCount: lastTransaction.length,
               itemBuilder: (context, index) {
@@ -260,7 +260,8 @@ class _newExpensePage2State extends State<newExpensePage2> {
               )),
           Container(
             width: width,
-            height: height / 8,
+            height: height / 5.5,
+            color: Color.fromARGB(0, 241, 251, 246),
             padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -287,7 +288,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
               color: Color.fromARGB(0, 0, 0, 0),
               width: width,
               height:
-                  height - height / 8 - height / 8 - height / 13 - height / 15,
+                  height - height / 8 - height / 5.5 - height / 13 - height / 15,
               child: ListView.builder(
                 itemCount:
                     partecipants.length, // Replace with your data list length
