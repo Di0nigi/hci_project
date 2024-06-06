@@ -1,25 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:hci_project/main.dart';
+import 'package:hci_project/views/expensePage.dart';
 import 'package:hci_project/views/newExpensePage.dart';
 
 class groupPage extends StatefulWidget {
-  const groupPage({super.key});
+  final String groupName;
+  const groupPage({super.key, required this.groupName});
 
   @override
-  State<groupPage> createState() => _groupPageState();
+  State<groupPage> createState() => _groupPageState(groupName: groupName);
 }
 
 String arrowIcon = "assets/arrowIcon.png";
 
 List<expenseContainer> expenseList = [
-  expenseContainer(title: "thai dinner", date: "20/2/24", author: "Billy", totalAmount: 25, yourAmount: 5)
+  expenseContainer(
+    title: "thai dinner",
+    date: "20/2/24",
+    author: "Billy",
+    totalAmount: 25,
+    yourAmount: 5,
+    group: "India trip",
+  )
 ];
+
+String groupnameNow = "";
 
 Widget expensesView = updateExpenseview();
 
 newExpensePage newExp = newExpensePage();
 
 class _groupPageState extends State<groupPage> {
+  final String groupName;
+
+  _groupPageState({required this.groupName}) {
+    groupnameNow = groupName;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,9 +89,22 @@ class _groupPageState extends State<groupPage> {
               )
             ]),
             Container(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+              height: height/15,
+              child: Text(groupnameNow, style:
+               TextStyle(
+                              fontFamily: "impact",
+                              fontSize: 40,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              letterSpacing: 1),
+                        ), 
+              ),
+
+            
+            Container(
               color: Color.fromARGB(0, 0, 0, 0),
-              width: width,
-              height: height - (height / 11) - (height / 10),
+              width: width-35,
+              height: height - (height / 11) - (height / 10) - (height / 15),
               child: expensesView,
             ),
             Container(
@@ -130,7 +160,12 @@ Widget updateExpenseview() {
     itemCount: expenseList.length, // Replace with your data list length
     itemBuilder: (BuildContext context, int index) {
       //print(index);
-      return expenseList[index];
+      if (expenseList[index].group == groupnameNow) {
+        print(expenseList[index].group);
+        return expenseList[index];
+      } else {
+        return Container();
+      }
     },
   );
 }
@@ -142,12 +177,15 @@ class expenseContainer extends StatelessWidget {
   final int totalAmount;
   final int yourAmount;
 
+  final String group;
+
   expenseContainer(
       {required this.title,
       required this.date,
       required this.author,
       required this.totalAmount,
-      required this.yourAmount});
+      required this.yourAmount,
+      required this.group});
 
   @override
   Widget build(BuildContext context) {
@@ -160,41 +198,61 @@ class expenseContainer extends StatelessWidget {
                 color: Color.fromARGB(0, 255, 0, 0),
                 border: Border.all(width: 3),
                 borderRadius: BorderRadius.circular(10)),
-            padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       this.title,
                       style: TextStyle(
                           color: Color.fromARGB(255, 0, 0, 0),
                           fontFamily: 'impact',
-                          fontSize: 35),
+                          fontSize: 30),
                     ),
-                    Padding(padding: EdgeInsets.all(2)),
+                    Text(
+                      this.date,
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'impact',
+                          fontSize: 15),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          "payed by",
+                          "payed by ${this.author}",
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontFamily: 'impact',
-                              fontSize: 30),
-                        ),
-                        Padding(padding: EdgeInsets.fromLTRB(50, 0, 0, 0)),
-                        Text(
-                          this.yourAmount.toString(),
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'impact',
-                              fontSize: 30),
+                              fontSize: 15),
                         ),
                       ],
                     )
                   ],
+                ),
+                
+                Column( mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(padding: EdgeInsets.all(4)),
+                    Text(
+                          this.totalAmount.toString(),
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontFamily: 'impact',
+                              fontSize: 25),
+                        ),Padding(padding: EdgeInsets.all(7)),
+                        Text(
+                          "you payed ${this.yourAmount.toString()}",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 106, 106, 106),
+                              fontFamily: 'impact',
+                              fontSize: 15),
+                        ),],
                 ),
                 Container(
                   width: 30,
@@ -206,8 +264,29 @@ class expenseContainer extends StatelessWidget {
             ),
           )),
       onTap: () {
-        //Navigator.of(context).push(_createGroupRoute());
+         Navigator.of(context).push(_createExpenseRoute());
       },
     );
   }
+}
+
+
+
+
+Route _createExpenseRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => expensePage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

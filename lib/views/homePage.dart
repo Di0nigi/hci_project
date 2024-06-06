@@ -18,11 +18,7 @@ String arrowIcon = "assets/arrowIcon.png";
 Widget groupView = updateview();
 int groups = 0;
 List<groupContainer> groupsList = [
-
   groupContainer(title: "India trip", numMembers: 4, amount: 235)
-
-
-
 ];
 newGroupPage newGP = newGroupPage();
 
@@ -48,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                   // Use the FluentIcons + name of the icon you want
                   icon: Icon(FluentIcons.alert_16_filled),
                   onPressed: () {
-                    Navigator.of(context).push( _createNotificatioRoute());
+                    Navigator.of(context).push(_createNotificatioRoute());
                   }),
             ],
           ),
@@ -101,7 +97,6 @@ class _HomePageState extends State<HomePage> {
                               body: newGP,
                             );
                           });
-                      
                     },
                     style: ButtonStyle(
                       iconSize: MaterialStateProperty.all(40),
@@ -210,12 +205,11 @@ class groupContainer extends StatelessWidget {
             ),
           )),
       onTap: () {
-        Navigator.of(context).push(_createGroupRoute());
+        Navigator.of(context).push(_createGroupRoute(this.title));
       },
     );
   }
 }
-
 
 Route _createNotificatioRoute() {
   return PageRouteBuilder(
@@ -236,14 +230,13 @@ Route _createNotificatioRoute() {
   );
 }
 
-Route _createGroupRoute() {
+Route _createGroupRoute(String titlePage) {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const groupPage(),
+    pageBuilder: (context, animation, secondaryAnimation) => groupPage(groupName: titlePage),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(1.0, 0.0);
       const end = Offset.zero;
       const curve = Curves.ease;
-
 
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
