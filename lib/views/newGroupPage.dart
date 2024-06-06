@@ -502,9 +502,11 @@ class _newGroupPage3State extends State<newGroupPage3> {
                               title: TitleController.text,
                               numMembers: people);
                           groupsList.add(g);
+
                           groupView = updateview();
                         }
                       });
+                      TitleController.text = "";
 
                       Navigator.of(context).push(_createDownRoute());
                     },
