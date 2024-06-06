@@ -17,7 +17,13 @@ String userIcon = "assets/userIcon.png";
 String arrowIcon = "assets/arrowIcon.png";
 Widget groupView = updateview();
 int groups = 0;
-List<groupContainer> groupsList = [];
+List<groupContainer> groupsList = [
+
+  groupContainer(title: "India trip", numMembers: 4, amount: 235)
+
+
+
+];
 newGroupPage newGP = newGroupPage();
 
 class _HomePageState extends State<HomePage> {
