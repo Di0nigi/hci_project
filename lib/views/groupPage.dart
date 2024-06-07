@@ -5,10 +5,12 @@ import 'package:hci_project/views/newExpensePage.dart';
 
 class groupPage extends StatefulWidget {
   final String groupName;
-  const groupPage({super.key, required this.groupName});
+  final List<groupInfo> gInfo;
+  const groupPage({super.key, required this.groupName, required this.gInfo});
 
   @override
-  State<groupPage> createState() => _groupPageState(groupName: groupName);
+  State<groupPage> createState() =>
+      _groupPageState(groupName: groupName, gInfo: this.gInfo);
 }
 
 String arrowIcon = "assets/arrowIcon.png";
@@ -23,22 +25,26 @@ List<expenseContainer> expenseList = [
     group: "India trip",
   )
 ];
+List<expenseInfo> expensesInfo = [
+  expenseInfo(members: ["Annalaura", "Francesco"], groupName: "India trip", expenseName: "thai dinner", author: "Billy"),
+   
+];
 
 String groupnameNow = "";
 
 Widget expensesView = updateExpenseview();
 
-newExpensePage newExp = newExpensePage();
-
 class _groupPageState extends State<groupPage> {
+  final List<groupInfo> gInfo;
   final String groupName;
 
-  _groupPageState({required this.groupName}) {
+  _groupPageState({required this.groupName, required this.gInfo}) {
     groupnameNow = groupName;
   }
 
   @override
   Widget build(BuildContext context) {
+    newExpensePage newExp = newExpensePage(title: groupnameNow);
     return Scaffold(
       body: Container(
         width: width,
@@ -90,20 +96,19 @@ class _groupPageState extends State<groupPage> {
             ]),
             Container(
               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-              height: height/15,
-              child: Text(groupnameNow, style:
-               TextStyle(
-                              fontFamily: "impact",
-                              fontSize: 40,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              letterSpacing: 1),
-                        ), 
+              height: height / 15,
+              child: Text(
+                groupnameNow,
+                style: TextStyle(
+                    fontFamily: "impact",
+                    fontSize: 40,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    letterSpacing: 1),
               ),
-
-            
+            ),
             Container(
               color: Color.fromARGB(0, 0, 0, 0),
-              width: width-35,
+              width: width - 35,
               height: height - (height / 11) - (height / 10) - (height / 15),
               child: expensesView,
             ),
@@ -202,7 +207,6 @@ class expenseContainer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -234,25 +238,27 @@ class expenseContainer extends StatelessWidget {
                     )
                   ],
                 ),
-                
-                Column( mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(padding: EdgeInsets.all(4)),
                     Text(
-                          this.totalAmount.toString(),
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'impact',
-                              fontSize: 25),
-                        ),Padding(padding: EdgeInsets.all(7)),
-                        Text(
-                          "you payed ${this.yourAmount.toString()}",
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 106, 106, 106),
-                              fontFamily: 'impact',
-                              fontSize: 15),
-                        ),],
+                      this.totalAmount.toString(),
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontFamily: 'impact',
+                          fontSize: 25),
+                    ),
+                    Padding(padding: EdgeInsets.all(7)),
+                    Text(
+                      "you payed ${this.yourAmount.toString()}",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 106, 106, 106),
+                          fontFamily: 'impact',
+                          fontSize: 15),
+                    ),
+                  ],
                 ),
                 Container(
                   width: 30,
@@ -264,18 +270,24 @@ class expenseContainer extends StatelessWidget {
             ),
           )),
       onTap: () {
-         Navigator.of(context).push(_createExpenseRoute());
+        Navigator.of(context).push(_createExpenseRoute(
+            this.title, this.date, this.totalAmount.toString(), this.author));
       },
     );
   }
 }
 
-
-
-
-Route _createExpenseRoute() {
+Route _createExpenseRoute(
+    String title, String date, String amount, String author) {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => expensePage(),
+    pageBuilder: (context, animation, secondaryAnimation) => expensePage(
+      title: title,
+      date: date,
+      amount: amount,
+      author: author,
+      exInfo: expensesInfo,
+      group: groupnameNow,
+    ),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(1.0, 0.0);
       const end = Offset.zero;
@@ -289,4 +301,10 @@ Route _createExpenseRoute() {
       );
     },
   );
+}
+
+class groupInfo {
+  final List<String> partecipants;
+  final String groupName;
+  groupInfo({required this.groupName, required this.partecipants});
 }

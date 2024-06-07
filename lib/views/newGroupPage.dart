@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hci_project/main.dart';
 // ignore: unused_import
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:hci_project/views/groupPage.dart';
 import 'package:hci_project/views/homePage.dart';
 
 class newGroupPage extends StatefulWidget {
@@ -295,6 +296,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
                             children: [
                               Text(contactList[index]),
                               customCheckBox(
+                                name: contactList[index],
                                 val: contactBool[index],
                               )
                             ]));
@@ -504,9 +506,15 @@ class _newGroupPage3State extends State<newGroupPage3> {
                               numMembers: people);
                           groupsList.add(g);
 
+                          groupInfo gf = groupInfo(
+                              groupName: TitleController.text,
+                              partecipants: groupParticipants);
+                          groupsInfo.add(gf);
+
                           groupView = updateview();
                         }
                       });
+                      groupParticipants = [];
                       TitleController.text = "";
 
                       Navigator.of(context).push(_createDownRoute());
@@ -590,16 +598,21 @@ Widget buildNameList() {
 
 class customCheckBox extends StatefulWidget {
   final val;
-  const customCheckBox({super.key, this.val});
+  final name;
+  const customCheckBox({super.key, this.val, this.name});
 
   @override
-  State<customCheckBox> createState() => customCheckBoxState(val: this.val);
+  State<customCheckBox> createState() =>
+      customCheckBoxState(val: this.val, name: this.name);
 }
+
+List<String> groupParticipants = [];
 
 class customCheckBoxState extends State<customCheckBox> {
   var val = false;
+  final String name;
 
-  customCheckBoxState({required this.val}) {}
+  customCheckBoxState({required this.val, required this.name}) {}
 
   @override
   Widget build(BuildContext context) {
@@ -608,15 +621,17 @@ class customCheckBoxState extends State<customCheckBox> {
         onChanged: (bool? value) {
           if (val == false) {
             people += 1;
+            groupParticipants.add(this.name);
           }
           if (val == true) {
             people -= 1;
+            if (groupParticipants.contains(this.name)) {
+              groupParticipants.remove(this.name);
+            }
           }
-
           setState(() {
             val = value!;
           });
-
           print(val);
           print(people);
         });
