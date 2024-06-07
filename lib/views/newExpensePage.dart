@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:hci_project/main.dart';
 import 'package:flutter/services.dart';
+import 'package:hci_project/views/expensePage.dart';
+import 'package:hci_project/views/groupPage.dart';
 import 'package:hci_project/views/homePage.dart';
 
 class newExpensePage extends StatefulWidget {
-  const newExpensePage({super.key});
+  final String title;
+  const newExpensePage({super.key, required this.title});
 
   @override
-  State<newExpensePage> createState() => _newExpensePageState();
+  State<newExpensePage> createState() => _newExpensePageState(title: title);
 }
+
+TextEditingController amountController = TextEditingController();
 
 List<Option> lastTransaction = [
   Option(label: "Lunch, 25£", value: 1),
@@ -19,23 +24,27 @@ List<Option> lastTransaction = [
 int numpartecipants = 0;
 List<bool> partecipantsBool = [];
 
-List<String> partecipants = [
-  "Annalaura",
-  "Saad",
-  "Emanuele",
-  "Dionigi",
-  "Kilian",
-  "Christian",
-  "Zoe",
-  "Jason"
-];
+List<String> partecipants = [];
 
 int? _selectedValue = 0;
 int? _selectedValue2 = 0;
+String nowTitle = "";
 
 class _newExpensePageState extends State<newExpensePage> {
+  final String title;
+
+  _newExpensePageState({required this.title}) {
+    nowTitle = this.title;
+  }
+
   @override
   Widget build(BuildContext context) {
+    for (int i = 0; i < groupsInfo.length; i++) {
+      if (groupsInfo[i].groupName == this.title) {
+        partecipants = groupsInfo[i].partecipants;
+      }
+      ;
+    }
     for (int i = 0; i < partecipants.length; i++) {
       bool f = false;
       partecipantsBool.add(f);
@@ -87,7 +96,7 @@ class _newExpensePageState extends State<newExpensePage> {
               )),
           Container(
             width: width,
-            height:  height / 5.5,
+            height: height / 5.5,
             padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -116,6 +125,7 @@ class _newExpensePageState extends State<newExpensePage> {
             height: height / 13,
             color: Color.fromRGBO(212, 212, 212, 0),
             child: TextField(
+              controller: amountController,
               keyboardType: TextInputType.number,
               inputFormatters: <TextInputFormatter>[
                 FilteringTextInputFormatter.digitsOnly
@@ -287,8 +297,11 @@ class _newExpensePage2State extends State<newExpensePage2> {
           Container(
               color: Color.fromARGB(0, 0, 0, 0),
               width: width,
-              height:
-                  height - height / 8 - height / 5.5 - height / 13 - height / 15,
+              height: height -
+                  height / 8 -
+                  height / 5.5 -
+                  height / 13 -
+                  height / 15,
               child: ListView.builder(
                 itemCount:
                     partecipants.length, // Replace with your data list length
@@ -350,7 +363,32 @@ class _newExpensePage2State extends State<newExpensePage2> {
                         ),
                       ),
                       onPressed: () {
-                        setState(() {});
+                        setState(() {
+                          if (amountController.text != "") {
+                            var s = amountController.text;
+
+                            //var ls = s.split(",");
+                          } else {
+                            var s = lastTransaction[(_selectedValue!-1)];
+                            var ls = s.label.split(",");
+                            
+
+
+
+                            expenseContainer eC = expenseContainer(
+                                title: ls[0],
+                                date: DateTime.now().toString(),
+                                author: "Bill",
+                                totalAmount: int.parse(ls[1][1]),
+                                yourAmount: int.parse(ls[1][1]),
+                                group: nowTitle);
+                                expenseList.add(eC);
+                          }
+                          expensesView = updateExpenseview();
+                          
+
+                          //expenseContainer eC =expenseContainer(title: , date: date, author: author, totalAmount: totalAmount, yourAmount: yourAmount, group: group)
+                        });
 
                         Navigator.of(context).push(_createExpenseDownRoute());
                       },
@@ -361,7 +399,6 @@ class _newExpensePage2State extends State<newExpensePage2> {
     );
   }
 }
-
 
 class Option {
   final String label;
@@ -391,7 +428,10 @@ Route _createExpenseRoute2() {
 
 Route _createExpenseDownRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const HomePage(),
+    pageBuilder: (context, animation, secondaryAnimation) => groupPage(
+      groupName: groupnameNow,
+      gInfo: groupsInfo,
+    ),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(0.0, -1.0);
       const end = Offset.zero;
