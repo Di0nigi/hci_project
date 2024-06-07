@@ -29,6 +29,8 @@ class expensePage extends StatefulWidget {
       group: this.group);
 }
 
+bool ismine = false;
+
 List<String> membersList = [];
 
 class _expensePageState extends State<expensePage> {
@@ -59,6 +61,11 @@ class _expensePageState extends State<expensePage> {
           expense[i].groupName == this.group) {
         print("ao");
         membersList = expense[i].members;
+        if (expense[i].author == "you") {
+          ismine = true;
+        } else {
+          ismine = false;
+        }
       }
     }
     return Scaffold(
@@ -214,53 +221,58 @@ class _expensePageState extends State<expensePage> {
                 },
               ),
             ),
-            Container(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                width: width,
-                child: Center(
-                    child: Container(
-                  width: width - 70,
-                  height: height / 8,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      print("rejected");
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Reject the expense",
-                          style: TextStyle(
-                              fontFamily: "impact",
-                              fontSize: 26,
-                              fontWeight: FontWeight.w300,
-                              color: const Color.fromARGB(255, 255, 255, 255)),
+            Visibility(
+                visible: !ismine,
+                child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    width: width,
+                    child: Center(
+                        child: Container(
+                      width: width - 70,
+                      height: height / 8,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          print("rejected");
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Reject the expense",
+                              style: TextStyle(
+                                  fontFamily: "impact",
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.w300,
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255)),
+                            ),
+                            Text(
+                              "-3h 16min",
+                              style: TextStyle(
+                                  fontFamily: "impact",
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255)),
+                            )
+                          ],
                         ),
-                        Text(
-                          "-3h 16min",
-                          style: TextStyle(
-                              fontFamily: "impact",
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: const Color.fromARGB(255, 255, 255, 255)),
-                        )
-                      ],
-                    ),
-                    style: ButtonStyle(
-                      //iconSize: MaterialStateProperty.all(25),
-                      padding: MaterialStateProperty.all<EdgeInsets>(
-                          EdgeInsets.all(10)),
-                      alignment: Alignment.center,
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(255, 178, 49, 49)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
+                        style: ButtonStyle(
+                          //iconSize: MaterialStateProperty.all(25),
+                          padding: MaterialStateProperty.all<EdgeInsets>(
+                              EdgeInsets.all(10)),
+                          alignment: Alignment.center,
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color.fromARGB(255, 178, 49, 49)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                )))
+                    ))))
           ],
         ),
       ),
@@ -272,8 +284,10 @@ class expenseInfo {
   final List<String> members;
   final String groupName;
   final String expenseName;
+  final String author;
   expenseInfo(
       {required this.members,
       required this.groupName,
-      required this.expenseName});
+      required this.expenseName,
+      required this.author});
 }

@@ -26,7 +26,7 @@ List<expenseContainer> expenseList = [
   )
 ];
 List<expenseInfo> expensesInfo = [
-  expenseInfo(members: ["Annalaura", "Francesco"], groupName: "India trip", expenseName: "thai dinner"),
+  expenseInfo(members: ["Annalaura", "Francesco"], groupName: "India trip", expenseName: "thai dinner", author: "Billy"),
    
 ];
 

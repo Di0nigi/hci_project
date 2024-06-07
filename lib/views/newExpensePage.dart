@@ -396,7 +396,8 @@ class _newExpensePage2State extends State<newExpensePage2> {
                             expenseInfo eF = expenseInfo(
                                 members: expenseMembers,
                                 groupName: nowTitle,
-                                expenseName: ls[0]);
+                                expenseName: ls[0],
+                                author: "you");
                             expensesInfo.add(eF);
                           }
                           expensesView = updateExpenseview();
