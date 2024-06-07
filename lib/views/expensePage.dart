@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:hci_project/main.dart';
 
 class expensePage extends StatefulWidget {
@@ -6,46 +7,60 @@ class expensePage extends StatefulWidget {
   final String date;
   final String amount;
   final String author;
+  final List<expenseInfo> exInfo;
+  final String group;
 
   const expensePage(
       {super.key,
       required this.title,
       required this.date,
       required this.amount,
-      required this.author});
+      required this.author,
+      required this.exInfo,
+      required this.group});
 
   @override
   State<expensePage> createState() => _expensePageState(
       title: this.title,
       date: this.date,
       amount: this.amount,
-      author: this.author);
+      author: this.author,
+      expense: this.exInfo,
+      group: this.group);
 }
 
-List<String> membersList = [
-  "Annalaura",
-  "Saad",
-  "Emanuele",
-  "Dionigi",
-  "Kilian",
-  "Christian",
-  "Zoe",
-  "Jason"
-];
+List<String> membersList = [];
 
 class _expensePageState extends State<expensePage> {
   final String title;
   final String date;
   final String amount;
   final String author;
+  final String group;
+  final List<expenseInfo> expense;
   _expensePageState(
       {required this.title,
       required this.date,
       required this.amount,
-      required this.author});
+      required this.author,
+      required this.expense,
+      required this.group});
 
   @override
   Widget build(BuildContext context) {
+    for (int i = 0; i < expense.length; i++) {
+      print(expense[i].groupName);
+      print(expense[i].expenseName);
+      print(" ");
+      print(this.group);
+      print(this.title);
+
+      if (expense[i].expenseName == this.title &&
+          expense[i].groupName == this.group) {
+        print("ao");
+        membersList = expense[i].members;
+      }
+    }
     return Scaffold(
       body: Container(
         width: width,
@@ -131,53 +146,70 @@ class _expensePageState extends State<expensePage> {
                 ],
               ),
             ),
-            
             Container(
-              height: height/13 ,
-              width: width-50,
-              color: Color.fromARGB(0, 255, 0, 0),
-              padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
-              child: Column( crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                Text("payed by ${this.author}", style: TextStyle(
-                            fontFamily: "impact",
-                            fontSize: 25,
-                            fontWeight: FontWeight.w100,
-                            color: Color.fromARGB(255, 0, 0, 0)) ,),
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [Text("for:", style: TextStyle(
-                            fontFamily: "impact",
-                            fontSize: 25,
-                            fontWeight: FontWeight.w100,
-                            color: Color.fromARGB(255, 0, 0, 0)) ,),
-                            Text("status", style: TextStyle(
-                            fontFamily: "impact",
-                            fontSize: 21,
-                            fontWeight: FontWeight.w100,
-                            color: Color.fromARGB(168, 0, 0, 0)) ,), ],)
-                
-              ],)
-              
-            ),
+                height: height / 13,
+                width: width - 50,
+                color: Color.fromARGB(0, 255, 0, 0),
+                padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "payed by ${this.author}",
+                      style: TextStyle(
+                          fontFamily: "impact",
+                          fontSize: 25,
+                          fontWeight: FontWeight.w100,
+                          color: Color.fromARGB(255, 0, 0, 0)),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "for:",
+                          style: TextStyle(
+                              fontFamily: "impact",
+                              fontSize: 25,
+                              fontWeight: FontWeight.w100,
+                              color: Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                        Text(
+                          "status",
+                          style: TextStyle(
+                              fontFamily: "impact",
+                              fontSize: 21,
+                              fontWeight: FontWeight.w100,
+                              color: Color.fromARGB(168, 0, 0, 0)),
+                        ),
+                      ],
+                    )
+                  ],
+                )),
             Container(
               padding: EdgeInsets.fromLTRB(90, 0, 0, 0),
-              width: width-70,
-              height:
-                  height - (height - height / 2 - height / 3.5) - height / 3 - height/13,
+              width: width - 70,
+              height: height -
+                  (height - height / 2 - height / 3.5) -
+                  height / 3 -
+                  height / 13,
               color: Color.fromARGB(0, 44, 79, 45),
               child: ListView.builder(
                 itemCount: membersList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-                      Text(
-                        membersList[index],
-                        style: TextStyle(
-                            fontFamily: "impact",
-                            fontSize: 20,
-                            fontWeight: FontWeight.w100,
-                            color: Color.fromARGB(255, 0, 0, 0)),
-                      ), Icon(Icons.check_box)
-                    ]),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            membersList[index],
+                            style: TextStyle(
+                                fontFamily: "impact",
+                                fontSize: 20,
+                                fontWeight: FontWeight.w100,
+                                color: Color.fromARGB(255, 0, 0, 0)),
+                          ),
+                          Icon(Icons.check_box)
+                        ]),
                   );
                 },
               ),
@@ -234,4 +266,14 @@ class _expensePageState extends State<expensePage> {
       ),
     );
   }
+}
+
+class expenseInfo {
+  final List<String> members;
+  final String groupName;
+  final String expenseName;
+  expenseInfo(
+      {required this.members,
+      required this.groupName,
+      required this.expenseName});
 }

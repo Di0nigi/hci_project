@@ -9,7 +9,8 @@ class groupPage extends StatefulWidget {
   const groupPage({super.key, required this.groupName, required this.gInfo});
 
   @override
-  State<groupPage> createState() => _groupPageState(groupName: groupName, gInfo: this.gInfo);
+  State<groupPage> createState() =>
+      _groupPageState(groupName: groupName, gInfo: this.gInfo);
 }
 
 String arrowIcon = "assets\\arrowIcon.png";
@@ -24,12 +25,14 @@ List<expenseContainer> expenseList = [
     group: "India trip",
   )
 ];
+List<expenseInfo> expensesInfo = [
+  expenseInfo(members: ["Annalaura", "Francesco"], groupName: "India trip", expenseName: "thai dinner"),
+   
+];
 
 String groupnameNow = "";
 
 Widget expensesView = updateExpenseview();
-
-
 
 class _groupPageState extends State<groupPage> {
   final List<groupInfo> gInfo;
@@ -37,12 +40,11 @@ class _groupPageState extends State<groupPage> {
 
   _groupPageState({required this.groupName, required this.gInfo}) {
     groupnameNow = groupName;
-    
   }
 
   @override
   Widget build(BuildContext context) {
-    newExpensePage newExp = newExpensePage( title: groupnameNow);
+    newExpensePage newExp = newExpensePage(title: groupnameNow);
     return Scaffold(
       body: Container(
         width: width,
@@ -283,6 +285,8 @@ Route _createExpenseRoute(
       date: date,
       amount: amount,
       author: author,
+      exInfo: expensesInfo,
+      group: groupnameNow,
     ),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(1.0, 0.0);

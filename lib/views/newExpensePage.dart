@@ -25,6 +25,7 @@ int numpartecipants = 0;
 List<bool> partecipantsBool = [];
 
 List<String> partecipants = [];
+List<String> expenseMembers = [];
 
 int? _selectedValue = 0;
 int? _selectedValue2 = 0;
@@ -316,6 +317,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                             Text(partecipants[index]),
                             customPartecipantCheckBox(
                               val: partecipantsBool[index],
+                              title: partecipants[index],
                             )
                           ]));
                 },
@@ -369,26 +371,39 @@ class _newExpensePage2State extends State<newExpensePage2> {
 
                             //var ls = s.split(",");
                           } else {
-                            var s = lastTransaction[(_selectedValue!-1)];
+                            var s = lastTransaction[(_selectedValue! - 1)];
                             var ls = s.label.split(",");
-                            
-
-
-
+                            var d = DateTime.now();
+                            String price = "";
+                            List<String> nums = ["1", "2", "3", "4","5", "6", "7", "8","9", "10"];
+                            for (int j = 0; j < ls[1].length; j++) {
+                              if (nums.contains(ls[1][j])) {
+                                price="${price}${ls[1][j]}";
+                              }
+                            }
                             expenseContainer eC = expenseContainer(
                                 title: ls[0],
-                                date: DateTime.now().toString(),
-                                author: "Bill",
-                                totalAmount: int.parse(ls[1][1]),
-                                yourAmount: int.parse(ls[1][1]),
+                                date:
+                                    "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
+                                author: "you",
+                                totalAmount: int.parse(price),
+                                yourAmount: (int.parse(price) /
+                                        expenseMembers.length)
+                                    .toInt(),
                                 group: nowTitle);
-                                expenseList.add(eC);
+                            expenseList.add(eC);
+
+                            expenseInfo eF = expenseInfo(
+                                members: expenseMembers,
+                                groupName: nowTitle,
+                                expenseName: ls[0]);
+                            expensesInfo.add(eF);
                           }
                           expensesView = updateExpenseview();
-                          
 
                           //expenseContainer eC =expenseContainer(title: , date: date, author: author, totalAmount: totalAmount, yourAmount: yourAmount, group: group)
                         });
+                        expenseMembers = [];
 
                         Navigator.of(context).push(_createExpenseDownRoute());
                       },
@@ -449,17 +464,19 @@ Route _createExpenseDownRoute() {
 
 class customPartecipantCheckBox extends StatefulWidget {
   final val;
-  const customPartecipantCheckBox({super.key, this.val});
+  final String title;
+  const customPartecipantCheckBox({super.key, this.val, required this.title});
 
   @override
   State<customPartecipantCheckBox> createState() =>
-      customPartecipantCheckBoxState(val: this.val);
+      customPartecipantCheckBoxState(val: this.val, title: title);
 }
 
 class customPartecipantCheckBoxState extends State<customPartecipantCheckBox> {
   var val = false;
+  var title;
 
-  customPartecipantCheckBoxState({required this.val}) {}
+  customPartecipantCheckBoxState({required this.val, required this.title}) {}
 
   @override
   Widget build(BuildContext context) {
@@ -468,9 +485,13 @@ class customPartecipantCheckBoxState extends State<customPartecipantCheckBox> {
         onChanged: (bool? value) {
           if (val == false) {
             numpartecipants += 1;
+            expenseMembers.add(title);
           }
           if (val == true) {
             numpartecipants -= 1;
+            if (expenseMembers.contains(title)) {
+              expenseMembers.remove(title);
+            }
           }
 
           setState(() {
