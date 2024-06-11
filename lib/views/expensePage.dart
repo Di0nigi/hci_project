@@ -89,7 +89,8 @@ class _expensePageState extends State<expensePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(Icons.arrow_back_rounded),
+                        Icon(Icons.arrow_back_rounded,
+                          color: Colors.white,),
                         Text(
                             "Back",
                             style: TextStyle(
@@ -117,7 +118,8 @@ class _expensePageState extends State<expensePage> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                )),
+                )
+                ),
             Padding(padding: EdgeInsets.all(20)),
             Container(
               width: width,
@@ -217,15 +219,9 @@ class _expensePageState extends State<expensePage> {
                                 fontWeight: FontWeight.w100,
                                 color: Color.fromARGB(255, 0, 0, 0)),
                           ),
-                          // Icon(Icons.check_box)
-                          Checkbox(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-                            value: isChecked[index], 
-                            onChanged: (bool? newValue) {
-                              setState(() {
-                                isChecked[index] = newValue;
-                              });
-                            },
+                          Icon(
+                            Icons.timer,
+                            color: Color.fromARGB(255, 255, 174, 0),
                           ),
                         ]
                     ),
@@ -245,6 +241,7 @@ class _expensePageState extends State<expensePage> {
                       child: ElevatedButton(
                         onPressed: () {
                           print("rejected");
+                          openDialog();
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -290,6 +287,53 @@ class _expensePageState extends State<expensePage> {
       ),
     );
   }
+
+  Future openDialog() => showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text(
+        "Do you want to reject the expense?",
+        style: TextStyle(
+          fontFamily: "Roboto",
+          fontSize: 19,
+          color: Color.fromARGB(255, 0, 0, 0),
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {Navigator.pop(context);}, 
+          child: Text("cancel")
+        ),
+        TextButton(
+          onPressed: () {}, 
+          child: 
+            Container(
+              width: 130,
+              height: 40,
+              // padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: ElevatedButton(
+                child: 
+                  Text(
+                    "REJECT",
+                    style: TextStyle(
+                        fontFamily: "Roboto",
+                        fontSize: 19,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                        letterSpacing: 1),
+                  ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 255, 0, 0)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25),),),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            )
+        ),
+      ],
+    ), 
+  );
 }
 
 class expenseInfo {
