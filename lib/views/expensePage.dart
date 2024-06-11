@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hci_project/main.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class expensePage extends StatefulWidget {
   final String title;
@@ -32,6 +33,7 @@ class expensePage extends StatefulWidget {
 bool ismine = false;
 
 List<String> membersList = [];
+List<bool?> isChecked = [];
 
 class _expensePageState extends State<expensePage> {
   final String title;
@@ -61,6 +63,7 @@ class _expensePageState extends State<expensePage> {
           expense[i].groupName == this.group) {
         print("ao");
         membersList = expense[i].members;
+        isChecked = List.generate(expense[i].members.length, (index) => false);
         if (expense[i].author == "you") {
           ismine = true;
         } else {
@@ -77,7 +80,7 @@ class _expensePageState extends State<expensePage> {
           children: [
             Padding(padding: EdgeInsets.all(20)),
             Container(
-                width: 122,
+                width: 130,
                 height: 40,
                 padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 child: ElevatedButton(
@@ -88,26 +91,26 @@ class _expensePageState extends State<expensePage> {
                       children: [
                         Icon(Icons.arrow_back_rounded),
                         Text(
-                          "Back",
-                          style: TextStyle(
-                              fontFamily: "Roboto",
-                              fontSize: 20,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              letterSpacing: 1),
-                        ),
+                            "Back",
+                            style: TextStyle(
+                                fontFamily: "Roboto",
+                                fontSize: 19,
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                letterSpacing: 1),
+                          )
                       ],
                     ), /*child: */
                   ),
                   style: ButtonStyle(
-                    //iconSize: MaterialStateProperty.all(25),
-                    padding: MaterialStateProperty.all<EdgeInsets>(
-                        EdgeInsets.all(10)),
-                    alignment: Alignment.center,
+                    // iconSize: MaterialStateProperty.all(25),
+                    // padding: MaterialStateProperty.all<EdgeInsets>(
+                    //     EdgeInsets.all(6)),
+                    // alignment: Alignment.centerLeft,
                     backgroundColor: MaterialStateProperty.all<Color>(
                         Color.fromARGB(255, 0, 0, 0)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(25),
                       ),
                     ),
                   ),
@@ -126,8 +129,7 @@ class _expensePageState extends State<expensePage> {
                 children: [
                   Text(
                     this.title,
-                    style: TextStyle(
-                        fontFamily: "impact",
+                    style: GoogleFonts.oswald(
                         fontSize: 50,
                         fontWeight: FontWeight.w400,
                         color: Colors.black),
@@ -141,7 +143,7 @@ class _expensePageState extends State<expensePage> {
                         fontWeight: FontWeight.w300,
                         color: Colors.black),
                   ),
-                  Padding(padding: EdgeInsets.all(10)),
+                  Padding(padding: EdgeInsets.all(2)),
                   Text(
                     "${this.amount}£",
                     style: TextStyle(
@@ -154,7 +156,7 @@ class _expensePageState extends State<expensePage> {
               ),
             ),
             Container(
-                height: height / 13,
+                height: height / 11,
                 width: width - 50,
                 color: Color.fromARGB(0, 255, 0, 0),
                 padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
@@ -215,8 +217,18 @@ class _expensePageState extends State<expensePage> {
                                 fontWeight: FontWeight.w100,
                                 color: Color.fromARGB(255, 0, 0, 0)),
                           ),
-                          Icon(Icons.check_box)
-                        ]),
+                          // Icon(Icons.check_box)
+                          Checkbox(
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+                            value: isChecked[index], 
+                            onChanged: (bool? newValue) {
+                              setState(() {
+                                isChecked[index] = newValue;
+                              });
+                            },
+                          ),
+                        ]
+                    ),
                   );
                 },
               ),
