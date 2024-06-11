@@ -367,7 +367,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                       onPressed: () {
                         setState(() {
                           if (amountController.text != "") {
-                            var s = amountController.text;
+                            // var s = amountController.text;
 
                             //var ls = s.split(",");
                           } else {
@@ -387,7 +387,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                     "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
                                 author: "you",
                                 totalAmount: int.parse(price),
-                                yourAmount: (int.parse(price) /
+                                yourAmount: (int.parse(price) ~/
                                         expenseMembers.length)
                                     .toInt(),
                                 group: nowTitle);
