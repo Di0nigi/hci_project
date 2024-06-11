@@ -54,7 +54,7 @@ class _groupPageState extends State<groupPage> {
             Padding(padding: EdgeInsets.all(20)),
             Row(mainAxisAlignment: MainAxisAlignment.start, children: [
               Container(
-                width: 122,
+                width: 130,
                 height: 40,
                 padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 child: ElevatedButton(
@@ -68,7 +68,7 @@ class _groupPageState extends State<groupPage> {
                           "Back",
                           style: TextStyle(
                               fontFamily: "Roboto",
-                              fontSize: 20,
+                              fontSize: 19,
                               color: Color.fromARGB(255, 255, 255, 255),
                               letterSpacing: 1),
                         ),
@@ -77,14 +77,14 @@ class _groupPageState extends State<groupPage> {
                   ),
                   style: ButtonStyle(
                     //iconSize: MaterialStateProperty.all(25),
-                    padding: MaterialStateProperty.all<EdgeInsets>(
-                        EdgeInsets.all(10)),
-                    alignment: Alignment.center,
+                    // padding: MaterialStateProperty.all<EdgeInsets>(
+                    //     EdgeInsets.all(10)),
+                    // alignment: Alignment.center,
                     backgroundColor: MaterialStateProperty.all<Color>(
                         Color.fromARGB(255, 0, 0, 0)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(25),
                       ),
                     ),
                   ),

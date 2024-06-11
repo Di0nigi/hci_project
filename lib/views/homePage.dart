@@ -149,10 +149,10 @@ class groupContainer extends StatelessWidget {
       child: Padding(
           padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
           child: Container(
-            height: 100,
+            height: 109,
             decoration: BoxDecoration(
-                color: Color.fromARGB(0, 255, 0, 0),
-                border: Border.all(width: 3),
+                color: Color.fromARGB(255, 153, 0, 255),
+                border: Border.all(width: 0),
                 borderRadius: BorderRadius.circular(10)),
             padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
             child: Row(
@@ -163,7 +163,7 @@ class groupContainer extends StatelessWidget {
                     Text(
                       this.title,
                       style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontFamily: 'impact',
                           fontSize: 35),
                     ),
