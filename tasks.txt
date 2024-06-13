@@ -21,18 +21,7 @@
 
 
 
-- tag alla spesa se già fatta con un altro gruppo Dionigi
+- tag alla spesa se già fatta con un altro gruppo 
 - diminuire font prezzo (guarda UI revolut) 
 - mettere  euro a tutti i prezzi 
 - constraints per creare gruppo e expense
-
-
-
-
-
-
-
-
-
-
--

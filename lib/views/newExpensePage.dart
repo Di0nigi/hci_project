@@ -15,6 +15,8 @@ class newExpensePage extends StatefulWidget {
 
 TextEditingController nameController = TextEditingController();
 TextEditingController amountController = TextEditingController();
+String _nameController = "";
+String _amountController = "";
 
 List<Option> lastTransaction = [
   Option(label: "Lunch, 25€", value: 1),
@@ -246,10 +248,14 @@ class _newExpensePageState extends State<newExpensePage> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.of(context).push(_createExpenseRoute2());
-                        if (amountController.text.isNotEmpty ||
+                        if ((amountController.text != "" && nameController.text != "") ||
                             _selectedValue != -1) {
-                          
+                          _amountController = amountController.text;
+                          _nameController = nameController.text; 
+                          Navigator.of(context).push(_createExpenseRoute2());
+                        }
+                        else{
+                          // TODO: warn user
                         }
                       },
                     ),
@@ -407,12 +413,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                       ),
                       onPressed: () {
                         setState(() {
-                          if (true) {
-                            // int.parse(amountController.text) > 0) {
-                            // var s = amountController.text;
-
-                            //var ls = s.split(",");
-
+                          if (_selectedValue! > -1) {
                             var s = lastTransaction[(_selectedValue! - 1)];
                             var ls = s.label.split(",");
                             var d = DateTime.now();
@@ -439,10 +440,9 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                 date:
                                     "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
                                 author: "you",
-                                totalAmount: int.parse(price),
+                                totalAmount: double.parse(price),
                                 yourAmount:
-                                    (int.parse(price) ~/ expenseMembers.length)
-                                        .toInt(),
+                                    (double.parse(price) / (expenseMembers.length+1)),
                                 group: nowTitle);
                             expenseList.add(eC);
 
@@ -450,6 +450,29 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                 members: expenseMembers,
                                 groupName: nowTitle,
                                 expenseName: ls[0],
+                                author: "you");
+                            expensesInfo.add(eF);
+                            _selectedValue = -1;
+                          }
+                          else if (true) {
+                            var d = DateTime.now();
+                            String price = _amountController;
+                            String name = _nameController;
+                            expenseContainer eC = expenseContainer(
+                                title: name,
+                                date:
+                                    "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
+                                author: "you",
+                                totalAmount: double.parse(price),
+                                yourAmount:
+                                    (double.parse(price) / (expenseMembers.length+1)),
+                                group: nowTitle);
+                            expenseList.add(eC);
+
+                            expenseInfo eF = expenseInfo(
+                                members: expenseMembers,
+                                groupName: nowTitle,
+                                expenseName: name,
                                 author: "you");
                             expensesInfo.add(eF);
                           }

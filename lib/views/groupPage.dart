@@ -188,8 +188,8 @@ class expenseContainer extends StatelessWidget {
   final String title;
   final String date;
   final String author;
-  final int totalAmount;
-  final int yourAmount;
+  final double totalAmount;
+  final double yourAmount;
 
   final String group;
 
