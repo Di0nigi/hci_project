@@ -58,7 +58,7 @@ class _newExpensePageState extends State<newExpensePage> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(padding: EdgeInsets.all(20)),
           Container(
-              width: 132,
+              width: 70,
               height: 40,
               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: ElevatedButton(
@@ -67,14 +67,7 @@ class _newExpensePageState extends State<newExpensePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Cancel",
-                        style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontSize: 19,
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            letterSpacing: 1),
-                      ),
+                      
                       Icon(Icons.close_rounded)
                     ],
                   ), /*child: */
@@ -97,8 +90,9 @@ class _newExpensePageState extends State<newExpensePage> {
                 },
               )),
           Container(
+            color: const Color.fromARGB(0, 33, 149, 243),
             width: width,
-            height: height / 8,
+            height: height / 7,
             padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -106,24 +100,24 @@ class _newExpensePageState extends State<newExpensePage> {
                   Text(
                     "Create a new expense",
                     style: TextStyle(
-                        fontFamily: "Roboto",
+                        fontFamily: "impact",
                         fontSize: 40,
                         color: Colors.black,
-                        fontWeight: FontWeight.w400),
+                       ),
                   ),
-                  Padding(padding: EdgeInsets.all(5)),
+                  Padding(padding: EdgeInsets.all(10)),
                   Text(
-                    " select an expense",
+                    "manually ad an expense",
                     style: TextStyle(
-                        fontFamily: "Roboto",
-                        fontSize: 25,
-                        color: Colors.black,
+                        fontFamily: "impact",
+                        fontSize: 20,
+                        color: const Color.fromARGB(137, 0, 0, 0),
                         fontWeight: FontWeight.w400),
                   )
                 ]),
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+            padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
             width: width - 20,
             height: height / 8,
             color: Color.fromRGBO(212, 212, 212, 0),
@@ -131,6 +125,7 @@ class _newExpensePageState extends State<newExpensePage> {
               children: [
                 Expanded(
                   child: TextField(
+                    style: TextStyle(fontFamily: 'impact', fontSize: 12),
                     controller: amountController,
                     keyboardType:
                         TextInputType.numberWithOptions(decimal: true),
@@ -139,15 +134,18 @@ class _newExpensePageState extends State<newExpensePage> {
                     ],
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: '0.00€',
+                      labelText: 'Amount',
                     ),
                   ),
                 ),
                 SizedBox(height: 10),
                 Expanded(
                   child: TextField(
+                    style: TextStyle(fontFamily: 'impact', fontSize: 12),
+                    
                     controller: nameController,
                     decoration: InputDecoration(
+                      
                       border: OutlineInputBorder(),
                       labelText: 'Name your expense',
                     ),
@@ -156,27 +154,29 @@ class _newExpensePageState extends State<newExpensePage> {
               ],
             ),
           ),
+          
           Container(
+
             width: width,
-            height: height / 8,
-            padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+            height: height / 6,
+            padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
             child: Column(
               children: [
                 Text(
                   "or",
                   style: TextStyle(
-                      fontFamily: "Roboto",
-                      fontSize: 20,
-                      color: Colors.black,
+                      fontFamily: "impact",
+                      fontSize: 17,
+                      color: Color.fromARGB(137, 0, 0, 0),
                       fontWeight: FontWeight.w300),
                 ),
-                SizedBox(height: 30),
+                Padding(padding: EdgeInsets.all(15)),
                 Text(
-                  "Select from latest transactions",
+                  "select from latest transactions",
                   style: TextStyle(
-                      fontFamily: "Roboto",
-                      fontSize: 25,
-                      color: Colors.black,
+                      fontFamily: "impact",
+                      fontSize: 20,
+                      color: Color.fromARGB(137, 0, 0, 0),
                       fontWeight: FontWeight.w400),
                 ),
               ],
@@ -185,13 +185,13 @@ class _newExpensePageState extends State<newExpensePage> {
           Container(
             color: Color.fromARGB(0, 255, 0, 0),
             width: width,
-            height: height - (height - (height / 2.5)),
+            height: height - 40 - height/8 - height/8 - height/6 -height/5,
             child: ListView.builder(
               itemCount: lastTransaction.length,
               itemBuilder: (context, index) {
                 final option = lastTransaction[index];
                 return RadioListTile<int>(
-                  title: Text(option.label),
+                  title: Text(option.label, style: TextStyle(fontFamily: 'impact', fontSize: 20),),
                   value: option.value,
                   groupValue: _selectedValue,
                   onChanged: (value) {
@@ -246,9 +246,10 @@ class _newExpensePageState extends State<newExpensePage> {
                         ),
                       ),
                       onPressed: () {
+                        Navigator.of(context).push(_createExpenseRoute2());
                         if (amountController.text.isNotEmpty ||
                             _selectedValue != -1) {
-                          Navigator.of(context).push(_createExpenseRoute2());
+                          
                         }
                       },
                     ),
@@ -278,44 +279,36 @@ class _newExpensePage2State extends State<newExpensePage2> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(padding: EdgeInsets.all(20)),
           Container(
-              width: 122,
-              height: 40,
-              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-              child: ElevatedButton(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.arrow_back_rounded),
-                      Text(
-                        "Back",
-                        style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontSize: 20,
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            letterSpacing: 1),
+                width: 70,
+                height: 40,
+                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                child: ElevatedButton(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.arrow_back_rounded),
+                      ],
+                    ), /*child: */
+                  ),
+                  style: ButtonStyle(
+                    //iconSize: MaterialStateProperty.all(25),
+                    // padding: MaterialStateProperty.all<EdgeInsets>(
+                    //     EdgeInsets.all(10)),
+                    alignment: Alignment.center,
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Color.fromARGB(255, 0, 0, 0)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
                       ),
-                    ],
-                  ), /*child: */
-                ),
-                style: ButtonStyle(
-                  //iconSize: MaterialStateProperty.all(25),
-                  padding:
-                      MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
-                  alignment: Alignment.center,
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      Color.fromARGB(255, 0, 0, 0)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
                     ),
                   ),
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )),
           Container(
             width: width,
             height: height / 5.5,
@@ -326,7 +319,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
               Text(
                 "Create a new expense",
                 style: TextStyle(
-                    fontFamily: "Roboto",
+                    fontFamily: "impact",
                     fontSize: 40,
                     color: Colors.black,
                     fontWeight: FontWeight.w400),
@@ -335,7 +328,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
               Text(
                 " select the participants",
                 style: TextStyle(
-                    fontFamily: "Roboto",
+                    fontFamily: "impact",
                     fontSize: 25,
                     color: Colors.black,
                     fontWeight: FontWeight.w300),
@@ -361,7 +354,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(partecipants[index]),
+                            Text(partecipants[index], style: TextStyle(fontFamily: 'impact', fontSize: 20),),
                             customPartecipantCheckBox(
                               val: partecipantsBool[index],
                               title: partecipants[index],

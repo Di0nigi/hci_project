@@ -53,7 +53,7 @@ class _newGroupPageState extends State<newGroupPage> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(padding: EdgeInsets.all(20)),
           Container(
-              width: 150,
+              width: 70,
               height: 40,
               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: ElevatedButton(
@@ -62,14 +62,7 @@ class _newGroupPageState extends State<newGroupPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Cancel",
-                        style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontSize: 19,
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            letterSpacing: 1),
-                      ),
+                      
                       Icon(Icons.close_rounded)
                     ],
                   ), /*child: */
@@ -91,40 +84,41 @@ class _newGroupPageState extends State<newGroupPage> {
                   Navigator.pop(context);
                 },
               )),
-          Padding(padding: EdgeInsets.all(40)),
+          Padding(padding: EdgeInsets.all(20)),
           Container(
             width: width,
             padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
             child: Text(
               "Create a new group",
               style: TextStyle(
-                fontFamily: "Roboto",
-                fontSize: 40,
+                fontFamily: "impact",
+                fontSize: 45,
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.all(15)),
+          Padding(padding: EdgeInsets.all(40)),
           Container(
-            padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+            padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
             child: Text(
               "Choose a new name for the group",
               style: TextStyle(
-                fontFamily: "Roboto",
+                fontFamily: "impact",
                 fontSize: 15,
-                color: Color.fromARGB(197, 0, 0, 0),
+                color: Color.fromARGB(128, 0, 0, 0),
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.all(5)),
+          Padding(padding: EdgeInsets.all(2)),
           Container(
-            padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+            
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
             width: width - 20,
             color: const Color.fromARGB(0, 255, 193, 7),
             child: TextField(
               style: TextStyle(
-                  fontFamily: "Roboto",
+                  fontFamily: "impact",
                   fontSize: 15,
                   color: Color.fromARGB(255, 0, 0, 0),
                   letterSpacing: 1),
@@ -133,11 +127,11 @@ class _newGroupPageState extends State<newGroupPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-                labelText: 'Name',
+                labelText: '',
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.all(220)),
+          Padding(padding: EdgeInsets.all(208)),
           Align(
             alignment: Alignment.bottomRight,
             child: Container(
@@ -210,7 +204,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
           children: [
             Padding(padding: EdgeInsets.all(20)),
             Container(
-                width: 130,
+                width: 70,
                 height: 40,
                 padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 child: ElevatedButton(
@@ -220,14 +214,6 @@ class _newGroupPage2State extends State<newGroupPage2> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Icon(Icons.arrow_back_rounded),
-                        Text(
-                          "Back",
-                          style: TextStyle(
-                              fontFamily: "Roboto",
-                              fontSize: 19,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              letterSpacing: 1),
-                        ),
                       ],
                     ), /*child: */
                   ),
@@ -254,7 +240,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
               child: Text(
                 "Choose the members",
                 style: TextStyle(
-                  fontFamily: "Roboto",
+                  fontFamily: "impact",
                   fontSize: 37,
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
@@ -267,16 +253,16 @@ class _newGroupPage2State extends State<newGroupPage2> {
               width: width - 20,
               child: TextField(
                 style: TextStyle(
-                    fontFamily: "Roboto",
+                    fontFamily: "impact",
                     fontSize: 15,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: Color.fromARGB(143, 0, 0, 0),
                     letterSpacing: 1),
                 controller: MemberController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
-                  labelText: 'Search a contact...',
+                  labelText: 'Search a contact',
                 ),
               ),
             ),
@@ -295,7 +281,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(contactList[index]),
+                              Text(contactList[index],style: TextStyle(fontSize: 20, fontFamily: 'impact'),),
                               customCheckBox(
                                 name: contactList[index],
                                 val: contactBool[index],
@@ -374,7 +360,7 @@ class _newGroupPage3State extends State<newGroupPage3> {
           children: [
             Padding(padding: EdgeInsets.all(20)),
             Container(
-                width: 130,
+                width:70,
                 height: 40,
                 padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 child: ElevatedButton(
@@ -384,14 +370,6 @@ class _newGroupPage3State extends State<newGroupPage3> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Icon(Icons.arrow_back_rounded),
-                        Text(
-                          "Back",
-                          style: TextStyle(
-                              fontFamily: "Roboto",
-                              fontSize: 19,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              letterSpacing: 1),
-                        ),
                       ],
                     ), /*child: */
                   ),
@@ -418,7 +396,7 @@ class _newGroupPage3State extends State<newGroupPage3> {
               child: Text(
                 "Choose the default payment method",
                 style: TextStyle(
-                  fontFamily: "Roboto",
+                  fontFamily: "impact",
                   fontSize: 37,
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
@@ -431,7 +409,7 @@ class _newGroupPage3State extends State<newGroupPage3> {
               child: Text(
                 "When a friend pays for you, your share of the expense is going to be automatically taken from this card.",
                 style: TextStyle(
-                  fontFamily: "Roboto",
+                  fontFamily: "impact",
                   fontSize: 15,
                   color: Color.fromARGB(255, 125, 125, 125),
                   fontWeight: FontWeight.w300,
@@ -448,7 +426,10 @@ class _newGroupPage3State extends State<newGroupPage3> {
                 itemBuilder: (context, index) {
                   final option = _options[index];
                   return RadioListTile<int>(
-                    title: Text(option.label),
+                    title: Text(option.label, style: 
+                    TextStyle(
+                      fontSize: 25, fontFamily: 'impact'
+                    ),),
                     value: option.value,
                     groupValue: _selectedValue,
                     onChanged: (value) {

@@ -93,16 +93,7 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     width: 55,
                     height: 55,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(0, 255, 255, 255),
-                      boxShadow: [
-                        /*BoxShadow(color: Color.fromARGB(73, 208, 208, 208), blurRadius: 10, spreadRadius: 0.01)*/
-                      ],
-                      image: DecorationImage(
-                        image: AssetImage(walletIcon),
-                        fit: BoxFit.scaleDown,
-                      ),
-                    ),
+                    color: Color.fromARGB(0, 255, 255, 255),
                   )),
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 10, 20, 10),
