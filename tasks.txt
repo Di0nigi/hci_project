@@ -33,3 +33,9 @@
 - nome membri del gruppo nella schermata del gruppo stile whatsapp Emanuele 
 
 - mettere  euro a tutti i prezzi 
+
+- sistemare pop up
+
+- constraints per creare gruppo e expense
+
+-
