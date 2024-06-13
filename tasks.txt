@@ -1,41 +1,38 @@
 - aggiungi titolo nella prima schermata (Your groups) DONE
-
 - font più grandi sui contatti DONE
-
 - continue invece di forward DONE
-
 - no freccia a forward DONE
-
 - no scritta back, solo freccia indietro DONE
-
 - no scritta cancel, solo croce DONE
-
 - nuovo gruppo creato deve apparire in cima alla lista (idem quando si crea una nuova spesa) DONE
-
-- tag alla spesa se già fatta con un altro gruppo Dionigi
-
 - togliere carte e tutta la relativa schermata DONE
-
-- spostare bottone per creare spesa al lato come quello per creare il gruppo Emanuele
-
-- diminuire font prezzo (guarda UI revolut) 
-
 - divisione spesa solo in parti uguali DONE
+- togliere numero sotto al gruppo, solo icona e nome del gruppo DONE
+- nome membri del gruppo nella schermata del gruppo stile whatsapp DONE 
+- spostare bottone per creare spesa al lato come quello per creare il gruppo DONE
+
+
+
 
 - sbarrare persona che rejecta nel bottone del reject, reject this [name expense] instead of the expense e aggiungere spiegazione sotto il reject (You will be refunded and x will be notified)  Dionigi
-
-- togliere numero sotto al gruppo, solo icona e nome del gruppo DONE
-
-- ⁠ aggiungere divisione in rettangoli alla spesa 
-
 - icona sulla spesa se l’hai rejectata o no Dionigi
-
-- nome membri del gruppo nella schermata del gruppo stile whatsapp Emanuele 
-
-- mettere  euro a tutti i prezzi 
-
+- ⁠aggiungere divisione in rettangoli alla spesa 
 - sistemare pop up
 
+
+
+- tag alla spesa se già fatta con un altro gruppo Dionigi
+- diminuire font prezzo (guarda UI revolut) 
+- mettere  euro a tutti i prezzi 
 - constraints per creare gruppo e expense
+
+
+
+
+
+
+
+
+
 
 -
