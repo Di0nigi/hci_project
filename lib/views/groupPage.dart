@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hci_project/main.dart';
 import 'package:hci_project/views/expensePage.dart';
+import 'package:hci_project/views/homePage.dart';
 import 'package:hci_project/views/newExpensePage.dart';
 
 class groupPage extends StatefulWidget {
@@ -72,38 +73,35 @@ class _groupPageState extends State<groupPage> {
                   mainAxisAlignment: MainAxisAlignment.start, 
                   children: [
                     Container(
-                      width: 130,
-                      height: 40,
-                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                      child: ElevatedButton(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(Icons.arrow_back_rounded),
-                              Text(
-                                "Back",
-                                style: TextStyle(
-                                    fontFamily: "Roboto",
-                                    fontSize: 19,
-                                    color: Color.fromARGB(255, 255, 255, 255),
-                                    letterSpacing: 1),
-                              ),
-                            ],
-                          ), /*child: */
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromARGB(255, 0, 0, 0)),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                          ),
-                        ),
+              width: 70,
+              height: 40,
+              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: ElevatedButton(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      
+                      Icon(Icons.arrow_back_rounded)
+                    ],
+                  ), /*child: */
+                ),
+                style: ButtonStyle(
+                  //iconSize: MaterialStateProperty.all(25),
+                  // padding:
+                  //     MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                  // alignment: Alignment.center,
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Color.fromARGB(255, 0, 0, 0)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                ),
                         onPressed: () {
-                          Navigator.pop(context);
+                           Navigator.of(context).push(_createHomeRoute());
                         },
                       ),
                     )
@@ -128,6 +126,7 @@ class _groupPageState extends State<groupPage> {
                         Text(
                           
                           nameString,
+                          style: TextStyle(fontFamily: 'impact', fontSize: 10, color: Color.fromARGB(137, 0, 0, 0)),
                         ),
                       ]
                     )
@@ -317,4 +316,22 @@ class groupInfo {
   final List<String> partecipants;
   final String groupName;
   groupInfo({required this.groupName, required this.partecipants});
+}
+
+Route _createHomeRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => HomePage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+       const begin = Offset(-1.0, 0.0); 
+       const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

@@ -211,7 +211,7 @@ class _newExpensePageState extends State<newExpensePage> {
                   alignment: Alignment.bottomRight,
                   child: Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                    width: 160,
+                    width: 130,
                     height: 40,
                     child: ElevatedButton(
                       child: Align(
@@ -227,7 +227,7 @@ class _newExpensePageState extends State<newExpensePage> {
                                   color: Color.fromARGB(255, 255, 255, 255),
                                   letterSpacing: 1),
                             ),
-                            Icon(Icons.arrow_forward_rounded)
+                            
                           ],
                         ),
                       ),
@@ -311,11 +311,11 @@ class _newExpensePage2State extends State<newExpensePage2> {
                 )),
           Container(
             width: width,
-            height: height / 5.5,
-            color: Color.fromARGB(0, 241, 251, 246),
+            height: height / 4,
+            color: Color.fromARGB(0, 0, 255, 42),
             padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
             child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
                 "Create a new expense",
                 style: TextStyle(
@@ -329,37 +329,38 @@ class _newExpensePage2State extends State<newExpensePage2> {
                 " select the participants",
                 style: TextStyle(
                     fontFamily: "impact",
-                    fontSize: 25,
-                    color: Colors.black,
+                    fontSize: 20,
+                    color: Color.fromARGB(137, 0, 0, 0),
                     fontWeight: FontWeight.w300),
               )
             ]),
           ),
           Container(
-              color: Color.fromARGB(0, 0, 0, 0),
+              color: Color.fromARGB(0, 255, 0, 0),
               width: width,
               height: height -
                   height / 8 -
-                  height / 5.5 -
+                  height / 4 -
                   height / 13 -
                   height / 15,
               child: ListView.builder(
                 itemCount:
                     partecipants.length, // Replace with your data list length
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
+                  return Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 10),child:Container(
+                    color: const Color.fromARGB(0, 121, 85, 72),
                       padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                       width: width - 50,
-                      height: 50,
+                      height: 30,
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(partecipants[index], style: TextStyle(fontFamily: 'impact', fontSize: 20),),
+                            Text(partecipants[index], style: TextStyle(fontFamily: 'impact', fontSize: 25),),
                             customPartecipantCheckBox(
                               val: partecipantsBool[index],
                               title: partecipants[index],
                             )
-                          ]));
+                          ])));
                 },
               )),
           Container(

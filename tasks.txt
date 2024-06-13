@@ -4,7 +4,7 @@
 
 - continue invece di forward DONE
 
-- no freccia a forward Dionigi
+- no freccia a forward DONE
 
 - no scritta back, solo freccia indietro DONE
 
@@ -12,7 +12,7 @@
 
 - nuovo gruppo creato deve apparire in cima alla lista (idem quando si crea una nuova spesa) DONE
 
-- tag alla spesa se già fatta con un altro gruppo 
+- tag alla spesa se già fatta con un altro gruppo Dionigi
 
 - togliere carte e tutta la relativa schermata DONE
 
@@ -22,14 +22,14 @@
 
 - divisione spesa solo in parti uguali DONE
 
-- sbarrare persona che rejecta nel bottone del reject, reject this [name expense] instead of the expense e aggiungere spiegazione sotto il reject (You will be refunded and x will be notified) 
+- sbarrare persona che rejecta nel bottone del reject, reject this [name expense] instead of the expense e aggiungere spiegazione sotto il reject (You will be refunded and x will be notified)  Dionigi
 
 - togliere numero sotto al gruppo, solo icona e nome del gruppo DONE
 
 - ⁠ aggiungere divisione in rettangoli alla spesa 
 
-- icona sulla spesa se l’hai rejectata o no 
+- icona sulla spesa se l’hai rejectata o no Dionigi
 
 - nome membri del gruppo nella schermata del gruppo stile whatsapp Emanuele 
 
-- mettere  euro a tutti i prezzi
+- mettere  euro a tutti i prezzi 

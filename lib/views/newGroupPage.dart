@@ -136,7 +136,7 @@ class _newGroupPageState extends State<newGroupPage> {
             alignment: Alignment.bottomRight,
             child: Container(
               padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-              width: 170,
+              width: 130,
               height: 40,
               child: ElevatedButton(
                 child: Align(
@@ -152,7 +152,7 @@ class _newGroupPageState extends State<newGroupPage> {
                             color: Color.fromARGB(255, 255, 255, 255),
                             letterSpacing: 1),
                       ),
-                      Icon(Icons.arrow_forward_rounded)
+                     
                     ],
                   ),
                 ),
@@ -294,7 +294,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
                 alignment: Alignment.bottomRight,
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  width: 170,
+                  width: 130,
                   height: 40,
                   child: ElevatedButton(
                     child: Align(
@@ -310,7 +310,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
                                 color: Color.fromARGB(255, 255, 255, 255),
                                 letterSpacing: 1),
                           ),
-                          Icon(Icons.arrow_forward_rounded)
+                          
                         ],
                       ),
                     ),
