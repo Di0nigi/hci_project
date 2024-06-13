@@ -49,115 +49,107 @@ class _groupPageState extends State<groupPage> {
   Widget build(BuildContext context) {
     newExpensePage newExp = newExpensePage(title: groupnameNow);
     return Scaffold(
-      body: Container(
-        width: width,
-        height: height,
-        child: Column(
-          children: [
-            Padding(padding: EdgeInsets.all(20)),
-            Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Container(
-                width: 130,
-                height: 40,
-                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                child: ElevatedButton(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(Icons.arrow_back_rounded),
-                        Text(
-                          "Back",
-                          style: TextStyle(
-                              fontFamily: "Roboto",
-                              fontSize: 19,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              letterSpacing: 1),
+      body: Stack(
+        children: [
+          Container(
+            width: width,
+            height: height,
+            child: Column(
+              children: [
+                Padding(padding: EdgeInsets.all(10)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start, 
+                  children: [
+                    Container(
+                      width: 130,
+                      height: 40,
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      child: ElevatedButton(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(Icons.arrow_back_rounded),
+                              Text(
+                                "Back",
+                                style: TextStyle(
+                                    fontFamily: "Roboto",
+                                    fontSize: 19,
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    letterSpacing: 1),
+                              ),
+                            ],
+                          ), /*child: */
                         ),
-                      ],
-                    ), /*child: */
-                  ),
-                  style: ButtonStyle(
-                    //iconSize: MaterialStateProperty.all(25),
-                    // padding: MaterialStateProperty.all<EdgeInsets>(
-                    //     EdgeInsets.all(10)),
-                    // alignment: Alignment.center,
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 0, 0, 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              )
-            ]),
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-              height: height / 15,
-              child: Text(
-                groupnameNow,
-                style: TextStyle(
-                    fontFamily: "impact",
-                    fontSize: 40,
-                    color: Color.fromARGB(255, 0, 0, 0),
-                    letterSpacing: 1),
-              ),
-            ),
-            Container(
-              color: Color.fromARGB(0, 0, 0, 0),
-              width: width - 35,
-              height: height - (height / 11) - (height / 10) - (height / 15),
-              child: expensesView,
-            ),
-            Container(
-              width: width,
-              height: height / 11,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 75,
-                    height: 75,
-                    child: ElevatedButton(
-                      child: Align(
-                          alignment: Alignment.center, child: Icon(Icons.add)),
-                      onPressed: () {
-                        showModalBottomSheet(
-                            isScrollControlled: true,
-                            context: context,
-                            builder: (BuildContext context) {
-                              return Scaffold(
-                                body: newExp,
-                              );
-                            });
-                      },
-                      style: ButtonStyle(
-                        iconSize: MaterialStateProperty.all(40),
-                        padding: MaterialStateProperty.all<EdgeInsets>(
-                            EdgeInsets.all(10)),
-                        alignment: Alignment.center,
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(255, 0, 0, 0)),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color.fromARGB(255, 0, 0, 0)),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
                           ),
                         ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                       ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+                    )
+                  ]
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  height: height / 9,
+                  child: 
+                    Column(
+                      children:[
+                        Text(
+                          groupnameNow,
+                          style: TextStyle(
+                              fontFamily: "impact",
+                              fontSize: 40,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              letterSpacing: 1),
+                        ),
+                        Text(
+                          "prova"
+                        ),
+                      ]
+                    )
+                ),
+                Container(
+                  color: Color.fromARGB(0, 0, 0, 0),
+                  width: width - 35,
+                  height: height - (height / 11) - (height / 10) - (height / 15),
+                  child: expensesView,
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom:20,
+            right:20,
+            child: ElevatedButton(
+              child: Icon(Icons.add, size:30,color: Colors.white),
+              onPressed: () {
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Scaffold(
+                        body: newExp,
+                      );
+                    });
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(60,60),
+                shape:CircleBorder(),
+                backgroundColor: Colors.black,
+              )
+            ), 
+          ),
+        ],
       ),
     );
   }
