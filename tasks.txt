@@ -11,14 +11,14 @@
 - nome membri del gruppo nella schermata del gruppo stile whatsapp DONE 
 - spostare bottone per creare spesa al lato come quello per creare il gruppo DONE
 - constraints per creare gruppo e expense DONE
+- ⁠aggiungere divisione in rettangoli alla spesa DONE
+- sistemare pop up DONE
 
 
 
 
 - sbarrare persona che rejecta nel bottone del reject, reject this [name expense] instead of the expense e aggiungere spiegazione sotto il reject (You will be refunded and x will be notified)  Dionigi
 - icona sulla spesa se l’hai rejectata o no Dionigi
-- ⁠aggiungere divisione in rettangoli alla spesa 
-- sistemare pop up
 
 
 
