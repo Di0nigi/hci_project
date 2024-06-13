@@ -75,11 +75,20 @@ class _expensePageState extends State<expensePage> {
         width: width,
         height: height,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(padding: EdgeInsets.all(20)),
+          crossAxisAlignment: CrossAxisAlignment.center,
+  
+          children: [ 
             Container(
-                width: 130,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 0, 173, 52),
+                borderRadius: BorderRadius.only(topLeft: Radius.zero, topRight: Radius.zero, bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10) )),
+              child: Column(children: [
+               Padding(padding: EdgeInsets.all(20)),
+            Row( mainAxisAlignment: MainAxisAlignment.start,
+              children :[  
+                          Container(
+              color: Color.fromARGB(0, 0, 173, 52),
+                width: 70,
                 height: 40,
                 padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 child: ElevatedButton(
@@ -92,14 +101,7 @@ class _expensePageState extends State<expensePage> {
                           Icons.arrow_back_rounded,
                           color: Colors.white,
                         ),
-                        Text(
-                          "Back",
-                          style: TextStyle(
-                              fontFamily: "Roboto",
-                              fontSize: 19,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              letterSpacing: 1),
-                        )
+                        
                       ],
                     ), /*child: */
                   ),
@@ -119,13 +121,15 @@ class _expensePageState extends State<expensePage> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                )),
+                )),]),
             Padding(padding: EdgeInsets.all(20)),
             Container(
+              
               width: width,
               height: height - height / 2 - height / 3.5,
-              color: Color.fromARGB(0, 255, 255, 255),
+              
               padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -148,7 +152,7 @@ class _expensePageState extends State<expensePage> {
                   ),
                   Padding(padding: EdgeInsets.all(2)),
                   Text(
-                    "${this.amount}£",
+                    "${this.amount}€",
                     style: TextStyle(
                         fontFamily: "impact",
                         fontSize: 40,
@@ -157,12 +161,20 @@ class _expensePageState extends State<expensePage> {
                   )
                 ],
               ),
-            ),
+            ),])),
+            Padding(padding: EdgeInsets.all(5)),
             Container(
+              width: width-50,
+              height: height / 11,
+               decoration: BoxDecoration(
+                color: Color.fromARGB(115, 214, 255, 209), borderRadius: BorderRadius.only(bottomLeft: Radius.zero, bottomRight: Radius.zero, topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+              
+              child:Container(
+
                 height: height / 11,
                 width: width - 50,
                 color: Color.fromARGB(0, 255, 0, 0),
-                padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                padding: EdgeInsets.fromLTRB(50, 0, 25, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -196,15 +208,19 @@ class _expensePageState extends State<expensePage> {
                       ],
                     )
                   ],
-                )),
+                )), ),
+           
+            
             Container(
-              padding: EdgeInsets.fromLTRB(90, 0, 0, 0),
-              width: width - 70,
+
+              padding: EdgeInsets.fromLTRB(90, 0, 50, 0),
+              width: width - 50,
               height: height -
                   (height - height / 2 - height / 3.5) -
                   height / 3 -
                   height / 13,
-              color: Color.fromARGB(0, 44, 79, 45),
+              decoration: BoxDecoration(color:Color.fromARGB(115, 214, 255, 209), borderRadius: BorderRadius.only(bottomLeft: Radius.zero, bottomRight: Radius.zero, topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+              
               child: ListView.builder(
                 itemCount: membersList.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -295,18 +311,14 @@ class _expensePageState extends State<expensePage> {
           title: Text(
             "Do you want to reject the expense?",
             style: TextStyle(
-              fontFamily: "Roboto",
-              fontSize: 19,
+              fontFamily: "impact",
+              fontSize: 25,
               color: Color.fromARGB(255, 0, 0, 0),
             ),
           ),
           actions: [
-            TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text("cancel")),
-            TextButton(
+            Row(children: [
+              TextButton(
                 onPressed: () {},
                 child: Container(
                     width: 130,
@@ -314,16 +326,18 @@ class _expensePageState extends State<expensePage> {
                     // padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                     child: ElevatedButton(
                       child: Text(
-                        "REJECT",
+                        "Cancel",
                         style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontSize: 19,
+                            fontFamily: "impact",
+                            fontSize: 15,
                             color: Color.fromARGB(255, 0, 0, 0),
                             letterSpacing: 1),
                       ),
                       style: ButtonStyle(
+                        shadowColor:  MaterialStateProperty.all<Color>(
+                            Color.fromARGB(0, 32, 172, 0)), 
                         backgroundColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(255, 255, 0, 0)),
+                            Color.fromARGB(0, 32, 172, 0)),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
@@ -335,6 +349,37 @@ class _expensePageState extends State<expensePage> {
                         Navigator.pop(context);
                       },
                     ))),
+                
+            TextButton(
+                onPressed: () {},
+                child: Container(
+                    width: 130,
+                    height: 40,
+                    // padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: ElevatedButton(
+                      child: Text(
+                        "Reject",
+                        style: TextStyle(
+                            fontFamily: "impact",
+                            fontSize: 15,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            letterSpacing: 1),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Color.fromARGB(255, 178, 49, 49)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ))),],)
+            
           ],
         ),
       );
