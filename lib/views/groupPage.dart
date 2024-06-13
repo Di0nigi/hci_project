@@ -28,10 +28,11 @@ List<expenseContainer> expenseList = [
 ];
 List<expenseInfo> expensesInfo = [
   expenseInfo(
-      members: ["Annalaura", "Francesco"],
-      groupName: "India trip",
-      expenseName: "thai dinner",
-      author: "Billy"),
+    members: ["Annalaura", "Francesco"],
+    groupName: "India trip",
+    expenseName: "thai dinner",
+    author: "Billy",
+  ),
 ];
 
 String groupnameNow = "";
@@ -50,14 +51,17 @@ class _groupPageState extends State<groupPage> {
   Widget build(BuildContext context) {
     List<String> nameList = [];
     String nameString = "";
-    for (int i = 0; i < gInfo.length ;i++) {
+    for (int i = 0; i < gInfo.length; i++) {
       if (gInfo[i].groupName == groupnameNow) {
         nameList = gInfo[i].partecipants;
-      };
-    };
-    for (int i = 0; i < nameList.length ; i++) {
-      nameString = nameString+"${nameList[i]}"+",";
-    };
+      }
+      ;
+    }
+    ;
+    for (int i = 0; i < nameList.length; i++) {
+      nameString = nameString + "${nameList[i]}" + ",";
+    }
+    ;
     print(nameString);
     newExpensePage newExp = newExpensePage(title: groupnameNow);
     return Scaffold(
@@ -69,98 +73,89 @@ class _groupPageState extends State<groupPage> {
             child: Column(
               children: [
                 Padding(padding: EdgeInsets.all(10)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start, 
-                  children: [
-                    Container(
-              width: 70,
-              height: 40,
-              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-              child: ElevatedButton(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      
-                      Icon(Icons.arrow_back_rounded)
-                    ],
-                  ), /*child: */
-                ),
-                style: ButtonStyle(
-                  //iconSize: MaterialStateProperty.all(25),
-                  // padding:
-                  //     MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
-                  // alignment: Alignment.center,
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      Color.fromARGB(255, 0, 0, 0)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                  ),
-                ),
-                        onPressed: () {
-                           Navigator.of(context).push(_createHomeRoute());
-                        },
+                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  Container(
+                    width: 70,
+                    height: 40,
+                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: ElevatedButton(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [Icon(Icons.arrow_back_rounded)],
+                        ), /*child: */
                       ),
-                    )
-                  ]
-                ),
+                      style: ButtonStyle(
+                        //iconSize: MaterialStateProperty.all(25),
+                        // padding:
+                        //     MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                        // alignment: Alignment.center,
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Color.fromARGB(255, 0, 0, 0)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(_createHomeRoute());
+                      },
+                    ),
+                  )
+                ]),
                 Container(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  height: height / 9,
-                  child: 
-                    Column(
-                      children:[
-                        Text(
-                          groupnameNow,
-                          style: TextStyle(
-                              fontFamily: "impact",
-                              fontSize: 40,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              letterSpacing: 1),
-                        ),
-
-
-                        Text(
-                          
-                          nameString,
-                          style: TextStyle(fontFamily: 'impact', fontSize: 10, color: Color.fromARGB(137, 0, 0, 0)),
-                        ),
-                      ]
-                    )
-                ),
+                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    height: height / 9,
+                    child: Column(children: [
+                      Text(
+                        groupnameNow,
+                        style: TextStyle(
+                            fontFamily: "impact",
+                            fontSize: 40,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            letterSpacing: 1),
+                      ),
+                      Text(
+                        nameString,
+                        style: TextStyle(
+                            fontFamily: 'impact',
+                            fontSize: 10,
+                            color: Color.fromARGB(137, 0, 0, 0)),
+                      ),
+                    ])),
                 Container(
                   color: Color.fromARGB(0, 0, 0, 0),
                   width: width - 35,
-                  height: height - (height / 11) - (height / 10) - (height / 15),
+                  height:
+                      height - (height / 11) - (height / 10) - (height / 15),
                   child: expensesView,
                 ),
               ],
             ),
           ),
           Positioned(
-            bottom:20,
-            right:20,
+            bottom: 20,
+            right: 20,
             child: ElevatedButton(
-              child: Icon(Icons.add, size:30,color: Colors.white),
-              onPressed: () {
-                showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Scaffold(
-                        body: newExp,
-                      );
-                    });
-              },
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(60,60),
-                shape:CircleBorder(),
-                backgroundColor: Colors.black,
-              )
-            ), 
+                child: Icon(Icons.add, size: 30, color: Colors.white),
+                onPressed: () {
+                  showModalBottomSheet(
+                      isScrollControlled: true,
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Scaffold(
+                          body: newExp,
+                        );
+                      });
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(60, 60),
+                  shape: CircleBorder(),
+                  backgroundColor: Colors.black,
+                )),
           ),
         ],
       ),
@@ -175,6 +170,15 @@ Widget updateExpenseview() {
     itemBuilder: (BuildContext context, int index) {
       //print(index);
       if (revExp[index].group == groupnameNow) {
+        for (int i = 0; i < expensesInfo.length; i++) {
+          var e = expensesInfo[i];
+          if (e.expenseName == revExp[index].title &&
+              e.groupName == revExp[index].group &&
+              e.author == revExp[index].author) {
+            revExp[index].visibility = e.rejected;
+            print(revExp[index].visibility);
+          }
+        }
         print(revExp[index].group);
         return revExp[index];
       } else {
@@ -190,16 +194,18 @@ class expenseContainer extends StatelessWidget {
   final String author;
   final double totalAmount;
   final double yourAmount;
+  bool visibility = false;
 
   final String group;
 
-  expenseContainer(
-      {required this.title,
-      required this.date,
-      required this.author,
-      required this.totalAmount,
-      required this.yourAmount,
-      required this.group});
+  expenseContainer({
+    required this.title,
+    required this.date,
+    required this.author,
+    required this.totalAmount,
+    required this.yourAmount,
+    required this.group,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -238,6 +244,15 @@ class expenseContainer extends StatelessWidget {
                           fontFamily: 'impact',
                           fontSize: 30),
                     ),
+                    Visibility(
+                        visible: this.visibility,
+                        child: Text(
+                          "rejected",
+                          style: TextStyle(
+                              fontFamily: 'impact',
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 178, 49, 49)),
+                        ))
                   ],
                 ),
                 Column(
@@ -315,8 +330,8 @@ Route _createHomeRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => HomePage(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-       const begin = Offset(-1.0, 0.0); 
-       const end = Offset.zero;
+      const begin = Offset(-1.0, 0.0);
+      const end = Offset.zero;
       const curve = Curves.ease;
 
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));

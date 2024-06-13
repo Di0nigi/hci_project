@@ -436,6 +436,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                               }
                             }
                             expenseContainer eC = expenseContainer(
+                              
                                 title: ls[0],
                                 date:
                                     "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
@@ -450,7 +451,8 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                 members: expenseMembers,
                                 groupName: nowTitle,
                                 expenseName: ls[0],
-                                author: "you");
+                                author: "you",
+                                );
                             expensesInfo.add(eF);
                             _selectedValue = -1;
                           }
@@ -459,6 +461,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                             String price = _amountController;
                             String name = _nameController;
                             expenseContainer eC = expenseContainer(
+                              
                                 title: name,
                                 date:
                                     "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
@@ -473,7 +476,8 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                 members: expenseMembers,
                                 groupName: nowTitle,
                                 expenseName: name,
-                                author: "you");
+                                author: "you",
+                                );
                             expensesInfo.add(eF);
                           }
                           expensesView = updateExpenseview();
