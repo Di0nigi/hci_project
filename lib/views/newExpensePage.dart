@@ -13,13 +13,14 @@ class newExpensePage extends StatefulWidget {
   State<newExpensePage> createState() => _newExpensePageState(title: title);
 }
 
+TextEditingController nameController = TextEditingController();
 TextEditingController amountController = TextEditingController();
 
 List<Option> lastTransaction = [
-  Option(label: "Lunch, 25£", value: 1),
-  Option(label: "Movie Tickets, 15£", value: 2),
-  Option(label: "Chewing gums, 3£", value: 3),
-  Option(label: "Car rental, 78£", value: 4)
+  Option(label: "Lunch, 25€", value: 1),
+  Option(label: "Movie Tickets, 15€", value: 2),
+  Option(label: "Chewing gums, 3€", value: 3),
+  Option(label: "Car rental, 78€", value: 4)
 ];
 int numpartecipants = 0;
 List<bool> partecipantsBool = [];
@@ -27,7 +28,7 @@ List<bool> partecipantsBool = [];
 List<String> partecipants = [];
 List<String> expenseMembers = [];
 
-int? _selectedValue = 0;
+int? _selectedValue = -1;
 int? _selectedValue2 = 0;
 String nowTitle = "";
 
@@ -57,7 +58,7 @@ class _newExpensePageState extends State<newExpensePage> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(padding: EdgeInsets.all(20)),
           Container(
-              width: 122,
+              width: 132,
               height: 40,
               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: ElevatedButton(
@@ -70,7 +71,7 @@ class _newExpensePageState extends State<newExpensePage> {
                         "Cancel",
                         style: TextStyle(
                             fontFamily: "Roboto",
-                            fontSize: 20,
+                            fontSize: 19,
                             color: Color.fromARGB(255, 255, 255, 255),
                             letterSpacing: 1),
                       ),
@@ -80,14 +81,14 @@ class _newExpensePageState extends State<newExpensePage> {
                 ),
                 style: ButtonStyle(
                   //iconSize: MaterialStateProperty.all(25),
-                  padding:
-                      MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
-                  alignment: Alignment.center,
+                  // padding:
+                  //     MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                  // alignment: Alignment.center,
                   backgroundColor: MaterialStateProperty.all<Color>(
                       Color.fromARGB(255, 0, 0, 0)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(25),
                     ),
                   ),
                 ),
@@ -97,51 +98,94 @@ class _newExpensePageState extends State<newExpensePage> {
               )),
           Container(
             width: width,
-            height: height / 5.5,
+            height: height / 8,
             padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                "Create a new expense",
-                style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 40,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-              ),
-              Padding(padding: EdgeInsets.all(5)),
-              Text(
-                " select an expense",
-                style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w300),
-              )
-            ]),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Create a new expense",
+                    style: TextStyle(
+                        fontFamily: "Roboto",
+                        fontSize: 40,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  Padding(padding: EdgeInsets.all(5)),
+                  Text(
+                    " select an expense",
+                    style: TextStyle(
+                        fontFamily: "Roboto",
+                        fontSize: 25,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
+                  )
+                ]),
           ),
           Container(
             padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
             width: width - 20,
-            height: height / 13,
+            height: height / 8,
             color: Color.fromRGBO(212, 212, 212, 0),
-            child: TextField(
-              controller: amountController,
-              keyboardType: TextInputType.number,
-              inputFormatters: <TextInputFormatter>[
-                FilteringTextInputFormatter.digitsOnly
+            child: Column(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: amountController,
+                    keyboardType:
+                        TextInputType.numberWithOptions(decimal: true),
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: '0.00€',
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Expanded(
+                  child: TextField(
+                    controller: nameController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Name your expense',
+                    ),
+                  ),
+                )
               ],
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter a number',
-              ),
+            ),
+          ),
+          Container(
+            width: width,
+            height: height / 8,
+            padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+            child: Column(
+              children: [
+                Text(
+                  "or",
+                  style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w300),
+                ),
+                SizedBox(height: 30),
+                Text(
+                  "Select from latest transactions",
+                  style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 25,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400),
+                ),
+              ],
             ),
           ),
           Container(
             color: Color.fromARGB(0, 255, 0, 0),
             width: width,
-            height:
-                height - height / 8 - height / 5.5 - height / 13 - height / 15,
+            height: height - (height - (height / 2.5)),
             child: ListView.builder(
               itemCount: lastTransaction.length,
               itemBuilder: (context, index) {
@@ -167,7 +211,7 @@ class _newExpensePageState extends State<newExpensePage> {
                   alignment: Alignment.bottomRight,
                   child: Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                    width: 150,
+                    width: 160,
                     height: 40,
                     child: ElevatedButton(
                       child: Align(
@@ -179,7 +223,7 @@ class _newExpensePageState extends State<newExpensePage> {
                               "Continue",
                               style: TextStyle(
                                   fontFamily: "Roboto",
-                                  fontSize: 20,
+                                  fontSize: 19,
                                   color: Color.fromARGB(255, 255, 255, 255),
                                   letterSpacing: 1),
                             ),
@@ -189,20 +233,23 @@ class _newExpensePageState extends State<newExpensePage> {
                       ),
                       style: ButtonStyle(
                         //iconSize: MaterialStateProperty.all(25),
-                        padding: MaterialStateProperty.all<EdgeInsets>(
-                            EdgeInsets.all(10)),
+                        // padding: MaterialStateProperty.all<EdgeInsets>(
+                        //     EdgeInsets.all(10)),
                         alignment: Alignment.center,
                         backgroundColor: MaterialStateProperty.all<Color>(
                             Color.fromARGB(255, 0, 0, 0)),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
+                            borderRadius: BorderRadius.circular(25),
                           ),
                         ),
                       ),
                       onPressed: () {
-                        Navigator.of(context).push(_createExpenseRoute2());
+                        if (amountController.text.isNotEmpty ||
+                            _selectedValue != -1) {
+                          Navigator.of(context).push(_createExpenseRoute2());
+                        }
                       },
                     ),
                   ))),
@@ -366,19 +413,31 @@ class _newExpensePage2State extends State<newExpensePage2> {
                       ),
                       onPressed: () {
                         setState(() {
-                          if (amountController.text != "") {
+                          if (true) {
+                            // int.parse(amountController.text) > 0) {
                             // var s = amountController.text;
 
                             //var ls = s.split(",");
-                          } else {
+
                             var s = lastTransaction[(_selectedValue! - 1)];
                             var ls = s.label.split(",");
                             var d = DateTime.now();
                             String price = "";
-                            List<String> nums = ["1", "2", "3", "4","5", "6", "7", "8","9", "10"];
+                            List<String> nums = [
+                              "1",
+                              "2",
+                              "3",
+                              "4",
+                              "5",
+                              "6",
+                              "7",
+                              "8",
+                              "9",
+                              "10"
+                            ];
                             for (int j = 0; j < ls[1].length; j++) {
                               if (nums.contains(ls[1][j])) {
-                                price="${price}${ls[1][j]}";
+                                price = "${price}${ls[1][j]}";
                               }
                             }
                             expenseContainer eC = expenseContainer(
@@ -387,9 +446,9 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                     "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
                                 author: "you",
                                 totalAmount: int.parse(price),
-                                yourAmount: (int.parse(price) ~/
-                                        expenseMembers.length)
-                                    .toInt(),
+                                yourAmount:
+                                    (int.parse(price) ~/ expenseMembers.length)
+                                        .toInt(),
                                 group: nowTitle);
                             expenseList.add(eC);
 

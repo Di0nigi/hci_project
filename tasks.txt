@@ -1,0 +1,34 @@
+- aggiungi titolo nella prima schermata (Your groups)
+
+- font più grandi sui contatti
+
+- continue invece di forward DONE
+
+- no freccia a forward
+
+- no scritta back, solo freccia indietro
+
+- no scritta cancel, solo croce
+
+- nuovo gruppo creato deve apparire in cima alla lista (idem quando si crea una nuova spesa)
+
+- tag alla spesa se già fatta con un altro gruppo
+
+- togliere carte e tutta la relativa schermata
+
+- spostare bottone per creare spesa al lato come quello per creare il gruppo
+
+- diminuire font prezzo (guarda UI revolut)
+
+- divisione spesa solo in parti uguali DONE
+
+
+- sbarrare persona che rejecta nel bottone del reject, reject this [name expense] instead of the expense e aggiungere spiegazione sotto il reject (You will be refunded and x will be notified) 
+
+- togliere numero sotto al gruppo, solo icona e nome del gruppo
+
+- ⁠ aggiungere divisione in rettangoli alla spesa
+
+- icona sulla spesa se l’hai rejectata o no
+
+- nome membri del gruppo nella schermata del gruppo stile whatsapp
