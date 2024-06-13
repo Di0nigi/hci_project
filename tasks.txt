@@ -10,6 +10,7 @@
 - togliere numero sotto al gruppo, solo icona e nome del gruppo DONE
 - nome membri del gruppo nella schermata del gruppo stile whatsapp DONE 
 - spostare bottone per creare spesa al lato come quello per creare il gruppo DONE
+- constraints per creare gruppo e expense DONE
 
 
 
@@ -24,4 +25,3 @@
 - tag alla spesa se già fatta con un altro gruppo 
 - diminuire font prezzo (guarda UI revolut) 
 - mettere  euro a tutti i prezzi 
-- constraints per creare gruppo e expense

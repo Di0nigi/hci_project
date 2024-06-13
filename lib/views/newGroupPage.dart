@@ -35,7 +35,7 @@ final TitleController = TextEditingController();
 final MemberController = TextEditingController();
 
 bool checkVal = false;
-int? _selectedValue;
+int? _selectedValue = -1;
 int people = 0;
 
 var firstScreenContext;
@@ -170,7 +170,10 @@ class _newGroupPageState extends State<newGroupPage> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.of(context).push(_createRoute());
+                  if (TitleController.text != "") {
+                    
+                    Navigator.of(context).push(_createRoute());
+                  }
                 },
               ),
             ),
@@ -328,7 +331,9 @@ class _newGroupPage2State extends State<newGroupPage2> {
                       ),
                     ),
                     onPressed: () {
+                      if (groupParticipants.length > 0) {
                       Navigator.of(context).push(_createRoute2());
+                      }
                     },
                   ),
                 ))
@@ -480,28 +485,33 @@ class _newGroupPage3State extends State<newGroupPage3> {
                       ),
                     ),
                     onPressed: () {
-                      setState(() {
-                        int r = Random().nextInt(imageStrings.length);
-                        if (TitleController.text != "") {
-                          groupContainer g = groupContainer(
-                            imageGroup: imageStrings[r],
-                              amount: 0,
-                              title: TitleController.text,
-                              numMembers: people);
-                          groupsList.add(g);
+                      if (_selectedValue != -1) {
+                        setState(() 
+                        {
+                        
+                          int r = Random().nextInt(imageStrings.length);
+                          if (TitleController.text != "") {
+                            groupContainer g = groupContainer(
+                              imageGroup: imageStrings[r],
+                                amount: 0,
+                                title: TitleController.text,
+                                numMembers: people);
+                            groupsList.add(g);
 
-                          groupInfo gf = groupInfo(
-                              groupName: TitleController.text,
-                              partecipants: groupParticipants);
-                          groupsInfo.add(gf);
+                            groupInfo gf = groupInfo(
+                                groupName: TitleController.text,
+                                partecipants: groupParticipants);
+                            groupsInfo.add(gf);
 
-                          groupView = updateview();
+                            groupView = updateview();
+                          }
                         }
-                      });
-                      groupParticipants = [];
-                      TitleController.text = "";
-
-                      Navigator.of(context).push(_createDownRoute());
+                        );
+                        groupParticipants = [];
+                        TitleController.text = "";
+                        _selectedValue = -1;
+                        Navigator.of(context).push(_createDownRoute());
+                      }
                     },
                   ),
                 ))
