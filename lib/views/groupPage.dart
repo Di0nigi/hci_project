@@ -26,8 +26,11 @@ List<expenseContainer> expenseList = [
   )
 ];
 List<expenseInfo> expensesInfo = [
-  expenseInfo(members: ["Annalaura", "Francesco"], groupName: "India trip", expenseName: "thai dinner", author: "Billy"),
-   
+  expenseInfo(
+      members: ["Annalaura", "Francesco"],
+      groupName: "India trip",
+      expenseName: "thai dinner",
+      author: "Billy"),
 ];
 
 String groupnameNow = "";
@@ -161,13 +164,14 @@ class _groupPageState extends State<groupPage> {
 }
 
 Widget updateExpenseview() {
+  List<expenseContainer> revExp = expenseList.reversed.toList();
   return ListView.builder(
-    itemCount: expenseList.length, // Replace with your data list length
+    itemCount: revExp.length, // Replace with your data list length
     itemBuilder: (BuildContext context, int index) {
       //print(index);
-      if (expenseList[index].group == groupnameNow) {
-        print(expenseList[index].group);
-        return expenseList[index];
+      if (revExp[index].group == groupnameNow) {
+        print(revExp[index].group);
+        return revExp[index];
       } else {
         return Container();
       }

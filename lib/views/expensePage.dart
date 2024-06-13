@@ -208,6 +208,7 @@ class _expensePageState extends State<expensePage> {
               child: ListView.builder(
                 itemCount: membersList.length,
                 itemBuilder: (BuildContext context, int index) {
+
                   return Container(
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

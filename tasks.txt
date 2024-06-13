@@ -10,7 +10,7 @@
 
 - no scritta cancel, solo croce
 
-- nuovo gruppo creato deve apparire in cima alla lista (idem quando si crea una nuova spesa) Dionigi 
+- nuovo gruppo creato deve apparire in cima alla lista (idem quando si crea una nuova spesa) DONE
 
 - tag alla spesa se già fatta con un altro gruppo
 

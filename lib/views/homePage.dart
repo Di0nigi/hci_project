@@ -4,6 +4,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:hci_project/views/groupPage.dart';
 import 'package:hci_project/views/newGroupPage.dart';
 import 'package:hci_project/views/notificationPage.dart';
+import 'dart:math';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,16 +13,26 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+List<String> imageStrings = [
+  "assets\\groupsIcons\\Midjourney-.jpg",
+  "assets\\groupsIcons\\Midjourney-9.jpg",
+  "assets\\groupsIcons\\Nikio_a_wide_shot_of_a_giant_forgotten_pyramid_in_a_endless_des_be46ac84-f2cc-4034-9f34-d8d7a5cf9efc.png",
+  "assets\\groupsIcons\\Operation_Upshot-Knothole_-_Badger_001.jpg",
+  "assets\\groupsIcons\\starry-sky-4.jpg"
+];
+
 String walletIcon = "assets\\walletIcon.png";
 String userIcon = "assets\\userIcon.png";
 String arrowIcon = "assets\\arrowIcon.png";
 Widget groupView = updateview();
 int groups = 0;
 List<groupContainer> groupsList = [
-  groupContainer(title: "India trip", numMembers: 4, amount: 235)
+  groupContainer(title: "India trip", numMembers: 4, amount: 235, imageGroup: imageStrings[0],)
 ];
 List<groupInfo> groupsInfo = [
-  groupInfo(groupName: "India trip", partecipants: ["Annalaura", "Dionigi", "Giordano", "Emanuele"])
+  groupInfo(
+      groupName: "India trip",
+      partecipants: ["Annalaura", "Dionigi", "Giordano", "Emanuele"])
 ];
 newGroupPage newGP = newGroupPage();
 
@@ -53,8 +64,18 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         Container(
+          width: width,
+          height: height / 17,
+          padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
+          color: Color.fromARGB(0, 255, 0, 0),
+          child: Text(
+            "My groups",
+            style: TextStyle(fontFamily: "impact", fontSize: 30),
+          ),
+        ),
+        Container(
           width: width - 30,
-          height: height - (height / 11) - (height / 10),
+          height: height - (height / 11) - (height / 10) - height / 17,
           color: Color.fromARGB(0, 255, 255, 255),
           child: Center(
             child: groupView,
@@ -126,11 +147,13 @@ class _HomePageState extends State<HomePage> {
 }
 
 Widget updateview() {
+  List<groupContainer> revGroups = groupsList.reversed.toList();
   return ListView.builder(
-    itemCount: groupsList.length, // Replace with your data list length
+    itemCount: revGroups.length, // Replace with your data list length
     itemBuilder: (BuildContext context, int index) {
       //print(index);
-      return groupsList[index];
+
+      return revGroups[index];
     },
   );
 }
@@ -139,9 +162,13 @@ class groupContainer extends StatelessWidget {
   final String title;
   final int numMembers;
   final int amount;
+  final String imageGroup;
 
   groupContainer(
-      {required this.title, required this.numMembers, required this.amount});
+      {required this.title,
+      required this.numMembers,
+      required this.amount,
+      required this.imageGroup,});
 
   @override
   Widget build(BuildContext context) {
@@ -158,17 +185,36 @@ class groupContainer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: [
-                    Text(
-                      this.title,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          fontFamily: 'impact',
-                          fontSize: 35),
-                    ),
-                    Padding(padding: EdgeInsets.all(2)),
-                    Row(
+                Container(
+                  width: width/1.3,
+                  color: const Color.fromARGB(0, 255, 193, 7),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: width/6,
+                                                height: width/6,
+                        
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                            image: DecorationImage(
+                              
+                              fit: BoxFit.cover,
+                                image: AssetImage(this.imageGroup))),
+                      ),
+                      Padding(padding: EdgeInsets.all(10)),
+                      Text(
+                        this.title,
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontFamily: 'impact',
+                            fontSize: 35),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(2)),
+                /*Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
@@ -195,9 +241,8 @@ class groupContainer extends StatelessWidget {
                               fontSize: 30),
                         ),
                       ],
-                    )
-                  ],
-                ),
+                    )*/
+
                 Container(
                   width: 30,
                   decoration: BoxDecoration(
@@ -236,7 +281,8 @@ Route _createNotificatioRoute() {
 Route _createGroupRoute(String titlePage) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => groupPage(
-      groupName: titlePage, gInfo: groupsInfo,
+      groupName: titlePage,
+      gInfo: groupsInfo,
     ),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(1.0, 0.0);

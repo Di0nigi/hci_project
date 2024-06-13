@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:hci_project/main.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -498,8 +500,10 @@ class _newGroupPage3State extends State<newGroupPage3> {
                     ),
                     onPressed: () {
                       setState(() {
+                        int r = Random().nextInt(imageStrings.length);
                         if (TitleController.text != "") {
                           groupContainer g = groupContainer(
+                            imageGroup: imageStrings[r],
                               amount: 0,
                               title: TitleController.text,
                               numMembers: people);
