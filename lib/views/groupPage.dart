@@ -219,6 +219,18 @@ class expenseContainer extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${this.author}",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontFamily: 'impact',
+                              fontSize: 15),
+                        ),
+                      ],
+                    ),
                     Text(
                       this.title,
                       style: TextStyle(
@@ -226,30 +238,11 @@ class expenseContainer extends StatelessWidget {
                           fontFamily: 'impact',
                           fontSize: 30),
                     ),
-                    Text(
-                      this.date,
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                          fontFamily: 'impact',
-                          fontSize: 15),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          "payed by ${this.author}",
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'impact',
-                              fontSize: 15),
-                        ),
-                      ],
-                    )
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Padding(padding: EdgeInsets.all(4)),
                     Text(
