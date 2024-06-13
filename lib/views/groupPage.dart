@@ -47,6 +47,17 @@ class _groupPageState extends State<groupPage> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> nameList = [];
+    String nameString = "";
+    for (int i = 0; i < gInfo.length ;i++) {
+      if (gInfo[i].groupName == groupnameNow) {
+        nameList = gInfo[i].partecipants;
+      };
+    };
+    for (int i = 0; i < nameList.length ; i++) {
+      nameString = nameString+"${nameList[i]}"+",";
+    };
+    print(nameString);
     newExpensePage newExp = newExpensePage(title: groupnameNow);
     return Scaffold(
       body: Stack(
@@ -112,8 +123,11 @@ class _groupPageState extends State<groupPage> {
                               color: Color.fromARGB(255, 0, 0, 0),
                               letterSpacing: 1),
                         ),
+
+
                         Text(
-                          "prova"
+                          
+                          nameString,
                         ),
                       ]
                     )
