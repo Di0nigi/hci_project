@@ -62,6 +62,7 @@ class _groupPageState extends State<groupPage> {
       nameString = nameString + "${nameList[i]}" + ",";
     }
     ;
+    nameString = nameString + "you";
     print(nameString);
     newExpensePage newExp = newExpensePage(title: groupnameNow);
     return Scaffold(
@@ -128,22 +129,23 @@ class _groupPageState extends State<groupPage> {
             top: 25,
             left: 20,
             child: ElevatedButton(
-                child: Text("back",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            letterSpacing: 1),
-                  ),
+                child: Text(
+                  "back",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      letterSpacing: 1),
+                ),
                 onPressed: () {
                   Navigator.of(context).push(_createHomeRoute());
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(40, 50),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
                   ),
                   backgroundColor: Colors.black,
-                )
-            ),
+                )),
           ),
         ],
       ),
@@ -164,7 +166,8 @@ Widget updateExpenseview() {
               e.groupName == revExp[index].group &&
               e.author == revExp[index].author) {
             revExp[index].visibility = e.rejected;
-            print(revExp[index].visibility);
+            //print(revExp[index].visibility);
+            print("non capisco");
           }
         }
         print(revExp[index].group);

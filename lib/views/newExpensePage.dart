@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:hci_project/views/expensePage.dart';
 import 'package:hci_project/views/groupPage.dart';
 import 'package:hci_project/views/homePage.dart';
+import 'dart:math';
 
 class newExpensePage extends StatefulWidget {
   final String title;
@@ -68,10 +69,7 @@ class _newExpensePageState extends State<newExpensePage> {
                   alignment: Alignment.center,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      
-                      Icon(Icons.close_rounded)
-                    ],
+                    children: [Icon(Icons.close_rounded)],
                   ), /*child: */
                 ),
                 style: ButtonStyle(
@@ -102,10 +100,10 @@ class _newExpensePageState extends State<newExpensePage> {
                   Text(
                     "Create a new expense",
                     style: TextStyle(
-                        fontFamily: "impact",
-                        fontSize: 40,
-                        color: Colors.black,
-                       ),
+                      fontFamily: "impact",
+                      fontSize: 40,
+                      color: Colors.black,
+                    ),
                   ),
                   Padding(padding: EdgeInsets.all(10)),
                   Text(
@@ -144,10 +142,8 @@ class _newExpensePageState extends State<newExpensePage> {
                 Expanded(
                   child: TextField(
                     style: TextStyle(fontFamily: 'impact', fontSize: 12),
-                    
                     controller: nameController,
                     decoration: InputDecoration(
-                      
                       border: OutlineInputBorder(),
                       labelText: 'Name your expense',
                     ),
@@ -156,9 +152,7 @@ class _newExpensePageState extends State<newExpensePage> {
               ],
             ),
           ),
-          
           Container(
-
             width: width,
             height: height / 6,
             padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
@@ -187,13 +181,17 @@ class _newExpensePageState extends State<newExpensePage> {
           Container(
             color: Color.fromARGB(0, 255, 0, 0),
             width: width,
-            height: height - 40 - height/8 - height/8 - height/6 -height/5,
+            height:
+                height - 40 - height / 8 - height / 8 - height / 6 - height / 5,
             child: ListView.builder(
               itemCount: lastTransaction.length,
               itemBuilder: (context, index) {
                 final option = lastTransaction[index];
                 return RadioListTile<int>(
-                  title: Text(option.label, style: TextStyle(fontFamily: 'impact', fontSize: 20),),
+                  title: Text(
+                    option.label,
+                    style: TextStyle(fontFamily: 'impact', fontSize: 20),
+                  ),
                   value: option.value,
                   groupValue: _selectedValue,
                   onChanged: (value) {
@@ -229,7 +227,6 @@ class _newExpensePageState extends State<newExpensePage> {
                                   color: Color.fromARGB(255, 255, 255, 255),
                                   letterSpacing: 1),
                             ),
-                            
                           ],
                         ),
                       ),
@@ -248,13 +245,13 @@ class _newExpensePageState extends State<newExpensePage> {
                         ),
                       ),
                       onPressed: () {
-                        if ((amountController.text != "" && nameController.text != "") ||
+                        if ((amountController.text != "" &&
+                                nameController.text != "") ||
                             _selectedValue != -1) {
                           _amountController = amountController.text;
-                          _nameController = nameController.text; 
+                          _nameController = nameController.text;
                           Navigator.of(context).push(_createExpenseRoute2());
-                        }
-                        else{
+                        } else {
                           // TODO: warn user
                         }
                       },
@@ -285,88 +282,93 @@ class _newExpensePage2State extends State<newExpensePage2> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(padding: EdgeInsets.all(20)),
           Container(
-                width: 70,
-                height: 40,
-                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                child: ElevatedButton(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(Icons.arrow_back_rounded),
-                      ],
-                    ), /*child: */
-                  ),
-                  style: ButtonStyle(
-                    //iconSize: MaterialStateProperty.all(25),
-                    // padding: MaterialStateProperty.all<EdgeInsets>(
-                    //     EdgeInsets.all(10)),
-                    alignment: Alignment.center,
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 0, 0, 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
+              width: 70,
+              height: 40,
+              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: ElevatedButton(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(Icons.arrow_back_rounded),
+                    ],
+                  ), /*child: */
+                ),
+                style: ButtonStyle(
+                  //iconSize: MaterialStateProperty.all(25),
+                  // padding: MaterialStateProperty.all<EdgeInsets>(
+                  //     EdgeInsets.all(10)),
+                  alignment: Alignment.center,
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Color.fromARGB(255, 0, 0, 0)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                )),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )),
           Container(
             width: width,
             height: height / 4,
             color: Color.fromARGB(0, 0, 255, 42),
             padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Text(
-                "Create a new expense",
-                style: TextStyle(
-                    fontFamily: "impact",
-                    fontSize: 40,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-              ),
-              Padding(padding: EdgeInsets.all(5)),
-              Text(
-                " select the participants",
-                style: TextStyle(
-                    fontFamily: "impact",
-                    fontSize: 20,
-                    color: Color.fromARGB(137, 0, 0, 0),
-                    fontWeight: FontWeight.w300),
-              )
-            ]),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Create a new expense",
+                    style: TextStyle(
+                        fontFamily: "impact",
+                        fontSize: 40,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  Padding(padding: EdgeInsets.all(5)),
+                  Text(
+                    " select the participants",
+                    style: TextStyle(
+                        fontFamily: "impact",
+                        fontSize: 20,
+                        color: Color.fromARGB(137, 0, 0, 0),
+                        fontWeight: FontWeight.w300),
+                  )
+                ]),
           ),
           Container(
               color: Color.fromARGB(0, 255, 0, 0),
               width: width,
-              height: height -
-                  height / 8 -
-                  height / 4 -
-                  height / 13 -
-                  height / 15,
+              height:
+                  height - height / 8 - height / 4 - height / 13 - height / 15,
               child: ListView.builder(
                 itemCount:
                     partecipants.length, // Replace with your data list length
                 itemBuilder: (BuildContext context, int index) {
-                  return Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 10),child:Container(
-                    color: const Color.fromARGB(0, 121, 85, 72),
-                      padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                      width: width - 50,
-                      height: 30,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(partecipants[index], style: TextStyle(fontFamily: 'impact', fontSize: 25),),
-                            customPartecipantCheckBox(
-                              val: partecipantsBool[index],
-                              title: partecipants[index],
-                            )
-                          ])));
+                  return Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      child: Container(
+                          color: const Color.fromARGB(0, 121, 85, 72),
+                          padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                          width: width - 50,
+                          height: 30,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  partecipants[index],
+                                  style: TextStyle(
+                                      fontFamily: 'impact', fontSize: 25),
+                                ),
+                                customPartecipantCheckBox(
+                                  val: partecipantsBool[index],
+                                  title: partecipants[index],
+                                )
+                              ])));
                 },
               )),
           Container(
@@ -436,55 +438,84 @@ class _newExpensePage2State extends State<newExpensePage2> {
                               }
                             }
                             expenseContainer eC = expenseContainer(
-                              
                                 title: ls[0],
                                 date:
                                     "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
                                 author: "you",
                                 totalAmount: double.parse(price),
-                                yourAmount:
-                                    (double.parse(price) / (expenseMembers.length+1)),
+                                yourAmount: (double.parse(price) /
+                                    (expenseMembers.length + 1)),
                                 group: nowTitle);
                             expenseList.add(eC);
 
                             expenseInfo eF = expenseInfo(
-                                members: expenseMembers,
-                                groupName: nowTitle,
-                                expenseName: ls[0],
-                                author: "you",
-                                );
+                              members: expenseMembers,
+                              groupName: nowTitle,
+                              expenseName: ls[0],
+                              author: "you",
+                            );
                             expensesInfo.add(eF);
+                            for (int i = 0; i < expenseMembers.length; i++) {
+                              var rej = false;
+                              int r = Random().nextInt(3);
+                              if (r == 1) {
+                                rej = true;
+                              }
+                              var mem = memberIfo(
+                                  name: expenseMembers[i],
+                                  group: nowTitle,
+                                  expense:ls[0],
+                                  status: icons[r],
+                                  rej: true);
+                              membersInfo.add(mem);
+                              print(mem);
+                            }
                             _selectedValue = -1;
-                          }
-                          else if (true) {
+                          } else if (true) {
                             var d = DateTime.now();
                             String price = _amountController;
                             String name = _nameController;
                             expenseContainer eC = expenseContainer(
-                              
                                 title: name,
                                 date:
                                     "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
                                 author: "you",
                                 totalAmount: double.parse(price),
-                                yourAmount:
-                                    (double.parse(price) / (expenseMembers.length+1)),
+                                yourAmount: (double.parse(price) /
+                                    (expenseMembers.length + 1)),
                                 group: nowTitle);
                             expenseList.add(eC);
 
                             expenseInfo eF = expenseInfo(
-                                members: expenseMembers,
-                                groupName: nowTitle,
-                                expenseName: name,
-                                author: "you",
-                                );
+                              members: expenseMembers,
+                              groupName: nowTitle,
+                              expenseName: name,
+                              author: "you",
+                            );
                             expensesInfo.add(eF);
+                            for (int i = 0; i < expenseMembers.length; i++) {
+                              var rej = false;
+                              int r = Random().nextInt(3);
+                              if (r == 1) {
+                                rej = true;
+                              }
+                              var mem = memberIfo(
+                                  name: expenseMembers[i],
+                                  group: nowTitle,
+                                  expense: name,
+                                  status: icons[r],
+                                  rej: true);
+                              membersInfo.add(mem);
+                              print(mem);
+                            }
                           }
                           expensesView = updateExpenseview();
 
                           //expenseContainer eC =expenseContainer(title: , date: date, author: author, totalAmount: totalAmount, yourAmount: yourAmount, group: group)
                         });
                         expenseMembers = [];
+                        nameController.text = "";
+                        amountController.text = "";
 
                         Navigator.of(context).push(_createExpenseDownRoute());
                       },

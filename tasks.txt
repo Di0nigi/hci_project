@@ -13,15 +13,17 @@
 - constraints per creare gruppo e expense DONE
 - ⁠aggiungere divisione in rettangoli alla spesa DONE
 - sistemare pop up DONE
+- icona sulla spesa se l’hai rejectata o no DONE
+- sbarrare persona che rejecta nel bottone del reject, reject this [name expense] instead of the expense  DONE
 
 
 
-
-- sbarrare persona che rejecta nel bottone del reject, reject this [name expense] instead of the expense e aggiungere spiegazione sotto il reject (You will be refunded and x will be notified)  Dionigi
-- icona sulla spesa se l’hai rejectata o no Dionigi
+- aggiungere spiegazione sotto il reject (You will be refunded and x will be notified) Dionigi
+- diminuire font prezzo (guarda UI revolut) Dionigi
 
 
 
 - tag alla spesa se già fatta con un altro gruppo 
-- diminuire font prezzo (guarda UI revolut) 
 - mettere  euro a tutti i prezzi 
+-sistemare il rounding della divisione
+

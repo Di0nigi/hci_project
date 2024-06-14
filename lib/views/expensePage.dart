@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hci_project/main.dart';
 import 'package:hci_project/views/groupPage.dart';
+import 'package:hci_project/views/homePage.dart';
 
 class expensePage extends StatefulWidget {
   final String title;
@@ -30,10 +31,32 @@ class expensePage extends StatefulWidget {
       group: this.group);
 }
 
+List<rejStatus> icons = [
+  rejStatus(icon: Icons.timer, color: Color.fromARGB(255, 242, 202, 0)),
+  rejStatus(
+      icon: Icons.cancel_rounded, color: Color.fromARGB(255, 178, 49, 49)),
+  rejStatus(icon: Icons.check_circle, color: Color.fromARGB(255, 40, 198, 0))
+];
+
+String expenseNameNow = "";
 bool ismine = false;
 bool isRejected = false;
 
-List<String> membersList = [];
+List<memberIfo> membersList = [];
+List<memberIfo> membersInfo = [
+  memberIfo(
+      name: "Annalaura",
+      status: icons[1],
+      rej: true,
+      group: "India trip",
+      expense: "thai dinner"),
+  memberIfo(
+      name: "Francesco",
+      status: icons[0],
+      rej: false,
+      group: "India trip",
+      expense: "thai dinner")
+];
 List<bool?> isChecked = [];
 
 class _expensePageState extends State<expensePage> {
@@ -53,6 +76,8 @@ class _expensePageState extends State<expensePage> {
 
   @override
   Widget build(BuildContext context) {
+    membersList = [];
+    expenseNameNow = this.title;
     for (int i = 0; i < expense.length; i++) {
       print(expense[i].groupName);
       print(expense[i].expenseName);
@@ -64,12 +89,21 @@ class _expensePageState extends State<expensePage> {
           expense[i].groupName == this.group) {
         print("ao");
         expense[i].rejected = isRejected;
-        membersList = expense[i].members;
+        //membersList = expense[i].members;
+        for (int j = 0; j < membersInfo.length; j++) {
+          if (membersInfo[j].group == expense[i].groupName &&
+              membersInfo[j].expense == expense[i].expenseName) {
+            membersList.add(membersInfo[j]);
+          }
+        }
         isChecked = List.generate(expense[i].members.length, (index) => false);
         if (expense[i].author == "you") {
           ismine = true;
         } else {
           ismine = false;
+        }
+        if (expense[i].rejected == true) {
+          ismine = true;
         }
       }
     }
@@ -239,7 +273,7 @@ class _expensePageState extends State<expensePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            membersList[index],
+                            membersList[index].name,
                             style: TextStyle(
                                 fontFamily: "impact",
                                 fontSize: 20,
@@ -247,8 +281,8 @@ class _expensePageState extends State<expensePage> {
                                 color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                           Icon(
-                            Icons.timer,
-                            color: Color.fromARGB(255, 255, 174, 0),
+                            membersList[index].status.icon,
+                            color: membersList[index].status.color,
                           ),
                         ]),
                   );
@@ -266,15 +300,13 @@ class _expensePageState extends State<expensePage> {
                       height: height / 8,
                       child: ElevatedButton(
                         onPressed: () {
-                          print("rejected");
                           openDialog();
-                          expensesView = updateExpenseview();
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Reject the expense",
+                              "Reject this expense",
                               style: TextStyle(
                                   fontFamily: "impact",
                                   fontSize: 26,
@@ -319,7 +351,7 @@ class _expensePageState extends State<expensePage> {
         context: context,
         builder: (context) => AlertDialog(
           title: Text(
-            "Do you want to reject the expense?",
+            "Do you want to reject ${expenseNameNow}?",
             style: TextStyle(
               fontFamily: "impact",
               fontSize: 25,
@@ -387,13 +419,11 @@ class _expensePageState extends State<expensePage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              ismine = true;
                               isRejected = true;
                               print("aoooo");
-
-                              
+                              Navigator.pop(context);
+                              Navigator.of(context).push(_createGroupRoute());
                             });
-                            Navigator.pop(context);
                           },
                         ))),
               ],
@@ -415,4 +445,46 @@ class expenseInfo {
     required this.expenseName,
     required this.author,
   });
+}
+
+Route _createGroupRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => groupPage(
+      groupName: groupnameNow,
+      gInfo: groupsInfo,
+    ),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(-1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+class rejStatus {
+  final IconData icon;
+  final Color color;
+  rejStatus({required this.icon, required this.color});
+}
+
+class memberIfo {
+  final String name;
+  final rejStatus status;
+  final bool rej;
+  final String group;
+  final String expense;
+
+  memberIfo(
+      {required this.name,
+      required this.status,
+      required this.rej,
+      required this.group,
+      required this.expense});
 }
