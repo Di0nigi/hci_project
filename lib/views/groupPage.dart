@@ -72,40 +72,7 @@ class _groupPageState extends State<groupPage> {
             height: height,
             child: Column(
               children: [
-                Padding(padding: EdgeInsets.all(10)),
-                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                  Container(
-                    width: 70,
-                    height: 40,
-                    padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                    child: ElevatedButton(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [Icon(Icons.arrow_back_rounded)],
-                        ), /*child: */
-                      ),
-                      style: ButtonStyle(
-                        //iconSize: MaterialStateProperty.all(25),
-                        // padding:
-                        //     MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
-                        // alignment: Alignment.center,
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(255, 0, 0, 0)),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(_createHomeRoute());
-                      },
-                    ),
-                  )
-                ]),
+                Padding(padding: EdgeInsets.all(40)),
                 Container(
                     padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                     height: height / 9,
@@ -156,6 +123,27 @@ class _groupPageState extends State<groupPage> {
                   shape: CircleBorder(),
                   backgroundColor: Colors.black,
                 )),
+          ),
+          Positioned(
+            top: 25,
+            left: 20,
+            child: ElevatedButton(
+                child: Text("back",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            letterSpacing: 1),
+                  ),
+                onPressed: () {
+                  Navigator.of(context).push(_createHomeRoute());
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(40, 50),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25),
+                  ),
+                  backgroundColor: Colors.black,
+                )
+            ),
           ),
         ],
       ),
