@@ -37,7 +37,7 @@ List<rejStatus> icons = [
       icon: Icons.cancel_rounded, color: Color.fromARGB(255, 178, 49, 49)),
   rejStatus(icon: Icons.check_circle, color: Color.fromARGB(255, 40, 198, 0))
 ];
-
+String currentOnwner = "";
 String expenseNameNow = "";
 bool ismine = false;
 bool isRejected = false;
@@ -76,6 +76,7 @@ class _expensePageState extends State<expensePage> {
 
   @override
   Widget build(BuildContext context) {
+    currentOnwner = this.author;
     membersList = [];
     expenseNameNow = this.title;
     for (int i = 0; i < expense.length; i++) {
@@ -350,13 +351,26 @@ class _expensePageState extends State<expensePage> {
   Future openDialog() => showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text(
-            "Do you want to reject ${expenseNameNow}?",
-            style: TextStyle(
-              fontFamily: "impact",
-              fontSize: 25,
-              color: Color.fromARGB(255, 0, 0, 0),
-            ),
+          title: Column(
+            children: [
+              Text(
+                "Do you want to reject ${expenseNameNow}?",
+                style: TextStyle(
+                  fontFamily: "impact",
+                  fontSize: 25,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
+              ),
+              Padding(padding: EdgeInsets.all(5)),
+              Text(
+                
+                  "You will be refounded and ${currentOnwner} will be notified", style: 
+                  TextStyle(
+                  fontFamily: "impact",
+                  fontSize: 15,
+                  color: Color.fromARGB(137, 0, 0, 0),
+                ), )
+            ],
           ),
           actions: [
             Row(
