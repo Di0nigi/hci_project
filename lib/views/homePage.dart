@@ -42,98 +42,86 @@ class _HomePageState extends State<HomePage> {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return Scaffold(
-        body: Container(
-      decoration: BoxDecoration(color: Color.fromARGB(0, 255, 255, 255)),
-      child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-        Container(
-          width: width,
-          height: height / 11,
-          color: Color.fromARGB(0, 0, 0, 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              IconButton(
-                  iconSize: 40.0,
-                  padding: EdgeInsets.fromLTRB(0, 25, 10, 0),
-                  // Use the FluentIcons + name of the icon you want
-                  icon: Icon(FluentIcons.alert_16_filled),
-                  onPressed: () {
-                    Navigator.of(context).push(_createNotificatioRoute());
-                  }),
-            ],
-          ),
-        ),
-        Container(
-          width: width,
-          height: height / 17,
-          padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
-          color: Color.fromARGB(0, 255, 0, 0),
-          child: Text(
-            "My groups",
-            style: TextStyle(fontFamily: "impact", fontSize: 30),
-          ),
-        ),
-        Container(
-          width: width - 30,
-          height: height - (height / 11) - (height / 10) - height / 17,
-          color: Color.fromARGB(0, 255, 255, 255),
-          child: Center(
-            child: groupView,
-          ),
-        ),
-        Container(
-          width: width,
-          height: height / 10,
-          color: Color.fromARGB(0, 255, 255, 255),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                  child: Container(
-                    width: 55,
-                    height: 55,
-                    color: Color.fromARGB(0, 255, 255, 255),
-                  )),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 20, 10),
-                child: SizedBox(
-                  width: 60,
-                  height: 60,
-                  child: ElevatedButton(
-                    child: Align(
-                        alignment: Alignment.center, child: Icon(Icons.add)),
-                    onPressed: () {
-                      showModalBottomSheet(
-                          isScrollControlled: true,
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Scaffold(
-                              body: newGP,
-                            );
-                          });
-                    },
-                    style: ButtonStyle(
-                      iconSize: MaterialStateProperty.all(40),
-                      padding: MaterialStateProperty.all<EdgeInsets>(
-                          EdgeInsets.all(10)),
-                      alignment: Alignment.center,
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(255, 0, 0, 0)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                    ),
+      body: Stack (
+        children: [ 
+          Container(
+            decoration: BoxDecoration(color: Color.fromARGB(0, 255, 255, 255)),
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.end, 
+              children: [
+                Padding(padding: EdgeInsets.all(10)),
+                Container(
+                  width: width,
+                  height: height / 17,
+                  padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
+                  color: Color.fromARGB(0, 255, 0, 0),
+                  child: Text(
+                    "My groups",
+                    style: TextStyle(fontFamily: "impact", fontSize: 30),
                   ),
                 ),
-              )
-            ],
+                Padding(padding: EdgeInsets.all(15)),
+                Container(
+                  width: width - 30,
+                  height: height - (height / 11) - (height / 10) - height / 17,
+                  color: Color.fromARGB(0, 255, 255, 255),
+                  child: Center(
+                    child: groupView,
+                  ),
+                ),
+                
+              ]
+            ),
           ),
-        )
-      ]),
-    ));
+          Positioned(
+            top: 0,
+            left: 0,
+            child: Container(
+              width: width,
+              height: height / 11,
+              color: Color.fromARGB(0, 0, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                      iconSize: 40.0,
+                      padding: EdgeInsets.fromLTRB(0, 25, 10, 0),
+                      // Use the FluentIcons + name of the icon you want
+                      icon: Icon(FluentIcons.alert_16_filled),
+                      onPressed: () {
+                        Navigator.of(context).push(_createNotificatioRoute());
+                      }
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            right: 20,
+            child: ElevatedButton(
+              child: Icon(Icons.add, size: 30, color: Colors.white),
+              onPressed: () {
+                showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Scaffold(
+                            body: newGP,
+                          );
+                        }
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(60, 60),
+                shape: CircleBorder(),
+                backgroundColor: Colors.black,
+              )
+            ),
+          ),
+        ]
+      )
+    );
   }
 }
 
