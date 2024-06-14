@@ -49,137 +49,99 @@ class _newGroupPageState extends State<newGroupPage> {
       contactBool.add(f);
     }
     return Scaffold(
-      body: Container(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Padding(padding: EdgeInsets.all(20)),
+      body: Stack (
+        children: [ 
           Container(
-              width: 70,
-              height: 40,
-              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-              child: ElevatedButton(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      
-                      Icon(Icons.close_rounded)
-                    ],
-                  ), /*child: */
-                ),
-                style: ButtonStyle(
-                  //iconSize: MaterialStateProperty.all(25),
-                  // padding:
-                  //     MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
-                  // alignment: Alignment.center,
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      Color.fromARGB(255, 0, 0, 0)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Padding(padding: EdgeInsets.all(60)),
+              Container(
+                width: width,
+                padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                child: Text(
+                  "Create a new group",
+                  style: TextStyle(
+                    fontFamily: "impact",
+                    fontSize: 45,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )),
-          Padding(padding: EdgeInsets.all(20)),
-          Container(
-            width: width,
-            padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-            child: Text(
-              "Create a new group",
-              style: TextStyle(
-                fontFamily: "impact",
-                fontSize: 45,
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
               ),
-            ),
-          ),
-          Padding(padding: EdgeInsets.all(40)),
-          Container(
-            padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
-            child: Text(
-              "Choose a new name for the group",
-              style: TextStyle(
-                fontFamily: "impact",
-                fontSize: 15,
-                color: Color.fromARGB(128, 0, 0, 0),
-              ),
-            ),
-          ),
-          Padding(padding: EdgeInsets.all(2)),
-          Container(
-            
-            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-            width: width - 20,
-            color: const Color.fromARGB(0, 255, 193, 7),
-            child: TextField(
-              style: TextStyle(
-                  fontFamily: "impact",
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  letterSpacing: 1),
-              controller: TitleController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
+              Padding(padding: EdgeInsets.all(40)),
+              Container(
+                padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                child: Text(
+                  "Choose a new name for the group",
+                  style: TextStyle(
+                    fontFamily: "impact",
+                    fontSize: 15,
+                    color: Color.fromARGB(128, 0, 0, 0),
+                  ),
                 ),
-                labelText: '',
               ),
+              Padding(padding: EdgeInsets.all(2)),
+              Container(
+                padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                width: width - 20,
+                color: const Color.fromARGB(0, 255, 193, 7),
+                child: TextField(
+                  style: TextStyle(
+                      fontFamily: "impact",
+                      fontSize: 15,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      letterSpacing: 1),
+                  controller: TitleController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    labelText: '',
+                  ),
+                ),
+              ),
+            ]
             ),
           ),
-          Padding(padding: EdgeInsets.all(208)),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-              width: 130,
-              height: 40,
-              child: ElevatedButton(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Continue",
+          Positioned(
+            bottom: 25,
+            right: 20,
+            child: ElevatedButton(
+                child: Text("continue",
                         style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontSize: 19,
+                            fontSize: 20,
                             color: Color.fromARGB(255, 255, 255, 255),
                             letterSpacing: 1),
-                      ),
-                     
-                    ],
                   ),
-                ),
-                style: ButtonStyle(
-                  //iconSize: MaterialStateProperty.all(25),
-                  // padding:
-                  //     MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
-                  // alignment: Alignment.center,
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      Color.fromARGB(255, 0, 0, 0)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                  ),
-                ),
                 onPressed: () {
                   if (TitleController.text != "") {
-                    
-                    Navigator.of(context).push(_createRoute());
+                  Navigator.of(context).push(_createRoute());
                   }
                 },
-              ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(40, 50),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25),
+                  ),
+                  backgroundColor: Colors.black,
+                )
             ),
-          )
-        ]),
-      ),
+          ),
+          Positioned(
+            top: 40,
+            left: 20,
+            child: ElevatedButton(
+              child: Icon(Icons.close_rounded, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(60, 60),
+                shape: CircleBorder(),
+                backgroundColor: Colors.black,
+              )
+            ),
+          ),
+        ]
+      )
     );
   }
 }
@@ -199,147 +161,114 @@ class _newGroupPage2State extends State<newGroupPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: width,
-        height: height,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(padding: EdgeInsets.all(20)),
-            Container(
-                width: 70,
-                height: 40,
-                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                child: ElevatedButton(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(Icons.arrow_back_rounded),
-                      ],
-                    ), /*child: */
-                  ),
-                  style: ButtonStyle(
-                    //iconSize: MaterialStateProperty.all(25),
-                    // padding: MaterialStateProperty.all<EdgeInsets>(
-                    //     EdgeInsets.all(10)),
-                    alignment: Alignment.center,
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 0, 0, 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
+
+      body: Stack (
+        children: [
+          Container(
+            width: width,
+            height: height,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(padding: EdgeInsets.all(60)),
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                  child: Text(
+                    "Choose the members",
+                    style: TextStyle(
+                      fontFamily: "impact",
+                      fontSize: 37,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                )),
-            Padding(padding: EdgeInsets.all(20)),
-            Container(
-              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-              child: Text(
-                "Choose the members",
-                style: TextStyle(
-                  fontFamily: "impact",
-                  fontSize: 37,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400,
                 ),
-              ),
-            ),
-            Padding(padding: EdgeInsets.all(10)),
-            Container(
-              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-              width: width - 20,
-              child: TextField(
-                style: TextStyle(
-                    fontFamily: "impact",
-                    fontSize: 15,
-                    color: Color.fromARGB(143, 0, 0, 0),
-                    letterSpacing: 1),
-                controller: MemberController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
+                Padding(padding: EdgeInsets.all(10)),
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                  width: width - 20,
+                  child: TextField(
+                    style: TextStyle(
+                        fontFamily: "impact",
+                        fontSize: 15,
+                        color: Color.fromARGB(143, 0, 0, 0),
+                        letterSpacing: 1),
+                    controller: MemberController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      labelText: 'Search a contact',
+                    ),
                   ),
-                  labelText: 'Search a contact',
                 ),
-              ),
+                Container(
+                    color: Color.fromARGB(0, 0, 0, 0),
+                    width: width,
+                    height: height - 400,
+                    child: ListView.builder(
+                      itemCount:
+                          contactList.length, // Replace with your data list length
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                            padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                            width: width - 50,
+                            height: 50,
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(contactList[index],style: TextStyle(fontSize: 20, fontFamily: 'impact'),),
+                                  customCheckBox(
+                                    name: contactList[index],
+                                    val: contactBool[index],
+                                  )
+                                ]));
+                      },
+                    )),
+                
+              ],
             ),
-            Container(
-                color: Color.fromARGB(0, 0, 0, 0),
-                width: width,
-                height: height - 400,
-                child: ListView.builder(
-                  itemCount:
-                      contactList.length, // Replace with your data list length
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                        padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                        width: width - 50,
-                        height: 50,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(contactList[index],style: TextStyle(fontSize: 20, fontFamily: 'impact'),),
-                              customCheckBox(
-                                name: contactList[index],
-                                val: contactBool[index],
-                              )
-                            ]));
-                  },
-                )),
-            Padding(padding: EdgeInsets.all(41)),
-            Align(
-                alignment: Alignment.bottomRight,
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  width: 130,
-                  height: 40,
-                  child: ElevatedButton(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Continue",
-                            style: TextStyle(
-                                fontFamily: "Roboto",
-                                fontSize: 19,
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                letterSpacing: 1),
-                          ),
-                          
-                        ],
-                      ),
-                    ),
-                    style: ButtonStyle(
-                      //iconSize: MaterialStateProperty.all(25),
-                      // padding: MaterialStateProperty.all<EdgeInsets>(
-                      //     EdgeInsets.all(10)),
-                      alignment: Alignment.center,
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(255, 0, 0, 0)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      if (groupParticipants.length > 0) {
-                      Navigator.of(context).push(_createRoute2());
-                      }
-                    },
+          ),
+          Positioned(
+            bottom: 25,
+            right: 20,
+            child: ElevatedButton(
+                child: Text("continue",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            letterSpacing: 1),
                   ),
-                ))
-          ],
-        ),
-      ),
+                onPressed: () {
+                  if (groupParticipants.length > 0) {
+                    Navigator.of(context).push(_createRoute2());
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(40, 50),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25),
+                  ),
+                  backgroundColor: Colors.black,
+                )
+            ),
+          ),
+          Positioned(
+            top: 40,
+            left: 20,
+            child: ElevatedButton(
+              child: Icon(Icons.arrow_back_rounded, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(60, 60),
+                shape: CircleBorder(),
+                backgroundColor: Colors.black,
+              )
+            ),
+          ),
+        ]
+      )
     );
   }
 }
@@ -357,167 +286,140 @@ class _newGroupPage3State extends State<newGroupPage3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: width,
-        height: height,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(padding: EdgeInsets.all(20)),
-            Container(
-                width:70,
-                height: 40,
-                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                child: ElevatedButton(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(Icons.arrow_back_rounded),
-                      ],
-                    ), /*child: */
-                  ),
-                  style: ButtonStyle(
-                    //iconSize: MaterialStateProperty.all(25),
-                    // padding: MaterialStateProperty.all<EdgeInsets>(
-                    //     EdgeInsets.all(10)),
-                    alignment: Alignment.center,
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 0, 0, 0)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
+      body: Stack(
+        children: [ 
+          Container(
+            width: width,
+            height: height,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(padding: EdgeInsets.all(60)),
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                  child: Text(
+                    "Choose the default payment method",
+                    style: TextStyle(
+                      fontFamily: "impact",
+                      fontSize: 37,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                )),
-            Padding(padding: EdgeInsets.all(20)),
-            Container(
-              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-              child: Text(
-                "Choose the default payment method",
-                style: TextStyle(
-                  fontFamily: "impact",
-                  fontSize: 37,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400,
                 ),
-              ),
-            ),
-            Padding(padding: EdgeInsets.all(7)),
-            Container(
-              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-              child: Text(
-                "When a friend pays for you, your share of the expense is going to be automatically taken from this card.",
-                style: TextStyle(
-                  fontFamily: "impact",
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 125, 125, 125),
-                  fontWeight: FontWeight.w300,
+                Padding(padding: EdgeInsets.all(7)),
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                  child: Text(
+                    "When a friend pays for you, your share of the expense is going to be automatically taken from this card.",
+                    style: TextStyle(
+                      fontFamily: "impact",
+                      fontSize: 15,
+                      color: Color.fromARGB(255, 125, 125, 125),
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Padding(padding: EdgeInsets.all(10)),
-            Container(
-              color: Color.fromARGB(0, 0, 0, 0),
-              width: width,
-              height: height - 400,
-              child: ListView.builder(
-                itemCount: _options.length,
-                itemBuilder: (context, index) {
-                  final option = _options[index];
-                  return RadioListTile<int>(
-                    title: Text(option.label, style: 
-                    TextStyle(
-                      fontSize: 25, fontFamily: 'impact'
-                    ),),
-                    value: option.value,
-                    groupValue: _selectedValue,
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedValue = value;
-                      });
+                Padding(padding: EdgeInsets.all(10)),
+                Container(
+                  color: Color.fromARGB(0, 0, 0, 0),
+                  width: width,
+                  height: height - 400,
+                  child: ListView.builder(
+                    itemCount: _options.length,
+                    itemBuilder: (context, index) {
+                      final option = _options[index];
+                      return RadioListTile<int>(
+                        title: Text(option.label, style: 
+                        TextStyle(
+                          fontSize: 25, fontFamily: 'impact'
+                        ),),
+                        value: option.value,
+                        groupValue: _selectedValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectedValue = value;
+                          });
+                        },
+                      );
                     },
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(23)),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 25,
+            right: 20,
+            child: ElevatedButton(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Done",
+                    style: TextStyle(
+                        fontFamily: "Roboto",
+                        fontSize: 19,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        letterSpacing: 1),
+                  ),
+                  Icon(Icons.check_rounded)
+                ],
+              ),
+              onPressed: () {
+                if (_selectedValue != -1) {
+                  setState(() 
+                  {
+                    int r = Random().nextInt(imageStrings.length);
+                    if (TitleController.text != "") {
+                      groupContainer g = groupContainer(
+                        imageGroup: imageStrings[r],
+                          amount: 0,
+                          title: TitleController.text,
+                          numMembers: people);
+                      groupsList.add(g);
+
+                      groupInfo gf = groupInfo(
+                          groupName: TitleController.text,
+                          partecipants: groupParticipants);
+                      groupsInfo.add(gf);
+
+                      groupView = updateview();
+                    }
+                  }
                   );
-                },
-              ),
+                  groupParticipants = [];
+                  TitleController.text = "";
+                  _selectedValue = -1;
+                  Navigator.of(context).push(_createDownRoute());
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(40, 50),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25),
+                ),
+                backgroundColor: Colors.black,
+              )
             ),
-            Padding(padding: EdgeInsets.all(23)),
-            Align(
-                alignment: Alignment.bottomRight,
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  width: 130,
-                  height: 40,
-                  child: ElevatedButton(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Done",
-                            style: TextStyle(
-                                fontFamily: "Roboto",
-                                fontSize: 19,
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                letterSpacing: 1),
-                          ),
-                          Icon(Icons.check_rounded)
-                        ],
-                      ),
-                    ),
-                    style: ButtonStyle(
-                      //iconSize: MaterialStateProperty.all(25),
-                      // padding: MaterialStateProperty.all<EdgeInsets>(
-                      //     EdgeInsets.all(10)),
-                      alignment: Alignment.center,
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(255, 0, 0, 0)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      if (_selectedValue != -1) {
-                        setState(() 
-                        {
-                        
-                          int r = Random().nextInt(imageStrings.length);
-                          if (TitleController.text != "") {
-                            groupContainer g = groupContainer(
-                              imageGroup: imageStrings[r],
-                                amount: 0,
-                                title: TitleController.text,
-                                numMembers: people);
-                            groupsList.add(g);
-
-                            groupInfo gf = groupInfo(
-                                groupName: TitleController.text,
-                                partecipants: groupParticipants);
-                            groupsInfo.add(gf);
-
-                            groupView = updateview();
-                          }
-                        }
-                        );
-                        groupParticipants = [];
-                        TitleController.text = "";
-                        _selectedValue = -1;
-                        Navigator.of(context).push(_createDownRoute());
-                      }
-                    },
-                  ),
-                ))
-          ],
-        ),
-      ),
+          ),
+          Positioned(
+            top: 40,
+            left: 20,
+            child: ElevatedButton(
+              child: Icon(Icons.arrow_back_rounded, size: 30, color: Colors.white),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(60, 60),
+                shape: CircleBorder(),
+                backgroundColor: Colors.black,
+              )
+            ),
+          ),
+        ]
+      )
     );
   }
 }
