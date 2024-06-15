@@ -25,5 +25,8 @@
 
 
 - mettere  euro a tutti i prezzi 
--sistemare il rounding della divisione
+- sistemare il rounding della divisione
+- icone alle expenses 
+- cambiare font a tutto in roboto
+- finite di sistemare bottoni
 
