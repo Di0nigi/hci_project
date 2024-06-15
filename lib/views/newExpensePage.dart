@@ -466,7 +466,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                   group: nowTitle,
                                   expense:ls[0],
                                   status: icons[r],
-                                  rej: true);
+                                  rej: rej);
                               membersInfo.add(mem);
                               print(mem);
                             }
@@ -504,7 +504,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                   group: nowTitle,
                                   expense: name,
                                   status: icons[r],
-                                  rej: true);
+                                  rej: rej);
                               membersInfo.add(mem);
                               print(mem);
                             }

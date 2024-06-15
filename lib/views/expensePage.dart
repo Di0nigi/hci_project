@@ -42,6 +42,7 @@ String expenseNameNow = "";
 bool ismine = false;
 bool isRejected = false;
 
+List<textDec> textdecorations = [];
 List<memberIfo> membersList = [];
 List<memberIfo> membersInfo = [
   memberIfo(
@@ -269,6 +270,11 @@ class _expensePageState extends State<expensePage> {
               child: ListView.builder(
                 itemCount: membersList.length,
                 itemBuilder: (BuildContext context, int index) {
+                  textDec t = textDec();
+                  if (membersList[index].rej == false) {
+                    t.col = Colors.black;
+                    t.dec = TextDecoration.none;
+                  }
                   return Container(
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -276,10 +282,11 @@ class _expensePageState extends State<expensePage> {
                           Text(
                             membersList[index].name,
                             style: TextStyle(
+                                decoration: t.dec,
                                 fontFamily: "impact",
                                 fontSize: 20,
                                 fontWeight: FontWeight.w100,
-                                color: Color.fromARGB(255, 0, 0, 0)),
+                                color: t.col,)
                           ),
                           Icon(
                             membersList[index].status.icon,
@@ -363,13 +370,13 @@ class _expensePageState extends State<expensePage> {
               ),
               Padding(padding: EdgeInsets.all(5)),
               Text(
-                
-                  "You will be refounded and ${currentOnwner} will be notified", style: 
-                  TextStyle(
+                "You will be refounded and ${currentOnwner} will be notified",
+                style: TextStyle(
                   fontFamily: "impact",
                   fontSize: 15,
                   color: Color.fromARGB(137, 0, 0, 0),
-                ), )
+                ),
+              )
             ],
           ),
           actions: [
@@ -501,4 +508,9 @@ class memberIfo {
       required this.rej,
       required this.group,
       required this.expense});
+}
+
+class textDec {
+  var col = Color.fromARGB(110, 0, 0, 0);
+  var dec = TextDecoration.lineThrough;
 }
