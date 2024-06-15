@@ -20,10 +20,10 @@
 
 
 - diminuire font prezzo (guarda UI revolut) Dionigi
+- tag alla spesa se già fatta con un altro gruppo Dionigi
 
 
 
-- tag alla spesa se già fatta con un altro gruppo 
 - mettere  euro a tutti i prezzi 
 -sistemare il rounding della divisione
 

@@ -20,10 +20,10 @@ String _nameController = "";
 String _amountController = "";
 
 List<Option> lastTransaction = [
-  Option(label: "Lunch, 25€", value: 1),
-  Option(label: "Movie Tickets, 15€", value: 2),
-  Option(label: "Chewing gums, 3€", value: 3),
-  Option(label: "Car rental, 78€", value: 4)
+  Option(label: "Lunch, 25€", value: 1, groupUsed: ""),
+  Option(label: "Movie Tickets, 15€", value: 2, groupUsed: ""),
+  Option(label: "Chewing gums, 3€", value: 3, groupUsed: ""),
+  Option(label: "Car rental, 78€", value: 4, groupUsed: "")
 ];
 int numpartecipants = 0;
 List<bool> partecipantsBool = [];
@@ -188,9 +188,22 @@ class _newExpensePageState extends State<newExpensePage> {
               itemBuilder: (context, index) {
                 final option = lastTransaction[index];
                 return RadioListTile<int>(
-                  title: Text(
-                    option.label,
-                    style: TextStyle(fontFamily: 'impact', fontSize: 20),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        option.label,
+                        style: TextStyle(fontFamily: 'impact', fontSize: 20),
+                      ),
+                      Padding(padding: EdgeInsets.all(3)),
+                      Text(
+                        option.groupUsed,
+                        style: TextStyle(
+                            fontFamily: 'impact',
+                            fontSize: 10,
+                            color: Color.fromARGB(154, 212, 0, 0)),
+                      )
+                    ],
                   ),
                   value: option.value,
                   groupValue: _selectedValue,
@@ -417,6 +430,8 @@ class _newExpensePage2State extends State<newExpensePage2> {
                         setState(() {
                           if (_selectedValue! > -1) {
                             var s = lastTransaction[(_selectedValue! - 1)];
+                            lastTransaction[(_selectedValue! - 1)].groupUsed =
+                                nowTitle;
                             var ls = s.label.split(",");
                             var d = DateTime.now();
                             String price = "";
@@ -464,7 +479,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                               var mem = memberIfo(
                                   name: expenseMembers[i],
                                   group: nowTitle,
-                                  expense:ls[0],
+                                  expense: ls[0],
                                   status: icons[r],
                                   rej: rej);
                               membersInfo.add(mem);
@@ -530,8 +545,9 @@ class _newExpensePage2State extends State<newExpensePage2> {
 class Option {
   final String label;
   final int value;
+  String groupUsed="";
 
-  Option({required this.label, required this.value});
+  Option({required this.label, required this.value, required this.groupUsed} );
 }
 
 Route _createExpenseRoute2() {
