@@ -188,21 +188,31 @@ class _newExpensePageState extends State<newExpensePage> {
               itemBuilder: (context, index) {
                 final option = lastTransaction[index];
                 return RadioListTile<int>(
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         option.label,
                         style: TextStyle(fontFamily: 'impact', fontSize: 20),
                       ),
-                      Padding(padding: EdgeInsets.all(3)),
-                      Text(
+                      Padding(padding: EdgeInsets.all(10)),
+                      Visibility(
+                        visible: option.groupUsed!="",
+                        child: Container(
+                        padding: EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(167, 216, 253, 205),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                            border: Border(bottom: BorderSide(color: Colors.black, width: 1), top: BorderSide(color: Colors.black, width: 1),right: BorderSide(color: Colors.black, width: 1), left: BorderSide(color: Colors.black, width: 1))),
+                        child: Text(
                         option.groupUsed,
                         style: TextStyle(
                             fontFamily: 'impact',
                             fontSize: 10,
-                            color: Color.fromARGB(154, 212, 0, 0)),
-                      )
+                            color: Color.fromARGB(255, 0, 0, 0)),
+                      ) ,))
+                      
+                      
                     ],
                   ),
                   value: option.value,

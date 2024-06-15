@@ -16,11 +16,11 @@
 - icona sulla spesa se l’hai rejectata o no DONE
 - sbarrare persona che rejecta nel bottone del reject, reject this [name expense] instead of the expense  DONE
 - aggiungere spiegazione sotto il reject (You will be refunded and x will be notified) DONE
+- tag alla spesa se già fatta con un altro gruppo DONE
 
 
 
 - diminuire font prezzo (guarda UI revolut) Dionigi
-- tag alla spesa se già fatta con un altro gruppo Dionigi
 
 
 
