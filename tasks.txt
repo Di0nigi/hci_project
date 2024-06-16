@@ -21,10 +21,10 @@
 - icone alle expenses DONE
 - sistemare il rounding della divisione DONE
 - mettere  euro a tutti i prezzi  DONE
+- diminuire font prezzo (guarda UI revolut) DONE
 
 
 
-- diminuire font prezzo (guarda UI revolut) Dionigi
 
 
 
@@ -42,6 +42,7 @@ implementare barra di ricerca per contatti (per aggiungere persone al gruppo) o 
 implementare foto stock per gruppi e e per le persone DONE
 aggiungere data e informazioni sulla lista delle ultime transactions, devono essere enclosed da un rettangolo DONE
 sistemare notifiche come il figma DONE
+per far vedere se hai rejectato/accettato una spesa nella pagina principale del gruppo con tutte le spese, riusare stesse icone che vengono usate nella pagina di una specifica spesa (spunta verde, croce rossa, orologio giallo) DONE
 
 
 
@@ -52,6 +53,5 @@ sistemare notifiche come il figma DONE
 **creazione spesa
 
 **pagina del gruppo, lista delle spese
-per far vedere se hai rejectato/accettato una spesa nella pagina principale del gruppo con tutte le spese, riusare stesse icone che vengono usate nella pagina di una specifica spesa (spunta verde, croce rossa, orologio giallo) Dionigi
 
 **notifiche

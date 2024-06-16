@@ -24,7 +24,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 25,
     yourAmount: 5,
     group: "India trip",
-    image:  imageStrings[1],
+    image: imageStrings[1],
   )
 ];
 List<expenseInfo> expensesInfo = [
@@ -163,6 +163,7 @@ Widget updateExpenseview() {
               e.groupName == revExp[index].group &&
               e.author == revExp[index].author) {
             revExp[index].visibility = e.rejected;
+
             //print(revExp[index].visibility);
             print("non capisco");
           }
@@ -184,22 +185,24 @@ class expenseContainer extends StatelessWidget {
   final double totalAmount;
   final double yourAmount;
   bool visibility = false;
+  int iconIndex = 0;
 
   final String group;
 
-  expenseContainer({
-    
-    required this.title,
-    required this.date,
-    required this.author,
-    required this.totalAmount,
-    required this.yourAmount,
-    required this.group,
-    required this.image
-  });
+  expenseContainer(
+      {required this.title,
+      required this.date,
+      required this.author,
+      required this.totalAmount,
+      required this.yourAmount,
+      required this.group,
+      required this.image});
 
   @override
   Widget build(BuildContext context) {
+    if (this.visibility == true) {
+      iconIndex = 1;
+    }
     return GestureDetector(
       child: Padding(
           padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
@@ -214,17 +217,13 @@ class expenseContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                        width: width/6,
-                                                height: width/6,
-                        
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                            image: DecorationImage(
-                              
-                              fit: BoxFit.cover,
-                                image: AssetImage(this.image))),
-                      )
-                ,
+                  width: width / 6,
+                  height: width / 6,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      image: DecorationImage(
+                          fit: BoxFit.cover, image: AssetImage(this.image))),
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -247,12 +246,10 @@ class expenseContainer extends StatelessWidget {
                           fontFamily: 'impact',
                           fontSize: 30),
                     ),
-                    Visibility(
-                        visible: this.visibility,
-                        child: Icon(
-                          icons[1].icon,
-                          color: icons[1].color,
-                        ))
+                    Icon(
+                      icons[iconIndex].icon,
+                      color: icons[iconIndex].color,
+                    )
                   ],
                 ),
                 Column(
