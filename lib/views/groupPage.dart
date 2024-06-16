@@ -90,7 +90,7 @@ class _groupPageState extends State<groupPage> {
                         nameString,
                         style: TextStyle(
                             fontFamily: 'impact',
-                            fontSize: 10,
+                            fontSize: 12,
                             color: Color.fromARGB(137, 0, 0, 0)),
                       ),
                     ])),
@@ -261,7 +261,7 @@ class expenseContainer extends StatelessWidget {
                   children: [
                     Padding(padding: EdgeInsets.all(4)),
                     Text(
-                      this.totalAmount.toString(),
+                      "${this.totalAmount.toString()}\u20AC",
                       style: TextStyle(
                           color: Color.fromARGB(255, 0, 0, 0),
                           fontFamily: 'impact',
@@ -269,7 +269,7 @@ class expenseContainer extends StatelessWidget {
                     ),
                     Padding(padding: EdgeInsets.all(7)),
                     Text(
-                      "you payed ${this.yourAmount.toString()}",
+                      "you payed ${this.yourAmount.toStringAsFixed(2)}\u20AC",
                       style: TextStyle(
                           color: Color.fromARGB(255, 106, 106, 106),
                           fontFamily: 'impact',
