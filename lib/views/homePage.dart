@@ -14,11 +14,12 @@ class HomePage extends StatefulWidget {
 }
 
 List<String> imageStrings = [
-  "assets\\groupsIcons\\Midjourney-.jpg",
-  "assets\\groupsIcons\\Midjourney-9.jpg",
-  "assets\\groupsIcons\\Nikio_a_wide_shot_of_a_giant_forgotten_pyramid_in_a_endless_des_be46ac84-f2cc-4034-9f34-d8d7a5cf9efc.png",
-  "assets\\groupsIcons\\Operation_Upshot-Knothole_-_Badger_001.jpg",
-  "assets\\groupsIcons\\starry-sky-4.jpg"
+ "assets\\groupsIcons\\3189523.jpg",
+  "assets\\groupsIcons\\D430_36_724_1200.jpg",
+  "assets\\groupsIcons\\D430_36_724_1210.jpg",
+  "assets\\groupsIcons\\ee9804028e8b743d7b19be2e376fe2fb.jpg",
+  "assets\\groupsIcons\\group-of-friends-1433011.jpg",
+  "assets\\groupsIcons\\iStock-1001540984-2.jpg"
 ];
 
 String walletIcon = "assets\\walletIcon.png";
@@ -26,13 +27,30 @@ String userIcon = "assets\\userIcon.png";
 String arrowIcon = "assets\\arrowIcon.png";
 Widget groupView = updateview();
 int groups = 0;
+
 List<groupContainer> groupsList = [
-  groupContainer(title: "India trip", numMembers: 4, amount: 235, imageGroup: imageStrings[0],)
+  groupContainer(title: "India trip", numMembers: 6, amount: 0, imageGroup: imageStrings[0],
+  ),
+  groupContainer(title: "Uni bros", numMembers: 5, amount: 0, imageGroup: imageStrings[1],
+  ),
+  groupContainer(title: "Work lunch", numMembers: 5, amount: 0, imageGroup: imageStrings[2],
+  ),
+  groupContainer(title: "Rent & bills", numMembers: 5, amount: 0, imageGroup: imageStrings[3],
+  ),
 ];
 List<groupInfo> groupsInfo = [
   groupInfo(
       groupName: "India trip",
-      partecipants: ["Annalaura", "Dionigi", "Giordano", "Emanuele", "You"])
+      partecipants: ["Annalaura", "Dionigi", "Giordano", "Emanuele","Bill", "You"]),
+      groupInfo(
+      groupName: "Uni bros",
+      partecipants: ["Annalaura","Saad", "Emanuele", "Kilian" ,"You"]),
+      groupInfo(
+      groupName: "Work lunch",
+      partecipants: ['Christian' "Jason", "Kevin", "Zoe", "You"]),
+      groupInfo(
+      groupName: "Rent & bills",
+      partecipants: ["Mark", "Dionigi", "Kilian", "Saad", "You"]),
 ];
 newGroupPage newGP = newGroupPage();
 
@@ -157,7 +175,7 @@ class groupContainer extends StatelessWidget {
           child: Container(
             height: 109,
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 153, 0, 255),
+                color: Color.fromARGB(177, 0, 173, 0),
                 border: Border.all(width: 0),
                 borderRadius: BorderRadius.circular(10)),
             padding: EdgeInsets.fromLTRB(10, 5, 10, 0),

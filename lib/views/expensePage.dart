@@ -31,6 +31,9 @@ class expensePage extends StatefulWidget {
       group: this.group);
 }
 
+expenseInfo nowExpense =
+    expenseInfo(members: [""], groupName: "", expenseName: "", author: "");
+
 List<rejStatus> icons = [
   rejStatus(icon: Icons.timer, color: Color.fromARGB(255, 242, 202, 0)),
   rejStatus(
@@ -43,28 +46,227 @@ bool ismine = false;
 bool isRejected = false;
 
 List<textDec> textdecorations = [];
-List<memberIfo> membersList = [];
-List<memberIfo> membersInfo = [
-  memberIfo(
+List<memberInfo> membersList = [];
+List<memberInfo> membersInfo = [
+  memberInfo(
       name: "Annalaura",
       status: icons[1],
       rej: true,
       group: "India trip",
       expense: "thai dinner"),
-  memberIfo(
+  memberInfo(
       name: "Giordano",
       status: icons[0],
       rej: false,
       group: "India trip",
       expense: "thai dinner"),
-  memberIfo(
+  memberInfo(
       name: "You",
       status: icons[0],
       rej: false,
       group: "India trip",
-      expense: "thai dinner")
+      expense: "thai dinner"),
+  memberInfo(
+      name: "Annalaura",
+      status: icons[0],
+      rej: false,
+      group: "Uni bros",
+      expense: "Coffe"),
+  memberInfo(
+      name: "Emanuele",
+      status: icons[1],
+      rej: true,
+      group: "Uni bros",
+      expense: "Coffe"),
+  memberInfo(
+      name: "Kilian",
+      status: icons[0],
+      rej: false,
+      group: "Uni bros",
+      expense: "Coffe"),
+  memberInfo(
+      name: "You",
+      status: icons[0],
+      rej: false,
+      group: "Uni bros",
+      expense: "Coffe"),
+  memberInfo(
+      name: "Mark",
+      status: icons[1],
+      rej: true,
+      group: "Rent & bills",
+      expense: "Rent"),
+  memberInfo(
+      name: "Dionigi",
+      status: icons[0],
+      rej: false,
+      group: "Rent & bills",
+      expense: "Rent"),
+  memberInfo(
+      name: "You",
+      status: icons[0],
+      rej: false,
+      group: "Rent & bills",
+      expense: "Rent"),
+  memberInfo(
+      name: "Annalaura",
+      status: icons[0],
+      rej: false,
+      group: "India trip",
+      expense: "Mumbay hotel"),
+  memberInfo(
+      name: "Bill",
+      status: icons[1],
+      rej: true,
+      group: "India trip",
+      expense: "Mumbay hotel"),
+  memberInfo(
+      name: "Giordano",
+      status: icons[0],
+      rej: false,
+      group: "India trip",
+      expense: "Mumbay hotel"),
+  memberInfo(
+      name: "You",
+      status: icons[0],
+      rej: false,
+      group: "India trip",
+      expense: "Mumbay hotel"),
+  memberInfo(
+      name: "Saad",
+      status: icons[1],
+      rej: true,
+      group: "Rent & bills",
+      expense: "Groceries"),
+  memberInfo(
+      name: "Kilian",
+      status: icons[0],
+      rej: false,
+      group: "Rent & bills",
+      expense: "Groceries"),
+  memberInfo(
+      name: "You",
+      status: icons[0],
+      rej: false,
+      group: "Rent & bills",
+      expense: "Groceries"),
+  memberInfo(
+      name: "Christian",
+      status: icons[0],
+      rej: false,
+      group: "Work lunch",
+      expense: "Bella italia"),
+  memberInfo(
+      name: "Jason",
+      status: icons[1],
+      rej: true,
+      group: "Work lunch",
+      expense: "Bella italia"),
+  memberInfo(
+      name: "Kevin",
+      status: icons[0],
+      rej: false,
+      group: "Work lunch",
+      expense: "Bella italia"),
+  memberInfo(
+      name: "Zoe",
+      status: icons[0],
+      rej: false,
+      group: "Work lunch",
+      expense: "Bella italia"),
+  memberInfo(
+      name: "You",
+      status: icons[0],
+      rej: false,
+      group: "Work lunch",
+      expense: "Bella italia"),
+  memberInfo(
+      name: "Mark",
+      status: icons[0],
+      rej: false,
+      group: "Rent & bills",
+      expense: "Ikea table"),
+  memberInfo(
+      name: "Kilian",
+      status: icons[1],
+      rej: true,
+      group: "Rent & bills",
+      expense: "Ikea table"),
+  memberInfo(
+      name: "You",
+      status: icons[0],
+      rej: false,
+      group: "Rent & bills",
+      expense: "Ikea table"),
+  memberInfo(
+      name: "Annalaura",
+      status: icons[0],
+      rej: false,
+      group: "India trip",
+      expense: "Blue Lagoon Cafe"),
+  memberInfo(
+      name: "Dionigi",
+      status: icons[1],
+      rej: true,
+      group: "India trip",
+      expense: "Blue Lagoon Cafe"),
+  memberInfo(
+      name: "Bill",
+      status: icons[0],
+      rej: false,
+      group: "India trip",
+      expense: "Blue Lagoon Cafe"),
+  memberInfo(
+      name: "You",
+      status: icons[0],
+      rej: false,
+      group: "India trip",
+      expense: "Blue Lagoon Cafe"),
+  memberInfo(
+      name: "Annalaura",
+      status: icons[0],
+      rej: false,
+      group: "Uni bros",
+      expense: "Calc 1 book"),
+  memberInfo(
+      name: "Emanuele",
+      status: icons[1],
+      rej: true,
+      group: "Uni bros",
+      expense: "Calc 1 book"),
+  memberInfo(
+      name: "Kilian",
+      status: icons[0],
+      rej: false,
+      group: "Uni bros",
+      expense: "Calc 1 book"),
+  memberInfo(
+      name: "You",
+      status: icons[0],
+      rej: false,
+      group: "Uni bros",
+      expense: "Calc 1 book"),
+  memberInfo(
+      name: "Christian",
+      status: icons[0],
+      rej: false,
+      group: "Work lunch",
+      expense: "Work lunch"),
+  memberInfo(
+      name: "Kevin",
+      status: icons[1],
+      rej: true,
+      group: "Work lunch",
+      expense: "Work lunch"),
+  memberInfo(
+      name: "You",
+      status: icons[0],
+      rej: false,
+      group: "Work lunch",
+      expense: "Work lunch"),
 ];
 List<bool?> isChecked = [];
+//List<bool> expenseBool = [false,false,false,false,false,false,false,false,false,false,];
 
 class _expensePageState extends State<expensePage> {
   final String title;
@@ -86,6 +288,7 @@ class _expensePageState extends State<expensePage> {
     currentOnwner = this.author;
     membersList = [];
     expenseNameNow = this.title;
+
     for (int i = 0; i < expense.length; i++) {
       print(expense[i].groupName);
       print(expense[i].expenseName);
@@ -95,8 +298,10 @@ class _expensePageState extends State<expensePage> {
 
       if (expense[i].expenseName == this.title &&
           expense[i].groupName == this.group) {
+        print(expense[i].rejected);
         print("ao");
-        expense[i].rejected = isRejected;
+        expense[i].rejected = false;
+        //nowExpense = expense[i];
         //membersList = expense[i].members;
         for (int j = 0; j < membersInfo.length; j++) {
           if (membersInfo[j].group == expense[i].groupName &&
@@ -116,230 +321,225 @@ class _expensePageState extends State<expensePage> {
       }
     }
     return Scaffold(
-      body: Stack (
-        children: [ 
-          Container(
-            width: width,
-            height: height,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 0, 173, 52),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.zero,
-                            topRight: Radius.zero,
-                            bottomLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(10))),
+        body: Stack(children: [
+      Container(
+        width: width,
+        height: height,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 0, 173, 52),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.zero,
+                        topRight: Radius.zero,
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10))),
+                child: Column(children: [
+                  Padding(padding: EdgeInsets.all(50)),
+                  Container(
+                    width: width,
+                    height: height - height / 2 - height / 3.5,
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                      Padding(padding: EdgeInsets.all(50)),
-                      Container(
-                        width: width,
-                        height: height - height / 2 - height / 3.5,
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              this.title, // prova
-                              style: TextStyle(
-                                  fontFamily: "impact",
-                                  fontSize: 50,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            ),
-                            Padding(padding: EdgeInsets.all(5)),
-                            Text(
-                              this.date,
-                              style: TextStyle(
-                                  fontFamily: "impact",
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.black),
-                            ),
-                            Padding(padding: EdgeInsets.all(2)),
-                            Text(
-                              "${this.amount}€",
-                              style: TextStyle(
-                                  fontFamily: "impact",
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            )
-                          ],
+                        Text(
+                          this.title, // prova
+                          style: TextStyle(
+                              fontFamily: "impact",
+                              fontSize: 50,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black),
                         ),
-                      ),
-                    ])),
-                Padding(padding: EdgeInsets.all(5)),
-                Container(
-                  width: width - 50,
+                        Padding(padding: EdgeInsets.all(5)),
+                        Text(
+                          this.date,
+                          style: TextStyle(
+                              fontFamily: "impact",
+                              fontSize: 20,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black),
+                        ),
+                        Padding(padding: EdgeInsets.all(2)),
+                        Text(
+                          "${this.amount}€",
+                          style: TextStyle(
+                              fontFamily: "impact",
+                              fontSize: 40,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black),
+                        )
+                      ],
+                    ),
+                  ),
+                ])),
+            Padding(padding: EdgeInsets.all(5)),
+            Container(
+              width: width - 50,
+              height: height / 11,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(115, 214, 255, 209),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.zero,
+                      bottomRight: Radius.zero,
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10))),
+              child: Container(
                   height: height / 11,
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(115, 214, 255, 209),
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.zero,
-                          bottomRight: Radius.zero,
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10))),
-                  child: Container(
-                      height: height / 11,
-                      width: width - 50,
-                      color: Color.fromARGB(0, 255, 0, 0),
-                      padding: EdgeInsets.fromLTRB(50, 0, 25, 0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  width: width - 50,
+                  color: Color.fromARGB(0, 255, 0, 0),
+                  padding: EdgeInsets.fromLTRB(50, 0, 25, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "payed by ${this.author}",
+                        style: TextStyle(
+                            fontFamily: "impact",
+                            fontSize: 25,
+                            fontWeight: FontWeight.w100,
+                            color: Color.fromARGB(255, 0, 0, 0)),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "payed by ${this.author}",
+                            "for:",
                             style: TextStyle(
                                 fontFamily: "impact",
                                 fontSize: 25,
                                 fontWeight: FontWeight.w100,
                                 color: Color.fromARGB(255, 0, 0, 0)),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                "for:",
-                                style: TextStyle(
-                                    fontFamily: "impact",
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w100,
-                                    color: Color.fromARGB(255, 0, 0, 0)),
-                              ),
-                            ],
-                          )
                         ],
-                      )),
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(90, 0, 50, 0),
-                  width: width - 50,
-                  height: height -
-                      (height - height / 2 - height / 3.5) -
-                      height / 3 -
-                      height / 13,
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(115, 214, 255, 209),
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.zero,
-                          bottomRight: Radius.zero,
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10))),
-                  child: ListView.builder(
-                    itemCount: membersList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      textDec t = textDec();
-                      if (membersList[index].rej == false) {
-                        t.col = Colors.black;
-                        t.dec = TextDecoration.none;
-                      }
-                      print(this.author);
-                      return Visibility(
-                          visible: !(membersList[index].name == "You" &&
-                              this.author == "You"),
-                          child: Container(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(membersList[index].name,
-                                      style: TextStyle(
-                                        decoration: t.dec,
-                                        fontFamily: "impact",
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w100,
-                                        color: t.col,
-                                      )),
-                                  Icon(
-                                    membersList[index].status.icon,
-                                    color: membersList[index].status.color,
-                                  ),
-                                ]),
-                          ));
-                    },
-                  ),
-                ),
-                Visibility(
-                  visible: !ismine,
-                  child: Container(
-                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                      width: width,
-                      child: Center(
-                          child: Container(
-                        width: width - 70,
-                        height: height / 8,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            openDialog();
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                      )
+                    ],
+                  )),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(90, 0, 50, 0),
+              width: width - 50,
+              height: height -
+                  (height - height / 2 - height / 3.5) -
+                  height / 3 -
+                  height / 13,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(115, 214, 255, 209),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.zero,
+                      bottomRight: Radius.zero,
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10))),
+              child: ListView.builder(
+                itemCount: membersList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  textDec t = textDec();
+                  if (membersList[index].rej == false) {
+                    t.col = Colors.black;
+                    t.dec = TextDecoration.none;
+                  }
+                  print(this.author);
+                  return Visibility(
+                      visible: !(membersList[index].name == "You" &&
+                          this.author == "You"),
+                      child: Container(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                "Reject this expense",
-                                style: TextStyle(
+                              Text(membersList[index].name,
+                                  style: TextStyle(
+                                    decoration: t.dec,
                                     fontFamily: "impact",
-                                    fontSize: 26,
-                                    fontWeight: FontWeight.w300,
-                                    color:
-                                        const Color.fromARGB(255, 255, 255, 255)),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w100,
+                                    color: t.col,
+                                  )),
+                              Icon(
+                                membersList[index].status.icon,
+                                color: membersList[index].status.color,
                               ),
-                              Text(
-                                "-3h 16min",
-                                style: TextStyle(
-                                    fontFamily: "impact",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color:
-                                        const Color.fromARGB(255, 255, 255, 255)),
-                              )
-                            ],
-                          ),
-                          style: ButtonStyle(
-                            //iconSize: MaterialStateProperty.all(25),
-                            padding: MaterialStateProperty.all<EdgeInsets>(
-                                EdgeInsets.all(10)),
-                            alignment: Alignment.center,
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromARGB(255, 178, 49, 49)),
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
+                            ]),
+                      ));
+                },
+              ),
+            ),
+            Visibility(
+                visible: !ismine,
+                child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    width: width,
+                    child: Center(
+                        child: Container(
+                      width: width - 70,
+                      height: height / 8,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          openDialog();
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Reject this expense",
+                              style: TextStyle(
+                                  fontFamily: "impact",
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.w300,
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255)),
+                            ),
+                            Text(
+                              "-3h 16min",
+                              style: TextStyle(
+                                  fontFamily: "impact",
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255)),
+                            )
+                          ],
+                        ),
+                        style: ButtonStyle(
+                          //iconSize: MaterialStateProperty.all(25),
+                          padding: MaterialStateProperty.all<EdgeInsets>(
+                              EdgeInsets.all(10)),
+                          alignment: Alignment.center,
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color.fromARGB(255, 178, 49, 49)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
                             ),
                           ),
                         ),
-                      )
-                    )
-                  )
-                )
-              ],
+                      ),
+                    ))))
+          ],
+        ),
+      ),
+      Positioned(
+        top: 50,
+        left: 20,
+        child: ElevatedButton(
+            child: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
             ),
-          ),
-          Positioned(
-            top: 50,
-            left: 20,
-            child: ElevatedButton(
-                child: Icon(Icons.arrow_back_rounded, color: Colors.white,),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(40, 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  backgroundColor: Colors.black,
-                )
-            ),
-          ),
-        ]
-      )
-    );
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(40, 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+              backgroundColor: Colors.black,
+            )),
+      ),
+    ]));
   }
 
   Future openDialog() => showDialog(
@@ -427,7 +627,15 @@ class _expensePageState extends State<expensePage> {
                           ),
                           onPressed: () {
                             setState(() {
-                              isRejected = true;
+                              for (int y = 0; y < expense.length; y++) {
+                                if (expense[y].expenseName == this.title &&
+                                    expense[y].groupName == this.group) {
+                                  expense[y].rejected = true;
+                                  print("sssssssssssssss");
+                                }
+                              }
+                              //nowExpense.rejected = true;
+                              //isRejected = true;
                               print("aoooo");
                               for (int x = 0; x < membersList.length; x++) {
                                 if (membersList[x].name == "You" &&
@@ -435,6 +643,7 @@ class _expensePageState extends State<expensePage> {
                                     membersList[x].group == groupnameNow) {
                                   membersList[x].status = icons[1];
                                   membersList[x].rej = true;
+                                  print(membersList[x].name);
                                 }
                               }
                               Navigator.pop(context);
@@ -490,14 +699,14 @@ class rejStatus {
   rejStatus({required this.icon, required this.color});
 }
 
-class memberIfo {
+class memberInfo {
   final String name;
   rejStatus status;
   bool rej;
   final String group;
   final String expense;
 
-  memberIfo(
+  memberInfo(
       {required this.name,
       required this.status,
       required this.rej,

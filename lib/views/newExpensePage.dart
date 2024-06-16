@@ -23,33 +23,48 @@ String _amountController = "";
 
 List<Option> lastTransaction = [
   Option(
-      label: "Lunch",
+      label: "Caffè del corso",
       value: 1,
       groupUsed: "",
       date: "3/3/24",
-      price: "55",
+      price: "15.4",
       card: "Mastercard"),
   Option(
-      label: "Movie Tickets",
+      label: "Pharmacy",
       value: 2,
       groupUsed: "",
       date: "1/3/24",
-      price: "15",
+      price: "22.0",
       card: "PostePay"),
   Option(
-      label: "Chewing gums",
+      label: "Pewex",
       value: 3,
       groupUsed: "",
       date: "5/2/24",
-      price: "4",
+      price: "55.6",
       card: "Mastercard"),
   Option(
       label: "Car rental",
       value: 4,
       groupUsed: "",
       date: "19/2/24",
-      price: "30",
-      card: "Visa")
+      price: "109.0",
+      card: "Visa"),
+   Option(
+      label: "Mario's",
+      value: 5,
+      groupUsed: "",
+      date: "16/2/24",
+      price: "61.0",
+      card: "Visa"),
+     Option(
+      label: "Just eat",
+      value: 6,
+      groupUsed: "",
+      date: "1/2/24",
+      price: "25.7",
+      card: "Visa"),
+    
 ];
 int numpartecipants = 0;
 List<bool> partecipantsBool = [];
@@ -508,7 +523,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                     if (r == 1) {
                       rej = true;
                     }
-                    var mem = memberIfo(
+                    var mem = memberInfo(
                         name: expenseMembers[i],
                         group: nowTitle,
                         expense: s.label,
@@ -548,7 +563,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                     if (r == 1) {
                       rej = true;
                     }
-                    var mem = memberIfo(
+                    var mem = memberInfo(
                         name: expenseMembers[i],
                         group: nowTitle,
                         expense: name,

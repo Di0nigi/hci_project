@@ -32,6 +32,9 @@ List<String> contactList = [
   "Christian",
   "Zoe",
   "Jason",
+  "Kevin",
+  "Jordi",
+  "Mark"
 
 ];
 //Widget nameList = buildNameList();
