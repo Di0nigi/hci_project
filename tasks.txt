@@ -17,6 +17,7 @@
 - sbarrare persona che rejecta nel bottone del reject, reject this [name expense] instead of the expense  DONE
 - aggiungere spiegazione sotto il reject (You will be refunded and x will be notified) DONE
 - tag alla spesa se già fatta con un altro gruppo DONE
+- finite di sistemare bottoni
 
 
 
@@ -28,7 +29,6 @@
 - sistemare il rounding della divisione
 - icone alle expenses 
 - cambiare font a tutto in roboto
-- finite di sistemare bottoni
 
 
 -------NUOVE TASK-------
@@ -39,11 +39,11 @@ una spesa oltre le 48 ore può avere solo icone verdi e rosse DONE
 togliere schermata per scelta del default payment method per creare il gruppo, di conseguenza DONE
 mettere anche you tra le persone che possono partecipare alla spesa DONE
 implementare barra di ricerca per contatti (per aggiungere persone al gruppo) o eliminarla DONE
+implementare foto stock per gruppi e e per le persone DONE
 
 
 
 **creazione gruppo
-foto stock per gruppi e e per le persone Dionigi
 
 **pagina di una singola spesa
 

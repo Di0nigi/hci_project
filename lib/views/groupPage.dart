@@ -24,6 +24,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 25,
     yourAmount: 5,
     group: "India trip",
+    image:  imageStrings[1],
   )
 ];
 List<expenseInfo> expensesInfo = [
@@ -128,7 +129,10 @@ class _groupPageState extends State<groupPage> {
             top: 50,
             left: 20,
             child: ElevatedButton(
-                child: Icon(Icons.arrow_back_rounded, color: Colors.white,),
+                child: Icon(
+                  Icons.arrow_back_rounded,
+                  color: Colors.white,
+                ),
                 onPressed: () {
                   Navigator.of(context).push(_createHomeRoute());
                 },
@@ -173,6 +177,7 @@ Widget updateExpenseview() {
 }
 
 class expenseContainer extends StatelessWidget {
+  final String image;
   final String title;
   final String date;
   final String author;
@@ -183,12 +188,14 @@ class expenseContainer extends StatelessWidget {
   final String group;
 
   expenseContainer({
+    
     required this.title,
     required this.date,
     required this.author,
     required this.totalAmount,
     required this.yourAmount,
     required this.group,
+    required this.image
   });
 
   @override
@@ -206,6 +213,18 @@ class expenseContainer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Container(
+                        width: width/6,
+                                                height: width/6,
+                        
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                            image: DecorationImage(
+                              
+                              fit: BoxFit.cover,
+                                image: AssetImage(this.image))),
+                      )
+                ,
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

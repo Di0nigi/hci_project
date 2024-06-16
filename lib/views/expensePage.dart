@@ -357,7 +357,7 @@ class _expensePageState extends State<expensePage> {
               ),
               Padding(padding: EdgeInsets.all(5)),
               Text(
-                "You will be refounded and ${currentOnwner} will be notified",
+                "You will be refunded and ${currentOnwner} will be notified",
                 style: TextStyle(
                   fontFamily: "impact",
                   fontSize: 15,
