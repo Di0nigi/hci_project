@@ -22,10 +22,34 @@ String _nameController = "";
 String _amountController = "";
 
 List<Option> lastTransaction = [
-  Option(label: "Lunch, 25€", value: 1, groupUsed: ""),
-  Option(label: "Movie Tickets, 15€", value: 2, groupUsed: ""),
-  Option(label: "Chewing gums, 3€", value: 3, groupUsed: ""),
-  Option(label: "Car rental, 78€", value: 4, groupUsed: "")
+  Option(
+      label: "Lunch",
+      value: 1,
+      groupUsed: "",
+      date: "3/3/24",
+      price: "55",
+      card: "Mastercard"),
+  Option(
+      label: "Movie Tickets",
+      value: 2,
+      groupUsed: "",
+      date: "1/3/24",
+      price: "15",
+      card: "PostePay"),
+  Option(
+      label: "Chewing gums",
+      value: 3,
+      groupUsed: "",
+      date: "5/2/24",
+      price: "4",
+      card: "Mastercard"),
+  Option(
+      label: "Car rental",
+      value: 4,
+      groupUsed: "",
+      date: "19/2/24",
+      price: "30",
+      card: "Visa")
 ];
 int numpartecipants = 0;
 List<bool> partecipantsBool = [];
@@ -166,51 +190,82 @@ class _newExpensePageState extends State<newExpensePage> {
 
                 return RadioListTile<int>(
                   title: GestureDetector(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          option.label,
-                          style: TextStyle(fontFamily: 'impact', fontSize: 20),
-                        ),
-                        Padding(padding: EdgeInsets.all(10)),
-                        Visibility(
-                            visible: option.groupUsed != "",
-                            child: Container(
-                              padding: EdgeInsets.all(2),
-                              decoration: BoxDecoration(
-                                  color: Color.fromARGB(167, 216, 253, 205),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5)),
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          color: Colors.black, width: 1),
-                                      top: BorderSide(
-                                          color: Colors.black, width: 1),
-                                      right: BorderSide(
-                                          color: Colors.black, width: 1),
-                                      left: BorderSide(
-                                          color: Colors.black, width: 1))),
-                              child: Text(
-                                option.groupUsed,
-                                style: TextStyle(
-                                    fontFamily: 'impact',
-                                    fontSize: 10,
-                                    color: Color.fromARGB(255, 0, 0, 0)),
-                              ),
-                            ))
-                      ],
-                    ),
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 148, 148, 148),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        height: height / 15,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  option.label,
+                                  style: TextStyle(
+                                      fontFamily: 'impact', fontSize: 20),
+                                ),
+                                Padding(padding: EdgeInsets.all(10)),
+                                Text(
+                                  "${option.price}€",
+                                  style: TextStyle(
+                                      fontFamily: 'impact', fontSize: 20),
+                                ),
+                                Padding(padding: EdgeInsets.all(10)),
+                                Visibility(
+                                    visible: option.groupUsed != "",
+                                    child: Container(
+                                      padding: EdgeInsets.all(2),
+                                      decoration: BoxDecoration(
+                                          color: Color.fromARGB(
+                                              167, 216, 253, 205),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5)),
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                  color: Colors.black,
+                                                  width: 1),
+                                              top: BorderSide(
+                                                  color: Colors.black,
+                                                  width: 1),
+                                              right: BorderSide(
+                                                  color: Colors.black,
+                                                  width: 1),
+                                              left: BorderSide(
+                                                  color: Colors.black,
+                                                  width: 1))),
+                                      child: Text(
+                                        option.groupUsed,
+                                        style: TextStyle(
+                                            fontFamily: 'impact',
+                                            fontSize: 10,
+                                            color:
+                                                Color.fromARGB(255, 0, 0, 0)),
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(option.date),
+                                Padding(padding: EdgeInsets.all(10)),
+                                Text(option.card)
+                              ],
+                            )
+                          ],
+                        )),
                     onTap: () {
                       print(option.value);
                       print(_selectedValue);
                       if (_selectedValue == option.value) {
                         setState(() {
                           _selectedValue = -1;
-                          
                         });
-                        
-                     }
+                      }
                     },
                   ),
                   value: option.value,
@@ -406,9 +461,9 @@ class _newExpensePage2State extends State<newExpensePage2> {
                 if (_selectedValue! > -1) {
                   var s = lastTransaction[(_selectedValue! - 1)];
                   lastTransaction[(_selectedValue! - 1)].groupUsed = nowTitle;
-                  var ls = s.label.split(",");
+
                   var d = DateTime.now();
-                  String price = "";
+                  
                   List<String> nums = [
                     "1",
                     "2",
@@ -422,19 +477,19 @@ class _newExpensePage2State extends State<newExpensePage2> {
                     "10"
                   ];
 
-                  for (int j = 0; j < ls[1].length; j++) {
+                  /*for (int j = 0; j < ls[1].length; j++) {
                     if (nums.contains(ls[1][j])) {
                       price = "${price}${ls[1][j]}";
                     }
-                  }
+                  }*/
                   expenseContainer eC = expenseContainer(
-                    title: ls[0],
+                    title: s.label,
                     date:
                         "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
                     author: "You",
-                    totalAmount: double.parse(price),
+                    totalAmount: double.parse(s.price),
                     yourAmount:
-                        (double.parse(price) / (expenseMembers.length + 1)),
+                        (double.parse(s.price) / (expenseMembers.length + 1)),
                     group: nowTitle,
                     image: imageStrings[rn],
                   );
@@ -443,7 +498,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                   expenseInfo eF = expenseInfo(
                     members: expenseMembers,
                     groupName: nowTitle,
-                    expenseName: ls[0],
+                    expenseName: s.label,
                     author: "You",
                   );
                   expensesInfo.add(eF);
@@ -456,7 +511,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                     var mem = memberIfo(
                         name: expenseMembers[i],
                         group: nowTitle,
-                        expense: ls[0],
+                        expense: s.label,
                         status: icons[r],
                         rej: rej);
                     membersInfo.add(mem);
@@ -529,8 +584,17 @@ class Option {
   final String label;
   final int value;
   String groupUsed = "";
+  String date = "";
+  String price = "";
+  String card = "";
 
-  Option({required this.label, required this.value, required this.groupUsed});
+  Option(
+      {required this.label,
+      required this.value,
+      required this.groupUsed,
+      required this.date,
+      required this.price,
+      required this.card});
 }
 
 Route _createExpenseRoute2() {
