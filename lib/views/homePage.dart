@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(60, 60),
+                minimumSize: Size(70, 70),
                 shape: CircleBorder(),
                 backgroundColor: Colors.black,
               )

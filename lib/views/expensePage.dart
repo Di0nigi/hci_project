@@ -116,243 +116,229 @@ class _expensePageState extends State<expensePage> {
       }
     }
     return Scaffold(
-      body: Container(
-        width: width,
-        height: height,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-                decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 0, 173, 52),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.zero,
-                        topRight: Radius.zero,
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10))),
-                child: Column(children: [
-                  Padding(padding: EdgeInsets.all(20)),
-                  Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                    Container(
-                        color: Color.fromARGB(0, 0, 173, 52),
-                        width: 70,
-                        height: 40,
-                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                        child: ElevatedButton(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.arrow_back_rounded,
-                                  color: Colors.white,
-                                ),
-                              ],
-                            ), /*child: */
-                          ),
-                          style: ButtonStyle(
-                            // iconSize: MaterialStateProperty.all(25),
-                            // padding: MaterialStateProperty.all<EdgeInsets>(
-                            //     EdgeInsets.all(6)),
-                            // alignment: Alignment.centerLeft,
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromARGB(255, 0, 0, 0)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        )),
-                  ]),
-                  Padding(padding: EdgeInsets.all(20)),
-                  Container(
-                    width: width,
-                    height: height - height / 2 - height / 3.5,
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+      body: Stack (
+        children: [ 
+          Container(
+            width: width,
+            height: height,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 0, 173, 52),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.zero,
+                            topRight: Radius.zero,
+                            bottomLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(10))),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          this.title, // prova
-                          style: TextStyle(
-                              fontFamily: "impact",
-                              fontSize: 50,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black),
+                      Padding(padding: EdgeInsets.all(50)),
+                      Container(
+                        width: width,
+                        height: height - height / 2 - height / 3.5,
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              this.title, // prova
+                              style: TextStyle(
+                                  fontFamily: "impact",
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            ),
+                            Padding(padding: EdgeInsets.all(5)),
+                            Text(
+                              this.date,
+                              style: TextStyle(
+                                  fontFamily: "impact",
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.black),
+                            ),
+                            Padding(padding: EdgeInsets.all(2)),
+                            Text(
+                              "${this.amount}€",
+                              style: TextStyle(
+                                  fontFamily: "impact",
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            )
+                          ],
                         ),
-                        Padding(padding: EdgeInsets.all(5)),
-                        Text(
-                          this.date,
-                          style: TextStyle(
-                              fontFamily: "impact",
-                              fontSize: 20,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.black),
-                        ),
-                        Padding(padding: EdgeInsets.all(2)),
-                        Text(
-                          "${this.amount}€",
-                          style: TextStyle(
-                              fontFamily: "impact",
-                              fontSize: 40,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black),
-                        )
-                      ],
-                    ),
-                  ),
-                ])),
-            Padding(padding: EdgeInsets.all(5)),
-            Container(
-              width: width - 50,
-              height: height / 11,
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(115, 214, 255, 209),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.zero,
-                      bottomRight: Radius.zero,
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10))),
-              child: Container(
-                  height: height / 11,
-                  width: width - 50,
-                  color: Color.fromARGB(0, 255, 0, 0),
-                  padding: EdgeInsets.fromLTRB(50, 0, 25, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "payed by ${this.author}",
-                        style: TextStyle(
-                            fontFamily: "impact",
-                            fontSize: 25,
-                            fontWeight: FontWeight.w100,
-                            color: Color.fromARGB(255, 0, 0, 0)),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                    ])),
+                Padding(padding: EdgeInsets.all(5)),
+                Container(
+                  width: width - 50,
+                  height: height / 11,
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(115, 214, 255, 209),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.zero,
+                          bottomRight: Radius.zero,
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10))),
+                  child: Container(
+                      height: height / 11,
+                      width: width - 50,
+                      color: Color.fromARGB(0, 255, 0, 0),
+                      padding: EdgeInsets.fromLTRB(50, 0, 25, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "for:",
+                            "payed by ${this.author}",
                             style: TextStyle(
                                 fontFamily: "impact",
                                 fontSize: 25,
                                 fontWeight: FontWeight.w100,
                                 color: Color.fromARGB(255, 0, 0, 0)),
                           ),
-                        ],
-                      )
-                    ],
-                  )),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(90, 0, 50, 0),
-              width: width - 50,
-              height: height -
-                  (height - height / 2 - height / 3.5) -
-                  height / 3 -
-                  height / 13,
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(115, 214, 255, 209),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.zero,
-                      bottomRight: Radius.zero,
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10))),
-              child: ListView.builder(
-                itemCount: membersList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  textDec t = textDec();
-                  if (membersList[index].rej == false) {
-                    t.col = Colors.black;
-                    t.dec = TextDecoration.none;
-                  }
-                  print(this.author);
-                  return Visibility(
-                      visible: !(membersList[index].name == "You" &&
-                          this.author == "You"),
-                      child: Container(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(membersList[index].name,
-                                  style: TextStyle(
-                                    decoration: t.dec,
+                              Text(
+                                "for:",
+                                style: TextStyle(
                                     fontFamily: "impact",
-                                    fontSize: 20,
+                                    fontSize: 25,
                                     fontWeight: FontWeight.w100,
-                                    color: t.col,
-                                  )),
-                              Icon(
-                                membersList[index].status.icon,
-                                color: membersList[index].status.color,
+                                    color: Color.fromARGB(255, 0, 0, 0)),
                               ),
-                            ]),
-                      ));
-                },
-              ),
-            ),
-            Visibility(
-                visible: !ismine,
-                child: Container(
-                    padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    width: width,
-                    child: Center(
-                        child: Container(
-                      width: width - 70,
-                      height: height / 8,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          openDialog();
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Reject this expense",
-                              style: TextStyle(
-                                  fontFamily: "impact",
-                                  fontSize: 26,
-                                  fontWeight: FontWeight.w300,
-                                  color:
-                                      const Color.fromARGB(255, 255, 255, 255)),
-                            ),
-                            Text(
-                              "-3h 16min",
-                              style: TextStyle(
-                                  fontFamily: "impact",
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color:
-                                      const Color.fromARGB(255, 255, 255, 255)),
-                            )
-                          ],
-                        ),
-                        style: ButtonStyle(
-                          //iconSize: MaterialStateProperty.all(25),
-                          padding: MaterialStateProperty.all<EdgeInsets>(
-                              EdgeInsets.all(10)),
-                          alignment: Alignment.center,
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromARGB(255, 178, 49, 49)),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                            ],
+                          )
+                        ],
+                      )),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(90, 0, 50, 0),
+                  width: width - 50,
+                  height: height -
+                      (height - height / 2 - height / 3.5) -
+                      height / 3 -
+                      height / 13,
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(115, 214, 255, 209),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.zero,
+                          bottomRight: Radius.zero,
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10))),
+                  child: ListView.builder(
+                    itemCount: membersList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      textDec t = textDec();
+                      if (membersList[index].rej == false) {
+                        t.col = Colors.black;
+                        t.dec = TextDecoration.none;
+                      }
+                      print(this.author);
+                      return Visibility(
+                          visible: !(membersList[index].name == "You" &&
+                              this.author == "You"),
+                          child: Container(
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(membersList[index].name,
+                                      style: TextStyle(
+                                        decoration: t.dec,
+                                        fontFamily: "impact",
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w100,
+                                        color: t.col,
+                                      )),
+                                  Icon(
+                                    membersList[index].status.icon,
+                                    color: membersList[index].status.color,
+                                  ),
+                                ]),
+                          ));
+                    },
+                  ),
+                ),
+                Visibility(
+                  visible: !ismine,
+                  child: Container(
+                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      width: width,
+                      child: Center(
+                          child: Container(
+                        width: width - 70,
+                        height: height / 8,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            openDialog();
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Reject this expense",
+                                style: TextStyle(
+                                    fontFamily: "impact",
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.w300,
+                                    color:
+                                        const Color.fromARGB(255, 255, 255, 255)),
+                              ),
+                              Text(
+                                "-3h 16min",
+                                style: TextStyle(
+                                    fontFamily: "impact",
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color:
+                                        const Color.fromARGB(255, 255, 255, 255)),
+                              )
+                            ],
+                          ),
+                          style: ButtonStyle(
+                            //iconSize: MaterialStateProperty.all(25),
+                            padding: MaterialStateProperty.all<EdgeInsets>(
+                                EdgeInsets.all(10)),
+                            alignment: Alignment.center,
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color.fromARGB(255, 178, 49, 49)),
+                            shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ))))
-          ],
-        ),
-      ),
+                      )
+                    )
+                  )
+                )
+              ],
+            ),
+          ),
+          Positioned(
+            top: 50,
+            left: 20,
+            child: ElevatedButton(
+                child: Icon(Icons.arrow_back_rounded, color: Colors.white,),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(40, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  backgroundColor: Colors.black,
+                )
+            ),
+          ),
+        ]
+      )
     );
   }
 

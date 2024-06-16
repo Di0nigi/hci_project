@@ -105,7 +105,7 @@ class _newGroupPageState extends State<newGroupPage> {
         ]),
       ),
       Positioned(
-        bottom: 25,
+        bottom: 30,
         right: 20,
         child: ElevatedButton(
             child: Text(
@@ -129,7 +129,7 @@ class _newGroupPageState extends State<newGroupPage> {
             )),
       ),
       Positioned(
-        top: 40,
+        top: 50,
         left: 20,
         child: ElevatedButton(
             child: Icon(Icons.close_rounded, size: 30, color: Colors.white),
@@ -162,79 +162,79 @@ class _newGroupPage2State extends State<newGroupPage2> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(children: [
-      Container(
-        width: width,
-        height: height,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(padding: EdgeInsets.all(60)),
-            Container(
-              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-              child: Text(
-                "Choose the members",
-                style: TextStyle(
-                  fontFamily: "impact",
-                  fontSize: 37,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            Padding(padding: EdgeInsets.all(10)),
-            Visibility(
-              visible: false,
-              child:  Container(
-              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-              width: width - 20,
-              child: TextField(
-                style: TextStyle(
-                    fontFamily: "impact",
-                    fontSize: 15,
-                    color: Color.fromARGB(143, 0, 0, 0),
-                    letterSpacing: 1),
-                controller: MemberController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0),
+          Container(
+            width: width,
+            height: height,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(padding: EdgeInsets.all(60)),
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                  child: Text(
+                    "Choose the members",
+                    style: TextStyle(
+                      fontFamily: "impact",
+                      fontSize: 37,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                  labelText: 'Search a contact',
                 ),
-              ),
-            ),),
-           
-            Container(
-                color: Color.fromARGB(0, 0, 0, 0),
-                width: width,
-                height: height - 400,
-                child: ListView.builder(
-                  itemCount: contactList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                   // print(_filteredLinkedItems);
-                    return Container(
-                        padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                        width: width - 50,
-                        height: 50,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                contactList[index],
-                                style: TextStyle(
-                                    fontSize: 20, fontFamily: 'impact'),
-                              ),
-                              customCheckBox(
-                                name: contactList[index],
-                                val: contactBool[index],
-                              )
-                            ]));
-                  },
-                )),
-          ],
-        ),
-      ),
+                Padding(padding: EdgeInsets.all(10)),
+                Visibility(
+                  visible: false,
+                  child:  Container(
+                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                  width: width - 20,
+                  child: TextField(
+                    style: TextStyle(
+                        fontFamily: "impact",
+                        fontSize: 15,
+                        color: Color.fromARGB(143, 0, 0, 0),
+                        letterSpacing: 1),
+                    controller: MemberController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      labelText: 'Search a contact',
+                    ),
+                  ),
+                ),),
+              
+                Container(
+                    color: Color.fromARGB(0, 0, 0, 0),
+                    width: width,
+                    height: height - 400,
+                    child: ListView.builder(
+                      itemCount: contactList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                      // print(_filteredLinkedItems);
+                        return Container(
+                            padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                            width: width - 50,
+                            height: 50,
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    contactList[index],
+                                    style: TextStyle(
+                                        fontSize: 20, fontFamily: 'impact'),
+                                  ),
+                                  customCheckBox(
+                                    name: contactList[index],
+                                    val: contactBool[index],
+                                  )
+                                ]));
+                      },
+                    )),
+              ],
+            ),
+          ),
       Positioned(
-        bottom: 25,
+        bottom: 30,
         right: 20,
         child: ElevatedButton(
             child: Row(
@@ -290,7 +290,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
             )),
       ),
       Positioned(
-        top: 40,
+        top: 50,
         left: 20,
         child: ElevatedButton(
             child:

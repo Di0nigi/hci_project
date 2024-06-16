@@ -72,7 +72,7 @@ class _groupPageState extends State<groupPage> {
             height: height,
             child: Column(
               children: [
-                Padding(padding: EdgeInsets.all(40)),
+                Padding(padding: EdgeInsets.all(50)),
                 Container(
                     padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                     height: height / 9,
@@ -119,22 +119,16 @@ class _groupPageState extends State<groupPage> {
                       });
                 },
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(60, 60),
+                  minimumSize: Size(70, 70),
                   shape: CircleBorder(),
                   backgroundColor: Colors.black,
                 )),
           ),
           Positioned(
-            top: 25,
+            top: 50,
             left: 20,
             child: ElevatedButton(
-                child: Text(
-                  "back",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      letterSpacing: 1),
-                ),
+                child: Icon(Icons.arrow_back_rounded, color: Colors.white,),
                 onPressed: () {
                   Navigator.of(context).push(_createHomeRoute());
                 },
