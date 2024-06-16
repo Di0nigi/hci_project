@@ -202,11 +202,15 @@ class _newExpensePageState extends State<newExpensePage> {
                       ],
                     ),
                     onTap: () {
-                     // print(option.value);
-                      //print(_selectedValue);
-                      //if (_selectedValue == option.value) {
-                       // _selectedValue = null;
-                      // }
+                      print(option.value);
+                      print(_selectedValue);
+                      if (_selectedValue == option.value) {
+                        setState(() {
+                          _selectedValue = -1;
+                          
+                        });
+                        
+                     }
                     },
                   ),
                   value: option.value,
