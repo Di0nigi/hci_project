@@ -466,7 +466,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                 title: ls[0],
                                 date:
                                     "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
-                                author: "you",
+                                author: "You",
                                 totalAmount: double.parse(price),
                                 yourAmount: (double.parse(price) /
                                     (expenseMembers.length + 1)),
@@ -477,12 +477,12 @@ class _newExpensePage2State extends State<newExpensePage2> {
                               members: expenseMembers,
                               groupName: nowTitle,
                               expenseName: ls[0],
-                              author: "you",
+                              author: "You",
                             );
                             expensesInfo.add(eF);
                             for (int i = 0; i < expenseMembers.length; i++) {
                               var rej = false;
-                              int r = Random().nextInt(3);
+                              int r =0;
                               if (r == 1) {
                                 rej = true;
                               }
@@ -504,7 +504,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                 title: name,
                                 date:
                                     "${d.day.toString()}/${d.month.toString()}/${d.year.toString()}",
-                                author: "you",
+                                author: "You",
                                 totalAmount: double.parse(price),
                                 yourAmount: (double.parse(price) /
                                     (expenseMembers.length + 1)),
@@ -515,12 +515,12 @@ class _newExpensePage2State extends State<newExpensePage2> {
                               members: expenseMembers,
                               groupName: nowTitle,
                               expenseName: name,
-                              author: "you",
+                              author: "You",
                             );
                             expensesInfo.add(eF);
                             for (int i = 0; i < expenseMembers.length; i++) {
                               var rej = false;
-                              int r = Random().nextInt(3);
+                              int r =0;
                               if (r == 1) {
                                 rej = true;
                               }

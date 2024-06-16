@@ -32,7 +32,7 @@ List<groupContainer> groupsList = [
 List<groupInfo> groupsInfo = [
   groupInfo(
       groupName: "India trip",
-      partecipants: ["Annalaura", "Dionigi", "Giordano", "Emanuele"])
+      partecipants: ["Annalaura", "Dionigi", "Giordano", "Emanuele", "You"])
 ];
 newGroupPage newGP = newGroupPage();
 

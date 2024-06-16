@@ -13,6 +13,9 @@ class newGroupPage extends StatefulWidget {
   State<newGroupPage> createState() => _newGroupPageState();
 }
 
+//List<String> _filteredItems = [];
+//List<int> _filteredLinkedItems = [];
+
 List<Option> _options = [
   Option(label: 'Visa', value: 1),
   Option(label: 'Mastercard', value: 2),
@@ -28,7 +31,8 @@ List<String> contactList = [
   "Kilian",
   "Christian",
   "Zoe",
-  "Jason"
+  "Jason",
+
 ];
 //Widget nameList = buildNameList();
 final TitleController = TextEditingController();
@@ -49,100 +53,96 @@ class _newGroupPageState extends State<newGroupPage> {
       contactBool.add(f);
     }
     return Scaffold(
-      body: Stack (
-        children: [ 
+        body: Stack(children: [
+      Container(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Padding(padding: EdgeInsets.all(60)),
           Container(
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Padding(padding: EdgeInsets.all(60)),
-              Container(
-                width: width,
-                padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                child: Text(
-                  "Create a new group",
-                  style: TextStyle(
-                    fontFamily: "impact",
-                    fontSize: 45,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
+            width: width,
+            padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+            child: Text(
+              "Create a new group",
+              style: TextStyle(
+                fontFamily: "impact",
+                fontSize: 45,
+                color: Colors.black,
+                fontWeight: FontWeight.w400,
               ),
-              Padding(padding: EdgeInsets.all(40)),
-              Container(
-                padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
-                child: Text(
-                  "Choose a new name for the group",
-                  style: TextStyle(
-                    fontFamily: "impact",
-                    fontSize: 15,
-                    color: Color.fromARGB(128, 0, 0, 0),
-                  ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.all(2)),
-              Container(
-                padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                width: width - 20,
-                color: const Color.fromARGB(0, 255, 193, 7),
-                child: TextField(
-                  style: TextStyle(
-                      fontFamily: "impact",
-                      fontSize: 15,
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      letterSpacing: 1),
-                  controller: TitleController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    labelText: '',
-                  ),
-                ),
-              ),
-            ]
             ),
           ),
-          Positioned(
-            bottom: 25,
-            right: 20,
-            child: ElevatedButton(
-                child: Text("continue",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            letterSpacing: 1),
-                  ),
-                onPressed: () {
-                  if (TitleController.text != "") {
-                  Navigator.of(context).push(_createRoute());
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(40, 50),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25),
-                  ),
-                  backgroundColor: Colors.black,
-                )
+          Padding(padding: EdgeInsets.all(40)),
+          Container(
+            padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+            child: Text(
+              "Choose a new name for the group",
+              style: TextStyle(
+                fontFamily: "impact",
+                fontSize: 15,
+                color: Color.fromARGB(128, 0, 0, 0),
+              ),
             ),
           ),
-          Positioned(
-            top: 40,
-            left: 20,
-            child: ElevatedButton(
-              child: Icon(Icons.close_rounded, size: 30, color: Colors.white),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(60, 60),
-                shape: CircleBorder(),
-                backgroundColor: Colors.black,
-              )
+          Padding(padding: EdgeInsets.all(2)),
+          Container(
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            width: width - 20,
+            color: const Color.fromARGB(0, 255, 193, 7),
+            child: TextField(
+              style: TextStyle(
+                  fontFamily: "impact",
+                  fontSize: 15,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  letterSpacing: 1),
+              controller: TitleController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                labelText: '',
+              ),
             ),
           ),
-        ]
-      )
-    );
+        ]),
+      ),
+      Positioned(
+        bottom: 25,
+        right: 20,
+        child: ElevatedButton(
+            child: Text(
+              "continue",
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  letterSpacing: 1),
+            ),
+            onPressed: () {
+              if (TitleController.text != "") {
+                Navigator.of(context).push(_createRoute());
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(40, 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+              backgroundColor: Colors.black,
+            )),
+      ),
+      Positioned(
+        top: 40,
+        left: 20,
+        child: ElevatedButton(
+            child: Icon(Icons.close_rounded, size: 30, color: Colors.white),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(60, 60),
+              shape: CircleBorder(),
+              backgroundColor: Colors.black,
+            )),
+      ),
+    ]));
   }
 }
 
@@ -161,120 +161,190 @@ class _newGroupPage2State extends State<newGroupPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      body: Stack (
-        children: [
-          Container(
-            width: width,
-            height: height,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        body: Stack(children: [
+      Container(
+        width: width,
+        height: height,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(padding: EdgeInsets.all(60)),
+            Container(
+              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              child: Text(
+                "Choose the members",
+                style: TextStyle(
+                  fontFamily: "impact",
+                  fontSize: 37,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            Padding(padding: EdgeInsets.all(10)),
+            Visibility(
+              visible: false,
+              child:  Container(
+              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              width: width - 20,
+              child: TextField(
+                style: TextStyle(
+                    fontFamily: "impact",
+                    fontSize: 15,
+                    color: Color.fromARGB(143, 0, 0, 0),
+                    letterSpacing: 1),
+                controller: MemberController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  labelText: 'Search a contact',
+                ),
+              ),
+            ),),
+           
+            Container(
+                color: Color.fromARGB(0, 0, 0, 0),
+                width: width,
+                height: height - 400,
+                child: ListView.builder(
+                  itemCount: contactList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                   // print(_filteredLinkedItems);
+                    return Container(
+                        padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                        width: width - 50,
+                        height: 50,
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                contactList[index],
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: 'impact'),
+                              ),
+                              customCheckBox(
+                                name: contactList[index],
+                                val: contactBool[index],
+                              )
+                            ]));
+                  },
+                )),
+          ],
+        ),
+      ),
+      Positioned(
+        bottom: 25,
+        right: 20,
+        child: ElevatedButton(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(padding: EdgeInsets.all(60)),
-                Container(
-                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  child: Text(
-                    "Choose the members",
-                    style: TextStyle(
-                      fontFamily: "impact",
-                      fontSize: 37,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
+                Text(
+                  "Done",
+                  style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontSize: 19,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      letterSpacing: 1),
                 ),
-                Padding(padding: EdgeInsets.all(10)),
-                Container(
-                  padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                  width: width - 20,
-                  child: TextField(
-                    style: TextStyle(
-                        fontFamily: "impact",
-                        fontSize: 15,
-                        color: Color.fromARGB(143, 0, 0, 0),
-                        letterSpacing: 1),
-                    controller: MemberController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      labelText: 'Search a contact',
-                    ),
-                  ),
-                ),
-                Container(
-                    color: Color.fromARGB(0, 0, 0, 0),
-                    width: width,
-                    height: height - 400,
-                    child: ListView.builder(
-                      itemCount:
-                          contactList.length, // Replace with your data list length
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                            padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                            width: width - 50,
-                            height: 50,
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(contactList[index],style: TextStyle(fontSize: 20, fontFamily: 'impact'),),
-                                  customCheckBox(
-                                    name: contactList[index],
-                                    val: contactBool[index],
-                                  )
-                                ]));
-                      },
-                    )),
-                
+                Icon(Icons.check_rounded)
               ],
             ),
-          ),
-          Positioned(
-            bottom: 25,
-            right: 20,
-            child: ElevatedButton(
-                child: Text("continue",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            letterSpacing: 1),
-                  ),
-                onPressed: () {
-                  if (groupParticipants.length > 0) {
-                    Navigator.of(context).push(_createRoute2());
+            onPressed: () {
+              print("pressed");
+              if (groupParticipants.length > 0) {
+                setState(() {
+                  int r = Random().nextInt(imageStrings.length);
+                  if (TitleController.text != "") {
+                    people += 1;
+                    groupParticipants.add("You");
+                    groupContainer g = groupContainer(
+                        imageGroup: imageStrings[r],
+                        amount: 0,
+                        title: TitleController.text,
+                        numMembers: people);
+                    groupsList.add(g);
+
+                    groupInfo gf = groupInfo(
+                        groupName: TitleController.text,
+                        partecipants: groupParticipants);
+                    groupsInfo.add(gf);
+
+                    groupView = updateview();
                   }
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(40, 50),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25),
-                  ),
-                  backgroundColor: Colors.black,
-                )
-            ),
-          ),
-          Positioned(
-            top: 40,
-            left: 20,
-            child: ElevatedButton(
-              child: Icon(Icons.arrow_back_rounded, size: 30, color: Colors.white),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(60, 60),
-                shape: CircleBorder(),
-                backgroundColor: Colors.black,
-              )
-            ),
-          ),
-        ]
-      )
-    );
+                });
+                groupParticipants = [];
+                TitleController.text = "";
+                //_selectedValue = -1;
+                Navigator.of(context).push(_createDownRoute());
+                MemberController.text = "";
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(40, 50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+              backgroundColor: Colors.black,
+            )),
+      ),
+      Positioned(
+        top: 40,
+        left: 20,
+        child: ElevatedButton(
+            child:
+                Icon(Icons.arrow_back_rounded, size: 30, color: Colors.white),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(60, 60),
+              shape: CircleBorder(),
+              backgroundColor: Colors.black,
+            )),
+      ),
+    ]));
   }
+
+ /* void _filterItems() {
+    setState(() {
+      _filteredItems = [];
+      _filteredLinkedItems = [];
+
+      for (int i = 0; i < contactList.length; i++) {
+        if (contactList[i]
+            .toLowerCase()
+            .contains(MemberController.text.toLowerCase())) {
+          print(i);
+          _filteredItems.add(contactList[i]);
+          _filteredLinkedItems.add(i);
+        }
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _filteredItems.addAll(contactList);
+    for (int k = 0; k < contactBool.length; k++) {
+      _filteredLinkedItems.add(k);
+    }
+
+    MemberController.addListener(_filterItems);
+  }
+
+  @override
+  void dispose() {
+    MemberController.removeListener(_filterItems);
+    MemberController.dispose();
+    super.dispose();
+  }*/
 }
 
 // SECOND ADDGROUP SCREEN
-
+/*
 class newGroupPage3 extends StatefulWidget {
   const newGroupPage3({super.key});
 
@@ -422,7 +492,7 @@ class _newGroupPage3State extends State<newGroupPage3> {
       )
     );
   }
-}
+}*/
 
 class Option {
   final String label;
@@ -449,7 +519,7 @@ Route _createRoute() {
     },
   );
 }
-
+/*
 Route _createRoute2() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) =>
@@ -467,7 +537,7 @@ Route _createRoute2() {
       );
     },
   );
-}
+}*/
 
 Route _createDownRoute() {
   return PageRouteBuilder(
@@ -515,6 +585,8 @@ class customCheckBoxState extends State<customCheckBox> {
     return Checkbox(
         value: val,
         onChanged: (bool? value) {
+          print(val);
+          print(this.name);
           if (val == false) {
             people += 1;
             groupParticipants.add(this.name);

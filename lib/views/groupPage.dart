@@ -28,7 +28,7 @@ List<expenseContainer> expenseList = [
 ];
 List<expenseInfo> expensesInfo = [
   expenseInfo(
-    members: ["Annalaura", "Francesco"],
+    members: ["Annalaura", "Giordano", "You"],
     groupName: "India trip",
     expenseName: "thai dinner",
     author: "Billy",
@@ -62,8 +62,7 @@ class _groupPageState extends State<groupPage> {
       nameString = nameString + "${nameList[i]}" + ",";
     }
     ;
-    nameString = nameString + "you";
-    print(nameString);
+    nameString = nameString.substring(0, nameString.length - 1);
     newExpensePage newExp = newExpensePage(title: groupnameNow);
     return Scaffold(
       body: Stack(
@@ -237,12 +236,9 @@ class expenseContainer extends StatelessWidget {
                     ),
                     Visibility(
                         visible: this.visibility,
-                        child: Text(
-                          "rejected",
-                          style: TextStyle(
-                              fontFamily: 'impact',
-                              fontSize: 20,
-                              color: Color.fromARGB(255, 178, 49, 49)),
+                        child: Icon(
+                          icons[1].icon,
+                          color: icons[1].color,
                         ))
                   ],
                 ),

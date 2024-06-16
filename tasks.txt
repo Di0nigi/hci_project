@@ -32,22 +32,26 @@
 
 
 -------NUOVE TASK-------
+togliere scritta status DONE
+cambiamento icone dello stato: quando viene creata una spesa sono tutti gialli DONE
+una spesa ancora entro le 48 ore può solo avere icone gialle e rosse in caso qualcuno abbia rejectato DONE
+una spesa oltre le 48 ore può avere solo icone verdi e rosse DONE
+togliere schermata per scelta del default payment method per creare il gruppo, di conseguenza DONE
+mettere anche you tra le persone che possono partecipare alla spesa DONE
+implementare barra di ricerca per contatti (per aggiungere persone al gruppo) o eliminarla DONE
 
-creazione gruppo
-togliere schermata per scelta del default payment method per creare il gruppo, di conseguenza
-implementare barra di ricerca per contatti (per aggiungere persone al gruppo) o eliminarla
-foto stock per gruppi e e per le persone
 
-pagina di una singola spesa
-togliere scritta status
-cambiamento icone dello stato: quando viene creata una spesa sono tutti gialli
-una spesa ancora entro le 48 ore può solo avere icone gialle e rosse in caso qualcuno abbia rejectato
-una spesa oltre le 48 ore può avere solo icone verdi e rosse
 
-creazione spesa
+**creazione gruppo
+foto stock per gruppi e e per le persone Dionigi
+
+**pagina di una singola spesa
+
+**creazione spesa
 aggiungere data e informazioni sulla lista delle ultime transactions, devono essere enclosed da un rettangolo
-mettere anche you tra le persone che possono partecipare alla spesa
 
-pagina del gruppo, lista delle spese
-per far vedere se hai rejectato/accettato una spesa nella pagina principale del gruppo con tutte le spese, riusare stesse icone che vengono usate nella pagina di una specifica spesa (spunta verde, croce rossa, orologio giallo)
+**pagina del gruppo, lista delle spese
+per far vedere se hai rejectato/accettato una spesa nella pagina principale del gruppo con tutte le spese, riusare stesse icone che vengono usate nella pagina di una specifica spesa (spunta verde, croce rossa, orologio giallo) Dionigi
 
+**notifiche
+sistemare notifiche come il figma

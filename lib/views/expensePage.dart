@@ -52,7 +52,13 @@ List<memberIfo> membersInfo = [
       group: "India trip",
       expense: "thai dinner"),
   memberIfo(
-      name: "Francesco",
+      name: "Giordano",
+      status: icons[0],
+      rej: false,
+      group: "India trip",
+      expense: "thai dinner"),
+  memberIfo(
+      name: "You",
       status: icons[0],
       rej: false,
       group: "India trip",
@@ -230,7 +236,7 @@ class _expensePageState extends State<expensePage> {
                             color: Color.fromARGB(255, 0, 0, 0)),
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             "for:",
@@ -239,14 +245,6 @@ class _expensePageState extends State<expensePage> {
                                 fontSize: 25,
                                 fontWeight: FontWeight.w100,
                                 color: Color.fromARGB(255, 0, 0, 0)),
-                          ),
-                          Text(
-                            "status",
-                            style: TextStyle(
-                                fontFamily: "impact",
-                                fontSize: 21,
-                                fontWeight: FontWeight.w100,
-                                color: Color.fromARGB(168, 0, 0, 0)),
                           ),
                         ],
                       )
@@ -275,25 +273,28 @@ class _expensePageState extends State<expensePage> {
                     t.col = Colors.black;
                     t.dec = TextDecoration.none;
                   }
-                  return Container(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            membersList[index].name,
-                            style: TextStyle(
-                                decoration: t.dec,
-                                fontFamily: "impact",
-                                fontSize: 20,
-                                fontWeight: FontWeight.w100,
-                                color: t.col,)
-                          ),
-                          Icon(
-                            membersList[index].status.icon,
-                            color: membersList[index].status.color,
-                          ),
-                        ]),
-                  );
+                  print(this.author);
+                  return Visibility(
+                      visible: !(membersList[index].name == "You" &&
+                          this.author == "You"),
+                      child: Container(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(membersList[index].name,
+                                  style: TextStyle(
+                                    decoration: t.dec,
+                                    fontFamily: "impact",
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w100,
+                                    color: t.col,
+                                  )),
+                              Icon(
+                                membersList[index].status.icon,
+                                color: membersList[index].status.color,
+                              ),
+                            ]),
+                      ));
                 },
               ),
             ),
@@ -442,6 +443,14 @@ class _expensePageState extends State<expensePage> {
                             setState(() {
                               isRejected = true;
                               print("aoooo");
+                              for (int x = 0; x < membersList.length; x++) {
+                                if (membersList[x].name == "You" &&
+                                    membersList[x].expense == expenseNameNow &&
+                                    membersList[x].group == groupnameNow) {
+                                  membersList[x].status = icons[1];
+                                  membersList[x].rej = true;
+                                }
+                              }
                               Navigator.pop(context);
                               Navigator.of(context).push(_createGroupRoute());
                             });
@@ -497,8 +506,8 @@ class rejStatus {
 
 class memberIfo {
   final String name;
-  final rejStatus status;
-  final bool rej;
+  rejStatus status;
+  bool rej;
   final String group;
   final String expense;
 
