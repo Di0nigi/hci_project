@@ -202,12 +202,24 @@ class _newExpensePageState extends State<newExpensePage> {
               itemBuilder: (context, index) {
                 final option = lastTransaction[index];
 
-                return RadioListTile<int>(
+                return Padding(
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 3) , child: Align(
+                    alignment: Alignment.topLeft,
+                     child: Container(                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(130, 148, 148, 148),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        height: height / 15,
+                        width: width-50,
+                        child: RadioListTile<int>(
+
+                  
                   title: GestureDetector(
                     child: Container(
                         padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                         decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 148, 148, 148),
+                            color: Color.fromARGB(0, 148, 148, 148),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         height: height / 15,
@@ -279,6 +291,11 @@ class _newExpensePageState extends State<newExpensePage> {
                         setState(() {
                           _selectedValue = -1;
                         });
+                      } else {
+                        setState(() {
+                           _selectedValue = option.value;
+                        });
+                       
                       }
                     },
                   ),
@@ -293,7 +310,7 @@ class _newExpensePageState extends State<newExpensePage> {
                       });
                     }
                   },
-                );
+                ))));
               },
             ),
           ),
