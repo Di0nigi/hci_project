@@ -31,7 +31,18 @@ class expensePage extends StatefulWidget {
       group: this.group);
 }
 
-List<bool> boolExpenses = [false,false,false,false,false,false,false,false,false,false];
+List<bool> boolExpenses = [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false
+];
 expenseInfo nowExpense =
     expenseInfo(members: [""], groupName: "", expenseName: "", author: "");
 
@@ -43,6 +54,8 @@ List<rejStatus> icons = [
 ];
 String currentOnwner = "";
 String expenseNameNow = "";
+String groupNameNowInd = "";
+
 bool ismine = false;
 bool isRejected = false;
 
@@ -289,6 +302,7 @@ class _expensePageState extends State<expensePage> {
     currentOnwner = this.author;
     membersList = [];
     expenseNameNow = this.title;
+    groupNameNowInd = this.group;
 
     for (int i = 0; i < expense.length; i++) {
       print(expense[i].groupName);
@@ -641,7 +655,7 @@ class _expensePageState extends State<expensePage> {
                               for (int x = 0; x < membersList.length; x++) {
                                 if (membersList[x].name == "You" &&
                                     membersList[x].expense == expenseNameNow &&
-                                    membersList[x].group == groupnameNow) {
+                                    membersList[x].group == groupNameNowInd) {
                                   membersList[x].status = icons[1];
                                   membersList[x].rej = true;
                                   print(membersList[x].name);
@@ -676,7 +690,7 @@ class expenseInfo {
 Route _createGroupRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => groupPage(
-      groupName: groupnameNow,
+      groupName: groupNameNowInd,
       gInfo: groupsInfo,
     ),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
