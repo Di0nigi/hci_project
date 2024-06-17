@@ -28,6 +28,7 @@ class _notificationPageState extends State<notificationPage> {
   Widget build(BuildContext context) {
     boolNotifications = [];
     notifications = [];
+    //to check the indeces
     for (int i = 0; i < expenseList.length; i++) {
       expenseContainer ex = expenseList[i];
       bool f = false;
