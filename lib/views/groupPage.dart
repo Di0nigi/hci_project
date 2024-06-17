@@ -24,7 +24,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 25,
     yourAmount: 5,
     group: "India trip",
-    image: imageStrings[2],
+    image: peopleStrings[0],
   ),
   expenseContainer(
     title: "Coffe",
@@ -33,7 +33,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 4,
     yourAmount: 1,
     group: "Uni bros",
-    image: imageStrings[2],
+    image: peopleStrings[1],
   ),
   expenseContainer(
     title: "Rent",
@@ -42,7 +42,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 400,
     yourAmount: 150,
     group: "Rent & bills",
-    image: imageStrings[3],
+    image: peopleStrings[3],
   ),
   expenseContainer(
     title: "Mumbay hotel",
@@ -51,7 +51,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 2500,
     yourAmount: 675,
     group: "India trip",
-    image: imageStrings[1],
+    image: peopleStrings[7],
   ),
   expenseContainer(
     title: "Groceries",
@@ -60,7 +60,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 123,
     yourAmount: 27,
     group: "Rent & bills",
-    image: imageStrings[0],
+    image: peopleStrings[5],
   ),
   expenseContainer(
     title: "Bella italia",
@@ -69,7 +69,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 43,
     yourAmount: 12,
     group: "Work lunch",
-    image: imageStrings[3],
+    image: peopleStrings[9],
   ),
   expenseContainer(
     title: "Ikea table",
@@ -78,7 +78,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 55,
     yourAmount: 20,
     group: "Rent & bills",
-    image: imageStrings[1],
+    image: peopleStrings[5],
   ),
   expenseContainer(
     title: "Blue Lagoon Cafe",
@@ -87,7 +87,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 10,
     yourAmount: 3,
     group: "India trip",
-    image: imageStrings[4],
+    image: peopleStrings[4],
   ),
   expenseContainer(
     title: "Calc 1 book",
@@ -96,7 +96,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 67,
     yourAmount: 32,
     group: "Uni bros",
-    image: imageStrings[4],
+    image: peopleStrings[8],
   ),
   expenseContainer(
     title: "Work lunch",
@@ -105,7 +105,7 @@ List<expenseContainer> expenseList = [
     totalAmount: 80,
     yourAmount: 30,
     group: "Work lunch",
-    image: imageStrings[2],
+    image: peopleStrings[6],
   )
 ];
 List<expenseInfo> expensesInfo = [

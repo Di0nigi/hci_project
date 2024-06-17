@@ -50,21 +50,20 @@ List<Option> lastTransaction = [
       date: "19/2/24",
       price: "109.0",
       card: "Visa"),
-   Option(
+  Option(
       label: "Mario's",
       value: 5,
       groupUsed: "",
       date: "16/2/24",
       price: "61.0",
       card: "Visa"),
-     Option(
+  Option(
       label: "Just eat",
       value: 6,
       groupUsed: "",
       date: "1/2/24",
       price: "25.7",
       card: "Visa"),
-    
 ];
 int numpartecipants = 0;
 List<bool> partecipantsBool = [];
@@ -363,8 +362,15 @@ class newExpensePage2 extends StatefulWidget {
 }
 
 class _newExpensePage2State extends State<newExpensePage2> {
+  String title = "";
   @override
   Widget build(BuildContext context) {
+    if (_selectedValue != -1) {
+      title = lastTransaction[(_selectedValue! - 1)].label;
+    } else {
+      title = _nameController;
+    }
+
     return Scaffold(
         body: Stack(children: [
       Container(
@@ -382,7 +388,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Create a new expense",
+                    "Select the participants for ${this.title}",
                     style: TextStyle(
                         fontFamily: "impact",
                         fontSize: 40,
@@ -391,7 +397,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                   ),
                   Padding(padding: EdgeInsets.all(5)),
                   Text(
-                    " select the participants",
+                    "",
                     style: TextStyle(
                         fontFamily: "impact",
                         fontSize: 20,
@@ -478,7 +484,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                   lastTransaction[(_selectedValue! - 1)].groupUsed = nowTitle;
 
                   var d = DateTime.now();
-                  
+
                   List<String> nums = [
                     "1",
                     "2",
@@ -506,7 +512,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                     yourAmount:
                         (double.parse(s.price) / (expenseMembers.length + 1)),
                     group: nowTitle,
-                    image: imageStrings[rn],
+                    image: youImage,
                   );
                   expenseList.add(eC);
 
@@ -546,7 +552,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                     yourAmount:
                         (double.parse(price) / (expenseMembers.length + 1)),
                     group: nowTitle,
-                    image: imageStrings[rn],
+                    image: youImage,
                   );
                   expenseList.add(eC);
 
@@ -580,6 +586,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
               expenseMembers = [];
               nameController.text = "";
               amountController.text = "";
+              boolExpenses.add(false);
 
               Navigator.of(context).push(_createExpenseDownRoute());
             },

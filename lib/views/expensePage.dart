@@ -311,7 +311,7 @@ class _expensePageState extends State<expensePage> {
           }
         }
         isChecked = List.generate(expense[i].members.length, (index) => false);
-        if (expense[i].author == "you") {
+        if (expense[i].author == "You") {
           ismine = true;
         } else {
           ismine = false;
