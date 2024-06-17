@@ -20,6 +20,14 @@ List<String> imageStrings = [
   "assets\\groupsIcons\\ee9804028e8b743d7b19be2e376fe2fb.jpg",
   "assets\\groupsIcons\\group-of-friends-1433011.jpg",
   "assets\\groupsIcons\\iStock-1001540984-2.jpg"
+  "assets\\groupsIcons\\1150782.jpg",
+  "assets\\groupsIcons\\1762722.jpg",
+   "assets\\groupsIcons\\2142273.jpg",
+  "assets\\groupsIcons\\2240505.jpg",
+   "assets\\groupsIcons\\55951582e7770265038ed54b9727e891.jpg",
+    "assets\\groupsIcons\\group-of-friends-GG55TE.jpg",
+  "assets\\groupsIcons\\stock-photo-enjoying-dinner-with-friends-top-view-of-group-of-people-having-dinner-together-while-sitting-at-348320018.jpg"
+
 ];
 
 String walletIcon = "assets\\walletIcon.png";

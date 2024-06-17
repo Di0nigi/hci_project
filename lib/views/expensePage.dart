@@ -31,6 +31,7 @@ class expensePage extends StatefulWidget {
       group: this.group);
 }
 
+List<bool> boolExpenses = [false,false,false,false,false,false,false,false,false,false];
 expenseInfo nowExpense =
     expenseInfo(members: [""], groupName: "", expenseName: "", author: "");
 
@@ -300,7 +301,7 @@ class _expensePageState extends State<expensePage> {
           expense[i].groupName == this.group) {
         print(expense[i].rejected);
         print("ao");
-        expense[i].rejected = false;
+        expense[i].rejected = boolExpenses[i];
         //nowExpense = expense[i];
         //membersList = expense[i].members;
         for (int j = 0; j < membersInfo.length; j++) {
@@ -630,7 +631,7 @@ class _expensePageState extends State<expensePage> {
                               for (int y = 0; y < expense.length; y++) {
                                 if (expense[y].expenseName == this.title &&
                                     expense[y].groupName == this.group) {
-                                  expense[y].rejected = true;
+                                  boolExpenses[y] = true;
                                   print("sssssssssssssss");
                                 }
                               }
