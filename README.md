@@ -11,4 +11,6 @@
 Join the herd and experience the ease of seamless, automated expense splitting with CashCows!
 
 This mock-App was made for an Human Computer Interaction exam, where we were tasked with building an expense sharing App.
-It was coded using flutter and the Apk for android can be found in the APK folder.
+It was coded using Dart and Flutter and the Apk for android can be found in the APK folder.
+
+All the info and the process on the developing can be found in the project report.
