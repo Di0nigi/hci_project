@@ -112,7 +112,7 @@ class _newExpensePageState extends State<newExpensePage> {
                   Text(
                     "Create a new expense",
                     style: TextStyle(
-                      fontFamily: "impact",
+                      fontFamily: "roboto",
                       fontSize: 40,
                       color: Colors.black,
                     ),
@@ -121,7 +121,7 @@ class _newExpensePageState extends State<newExpensePage> {
                   Text(
                     "manually add an expense",
                     style: TextStyle(
-                        fontFamily: "impact",
+                        fontFamily: "roboto",
                         fontSize: 20,
                         color: const Color.fromARGB(137, 0, 0, 0),
                         fontWeight: FontWeight.w400),
@@ -138,7 +138,7 @@ class _newExpensePageState extends State<newExpensePage> {
                 Expanded(
                   child: TextField(
                     enabled: _selectedValue == -1,
-                    style: TextStyle(fontFamily: 'impact', fontSize: 12),
+                    style: TextStyle(fontFamily: 'roboto', fontSize: 12),
                     controller: amountController,
                     keyboardType:
                         TextInputType.numberWithOptions(decimal: true),
@@ -155,7 +155,7 @@ class _newExpensePageState extends State<newExpensePage> {
                 Expanded(
                   child: TextField(
                     enabled: _selectedValue == -1,
-                    style: TextStyle(fontFamily: 'impact', fontSize: 12),
+                    style: TextStyle(fontFamily: 'roboto', fontSize: 12),
                     controller: nameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -175,7 +175,7 @@ class _newExpensePageState extends State<newExpensePage> {
                 Text(
                   "or",
                   style: TextStyle(
-                      fontFamily: "impact",
+                      fontFamily: "roboto",
                       fontSize: 17,
                       color: Color.fromARGB(137, 0, 0, 0),
                       fontWeight: FontWeight.w300),
@@ -184,7 +184,7 @@ class _newExpensePageState extends State<newExpensePage> {
                 Text(
                   "select from latest transactions",
                   style: TextStyle(
-                      fontFamily: "impact",
+                      fontFamily: "roboto",
                       fontSize: 20,
                       color: Color.fromARGB(137, 0, 0, 0),
                       fontWeight: FontWeight.w400),
@@ -203,14 +203,14 @@ class _newExpensePageState extends State<newExpensePage> {
                 final option = lastTransaction[index];
 
                 return Padding(
-                  padding: EdgeInsets.fromLTRB(30, 0, 30, 3) , child: Align(
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 5) , child: Align(
                     alignment: Alignment.topLeft,
-                     child: Container(                        padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                     child: Container(                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                         decoration: BoxDecoration(
                             color: Color.fromARGB(130, 148, 148, 148),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
-                        height: height / 15,
+                        height: height / 12,
                         width: width-50,
                         child: RadioListTile<int>(
 
@@ -232,13 +232,13 @@ class _newExpensePageState extends State<newExpensePage> {
                                 Text(
                                   option.label,
                                   style: TextStyle(
-                                      fontFamily: 'impact', fontSize: 20),
+                                      fontFamily: 'roboto', fontSize: 20),
                                 ),
                                 Padding(padding: EdgeInsets.all(10)),
                                 Text(
                                   "${option.price}€",
                                   style: TextStyle(
-                                      fontFamily: 'impact', fontSize: 20),
+                                      fontFamily: 'roboto', fontSize: 20),
                                 ),
                                 Padding(padding: EdgeInsets.all(10)),
                                 Visibility(
@@ -266,7 +266,7 @@ class _newExpensePageState extends State<newExpensePage> {
                                       child: Text(
                                         option.groupUsed,
                                         style: TextStyle(
-                                            fontFamily: 'impact',
+                                            fontFamily: 'roboto',
                                             fontSize: 10,
                                             color:
                                                 Color.fromARGB(255, 0, 0, 0)),
@@ -397,7 +397,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
           Padding(padding: EdgeInsets.all(50)),
           Container(
             width: width,
-            height: height / 4,
+            height: height / 3.8,
             color: Color.fromARGB(0, 0, 255, 42),
             padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
             child: Column(
@@ -407,7 +407,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                   Text(
                     "Select the participants for ${this.title}",
                     style: TextStyle(
-                        fontFamily: "impact",
+                        fontFamily: "roboto",
                         fontSize: 40,
                         color: Colors.black,
                         fontWeight: FontWeight.w400),
@@ -416,7 +416,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                   Text(
                     "",
                     style: TextStyle(
-                        fontFamily: "impact",
+                        fontFamily: "roboto",
                         fontSize: 20,
                         color: Color.fromARGB(137, 0, 0, 0),
                         fontWeight: FontWeight.w300),
@@ -445,7 +445,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                                 Text(
                                   partecipants[index],
                                   style: TextStyle(
-                                      fontFamily: 'impact', fontSize: 25),
+                                      fontFamily: 'roboto', fontSize: 25),
                                 ),
                                 customPartecipantCheckBox(
                                   val: partecipantsBool[index],

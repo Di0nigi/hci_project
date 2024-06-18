@@ -90,13 +90,13 @@ class _notificationPageState extends State<notificationPage> {
             child: Text(
               "Notification",
               style: TextStyle(
-                fontFamily: "impact",
+                fontFamily: "roboto",
                 fontSize: 35,
                 color: const Color.fromARGB(255, 0, 0, 0),
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.all(18)),
+          Padding(padding: EdgeInsets.all(12)),
           Container(
             width: width,
             height: height - 200,
@@ -163,7 +163,7 @@ class notificationContainer extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Color.fromARGB(152, 181, 181, 181),
                 borderRadius: BorderRadius.all(Radius.circular(10))),
-            height: height / 9,
+            height: height / 8,
             width: width - 100,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -171,17 +171,17 @@ class notificationContainer extends StatelessWidget {
                 children: [
                   Text(
                     this.groupTitle,
-                    style: TextStyle(fontFamily: 'impact', fontSize: 25),
+                    style: TextStyle(fontFamily: 'roboto', fontSize: 25),
                   ),
                   Text(
                       '${this.ownerExpense} payed ${this.price}€ for "${this.expenseTitle}".',
-                      style: TextStyle(fontFamily: 'impact', fontSize: 15)),
+                      style: TextStyle(fontFamily: 'roboto', fontSize: 15)),
                   Text('You payed ${this.yourAmount}€',
-                      style: TextStyle(fontFamily: 'impact', fontSize: 15)),
+                      style: TextStyle(fontFamily: 'roboto', fontSize: 15)),
                   //Padding(padding: EdgeInsets.all(5)),
                   Text("click to see more details on the expense’s status",
                       style: TextStyle(
-                          fontFamily: 'impact',
+                          fontFamily: 'roboto',
                           fontSize: 12,
                           color: Color.fromARGB(170, 0, 0, 0)))
                 ]),

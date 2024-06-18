@@ -66,7 +66,7 @@ class _newGroupPageState extends State<newGroupPage> {
             child: Text(
               "Create a new group",
               style: TextStyle(
-                fontFamily: "impact",
+                fontFamily: "roboto",
                 fontSize: 45,
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
@@ -79,7 +79,7 @@ class _newGroupPageState extends State<newGroupPage> {
             child: Text(
               "Choose a new name for the group",
               style: TextStyle(
-                fontFamily: "impact",
+                fontFamily: "roboto",
                 fontSize: 15,
                 color: Color.fromARGB(128, 0, 0, 0),
               ),
@@ -92,7 +92,7 @@ class _newGroupPageState extends State<newGroupPage> {
             color: const Color.fromARGB(0, 255, 193, 7),
             child: TextField(
               style: TextStyle(
-                  fontFamily: "impact",
+                  fontFamily: "roboto",
                   fontSize: 15,
                   color: Color.fromARGB(255, 0, 0, 0),
                   letterSpacing: 1),
@@ -177,7 +177,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
                   child: Text(
                     "Choose the members",
                     style: TextStyle(
-                      fontFamily: "impact",
+                      fontFamily: "roboto",
                       fontSize: 37,
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
@@ -192,7 +192,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
                   width: width - 20,
                   child: TextField(
                     style: TextStyle(
-                        fontFamily: "impact",
+                        fontFamily: "roboto",
                         fontSize: 15,
                         color: Color.fromARGB(143, 0, 0, 0),
                         letterSpacing: 1),
@@ -224,7 +224,7 @@ class _newGroupPage2State extends State<newGroupPage2> {
                                   Text(
                                     contactList[index],
                                     style: TextStyle(
-                                        fontSize: 20, fontFamily: 'impact'),
+                                        fontSize: 20, fontFamily: 'roboto'),
                                   ),
                                   customCheckBox(
                                     name: contactList[index],
@@ -373,7 +373,7 @@ class _newGroupPage3State extends State<newGroupPage3> {
                   child: Text(
                     "Choose the default payment method",
                     style: TextStyle(
-                      fontFamily: "impact",
+                      fontFamily: "roboto",
                       fontSize: 37,
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
@@ -386,7 +386,7 @@ class _newGroupPage3State extends State<newGroupPage3> {
                   child: Text(
                     "When a friend pays for you, your share of the expense is going to be automatically taken from this card.",
                     style: TextStyle(
-                      fontFamily: "impact",
+                      fontFamily: "roboto",
                       fontSize: 15,
                       color: Color.fromARGB(255, 125, 125, 125),
                       fontWeight: FontWeight.w300,
@@ -405,7 +405,7 @@ class _newGroupPage3State extends State<newGroupPage3> {
                       return RadioListTile<int>(
                         title: Text(option.label, style: 
                         TextStyle(
-                          fontSize: 25, fontFamily: 'impact'
+                          fontSize: 25, fontFamily: 'roboto'
                         ),),
                         value: option.value,
                         groupValue: _selectedValue,

@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                 color: Color.fromARGB(0, 255, 0, 0),
                 child: Text(
                   "My groups",
-                  style: TextStyle(fontFamily: "impact", fontSize: 30),
+                  style: TextStyle(fontFamily: "roboto", fontSize: 30),
                 ),
               ),
               Padding(padding: EdgeInsets.all(15)),
@@ -238,7 +238,7 @@ class groupContainer extends StatelessWidget {
                         this.title,
                         style: TextStyle(
                             color: Color.fromARGB(255, 255, 255, 255),
-                            fontFamily: 'impact',
+                            fontFamily: 'roboto',
                             fontSize: 35),
                       ),
                     ],
@@ -252,7 +252,7 @@ class groupContainer extends StatelessWidget {
                           this.numMembers.toString(),
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'impact',
+                              fontFamily: 'roboto',
                               fontSize: 30),
                         ),
                         Container(
@@ -268,7 +268,7 @@ class groupContainer extends StatelessWidget {
                           this.amount.toString(),
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'impact',
+                              fontFamily: 'roboto',
                               fontSize: 30),
                         ),
                       ],

@@ -363,7 +363,7 @@ class _expensePageState extends State<expensePage> {
                         Text(
                           this.title, // prova
                           style: TextStyle(
-                              fontFamily: "impact",
+                              fontFamily: "roboto",
                               fontSize: 50,
                               fontWeight: FontWeight.w400,
                               color: Colors.black),
@@ -372,16 +372,16 @@ class _expensePageState extends State<expensePage> {
                         Text(
                           this.date,
                           style: TextStyle(
-                              fontFamily: "impact",
+                              fontFamily: "roboto",
                               fontSize: 20,
-                              fontWeight: FontWeight.w300,
+                              fontWeight: FontWeight.w400,
                               color: Colors.black),
                         ),
                         Padding(padding: EdgeInsets.all(2)),
                         Text(
                           "${this.amount}€",
                           style: TextStyle(
-                              fontFamily: "impact",
+                              fontFamily: "roboto",
                               fontSize: 40,
                               fontWeight: FontWeight.w400,
                               color: Colors.black),
@@ -412,9 +412,9 @@ class _expensePageState extends State<expensePage> {
                       Text(
                         "payed by ${this.author}",
                         style: TextStyle(
-                            fontFamily: "impact",
+                            fontFamily: "roboto",
                             fontSize: 25,
-                            fontWeight: FontWeight.w100,
+                            fontWeight: FontWeight.w400,
                             color: Color.fromARGB(255, 0, 0, 0)),
                       ),
                       Row(
@@ -423,9 +423,9 @@ class _expensePageState extends State<expensePage> {
                           Text(
                             "for:",
                             style: TextStyle(
-                                fontFamily: "impact",
+                                fontFamily: "roboto",
                                 fontSize: 25,
-                                fontWeight: FontWeight.w100,
+                                fontWeight: FontWeight.w400,
                                 color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         ],
@@ -466,9 +466,9 @@ class _expensePageState extends State<expensePage> {
                               Text(membersList[index].name,
                                   style: TextStyle(
                                     decoration: t.dec,
-                                    fontFamily: "impact",
+                                    fontFamily: "roboto",
                                     fontSize: 20,
-                                    fontWeight: FontWeight.w100,
+                                    fontWeight: FontWeight.w400,
                                     color: t.col,
                                   )),
                               Icon(
@@ -499,16 +499,16 @@ class _expensePageState extends State<expensePage> {
                             Text(
                               "Reject this expense",
                               style: TextStyle(
-                                  fontFamily: "impact",
+                                  fontFamily: "roboto",
                                   fontSize: 26,
-                                  fontWeight: FontWeight.w300,
+                                  fontWeight: FontWeight.w400,
                                   color:
                                       const Color.fromARGB(255, 255, 255, 255)),
                             ),
                             Text(
                               "-3h 16min",
                               style: TextStyle(
-                                  fontFamily: "impact",
+                                  fontFamily: "roboto",
                                   fontSize: 15,
                                   fontWeight: FontWeight.w400,
                                   color:
@@ -565,7 +565,7 @@ class _expensePageState extends State<expensePage> {
               Text(
                 "Do you want to reject ${expenseNameNow}?",
                 style: TextStyle(
-                  fontFamily: "impact",
+                  fontFamily: "roboto",
                   fontSize: 25,
                   color: Color.fromARGB(255, 0, 0, 0),
                 ),
@@ -574,7 +574,7 @@ class _expensePageState extends State<expensePage> {
               Text(
                 "You will be refunded and ${currentOnwner} will be notified",
                 style: TextStyle(
-                  fontFamily: "impact",
+                  fontFamily: "roboto",
                   fontSize: 15,
                   color: Color.fromARGB(137, 0, 0, 0),
                 ),
@@ -594,7 +594,7 @@ class _expensePageState extends State<expensePage> {
                           child: Text(
                             "Cancel",
                             style: TextStyle(
-                                fontFamily: "impact",
+                                fontFamily: "roboto",
                                 fontSize: 15,
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 letterSpacing: 1),
@@ -625,7 +625,7 @@ class _expensePageState extends State<expensePage> {
                           child: Text(
                             "Reject",
                             style: TextStyle(
-                                fontFamily: "impact",
+                                fontFamily: "roboto",
                                 fontSize: 15,
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 letterSpacing: 1),

@@ -217,7 +217,7 @@ class _groupPageState extends State<groupPage> {
                       Text(
                         groupnameNow,
                         style: TextStyle(
-                            fontFamily: "impact",
+                            fontFamily: "roboto",
                             fontSize: 40,
                             color: Color.fromARGB(255, 0, 0, 0),
                             letterSpacing: 1),
@@ -225,7 +225,7 @@ class _groupPageState extends State<groupPage> {
                       Text(
                         nameString,
                         style: TextStyle(
-                            fontFamily: 'impact',
+                            fontFamily: 'roboto',
                             fontSize: 12,
                             color: Color.fromARGB(137, 0, 0, 0)),
                       ),
@@ -370,7 +370,7 @@ class expenseContainer extends StatelessWidget {
                           "${this.author}",
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: 'impact',
+                              fontFamily: 'roboto',
                               fontSize: 15),
                         ),
                       ],
@@ -379,7 +379,7 @@ class expenseContainer extends StatelessWidget {
                       this.title,
                       style: TextStyle(
                           color: Color.fromARGB(255, 0, 0, 0),
-                          fontFamily: 'impact',
+                          fontFamily: 'roboto',
                           fontSize: 20),
                     ),
                     Icon(
@@ -397,7 +397,7 @@ class expenseContainer extends StatelessWidget {
                       "${this.totalAmount.toString()}\u20AC",
                       style: TextStyle(
                           color: Color.fromARGB(255, 0, 0, 0),
-                          fontFamily: 'impact',
+                          fontFamily: 'roboto',
                           fontSize: 25),
                     ),
                     Padding(padding: EdgeInsets.all(7)),
@@ -405,7 +405,7 @@ class expenseContainer extends StatelessWidget {
                       "you payed ${this.yourAmount.toStringAsFixed(2)}\u20AC",
                       style: TextStyle(
                           color: Color.fromARGB(255, 106, 106, 106),
-                          fontFamily: 'impact',
+                          fontFamily: 'roboto',
                           fontSize: 15),
                     ),
                   ],
