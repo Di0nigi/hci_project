@@ -88,8 +88,8 @@ List<memberInfo> membersInfo = [
       expense: "Coffe"),
   memberInfo(
       name: "Emanuele",
-      status: icons[1],
-      rej: true,
+      status: icons[0],
+      rej: false,
       group: "Uni bros",
       expense: "Coffe"),
   memberInfo(
@@ -106,8 +106,8 @@ List<memberInfo> membersInfo = [
       expense: "Coffe"),
   memberInfo(
       name: "Mark",
-      status: icons[1],
-      rej: true,
+      status: icons[0],
+      rej: false,
       group: "Rent & bills",
       expense: "Rent"),
   memberInfo(
@@ -148,8 +148,8 @@ List<memberInfo> membersInfo = [
       expense: "Grand hotel"),
   memberInfo(
       name: "Saad",
-      status: icons[1],
-      rej: true,
+      status: icons[0],
+      rej: false,
       group: "Rent & bills",
       expense: "Groceries"),
   memberInfo(
@@ -220,8 +220,8 @@ List<memberInfo> membersInfo = [
       expense: "Blue Cafe"),
   memberInfo(
       name: "Dionigi",
-      status: icons[1],
-      rej: true,
+      status: icons[0],
+      rej: false,
       group: "India trip",
       expense: "Blue Cafe"),
   memberInfo(
