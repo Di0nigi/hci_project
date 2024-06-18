@@ -102,9 +102,9 @@ class _newExpensePageState extends State<newExpensePage> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(padding: EdgeInsets.all(50)),
           Container(
-            color: const Color.fromARGB(0, 33, 149, 243),
+            color: Color.fromARGB(0, 0, 140, 255),
             width: width,
-            height: height / 7,
+            height: height / 5,
             padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -132,7 +132,7 @@ class _newExpensePageState extends State<newExpensePage> {
             padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
             width: width - 20,
             height: height / 8,
-            color: Color.fromRGBO(212, 212, 212, 0),
+            color: Color.fromRGBO(0, 255, 64, 0),
             child: Column(
               children: [
                 Expanded(
@@ -168,7 +168,7 @@ class _newExpensePageState extends State<newExpensePage> {
           ),
           Container(
             width: width,
-            height: height / 6,
+            height: height / 8,
             padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
             child: Column(
               children: [
@@ -176,11 +176,11 @@ class _newExpensePageState extends State<newExpensePage> {
                   "or",
                   style: TextStyle(
                       fontFamily: "roboto",
-                      fontSize: 17,
+                      fontSize: 20,
                       color: Color.fromARGB(137, 0, 0, 0),
                       fontWeight: FontWeight.w300),
                 ),
-                Padding(padding: EdgeInsets.all(15)),
+                Padding(padding: EdgeInsets.all(10)),
                 Text(
                   "select from latest transactions",
                   style: TextStyle(
@@ -193,10 +193,10 @@ class _newExpensePageState extends State<newExpensePage> {
             ),
           ),
           Container(
-            color: Color.fromARGB(0, 255, 0, 0),
+            color: Color.fromARGB(0, 253, 0, 0),
             width: width,
             height:
-                height - 40 - height / 8 - height / 8 - height / 6 - height / 5,
+                height - 40 - height / 8 - height / 8 - height / 6 - height / 9.41,
             child: ListView.builder(
               itemCount: lastTransaction.length,
               itemBuilder: (context, index) {
@@ -527,7 +527,7 @@ class _newExpensePage2State extends State<newExpensePage2> {
                     author: "You",
                     totalAmount: double.parse(s.price),
                     yourAmount:
-                        (double.parse(s.price) / (expenseMembers.length + 1)),
+                        (double.parse(s.price) / (expenseMembers.length)),
                     group: nowTitle,
                     image: youImage,
                   );

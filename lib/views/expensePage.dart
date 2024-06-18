@@ -127,25 +127,25 @@ List<memberInfo> membersInfo = [
       status: icons[0],
       rej: false,
       group: "India trip",
-      expense: "Mumbay hotel"),
+      expense: "Grand hotel"),
   memberInfo(
       name: "Bill",
       status: icons[1],
       rej: true,
       group: "India trip",
-      expense: "Mumbay hotel"),
+      expense: "Grand hotel"),
   memberInfo(
       name: "Giordano",
       status: icons[0],
       rej: false,
       group: "India trip",
-      expense: "Mumbay hotel"),
+      expense: "Grand hotel"),
   memberInfo(
       name: "You",
       status: icons[0],
       rej: false,
       group: "India trip",
-      expense: "Mumbay hotel"),
+      expense: "Grand hotel"),
   memberInfo(
       name: "Saad",
       status: icons[1],
@@ -217,25 +217,25 @@ List<memberInfo> membersInfo = [
       status: icons[0],
       rej: false,
       group: "India trip",
-      expense: "Blue Lagoon Cafe"),
+      expense: "Blue Cafe"),
   memberInfo(
       name: "Dionigi",
       status: icons[1],
       rej: true,
       group: "India trip",
-      expense: "Blue Lagoon Cafe"),
+      expense: "Blue Cafe"),
   memberInfo(
       name: "Bill",
       status: icons[0],
       rej: false,
       group: "India trip",
-      expense: "Blue Lagoon Cafe"),
+      expense: "Blue Cafe"),
   memberInfo(
       name: "You",
       status: icons[0],
       rej: false,
       group: "India trip",
-      expense: "Blue Lagoon Cafe"),
+      expense: "Blue Cafe"),
   memberInfo(
       name: "Annalaura",
       status: icons[0],
@@ -265,19 +265,19 @@ List<memberInfo> membersInfo = [
       status: icons[0],
       rej: false,
       group: "Work lunch",
-      expense: "Work lunch"),
+      expense: "Mario's"),
   memberInfo(
       name: "Kevin",
       status: icons[1],
       rej: true,
       group: "Work lunch",
-      expense: "Work lunch"),
+      expense: "Mario's"),
   memberInfo(
       name: "You",
       status: icons[0],
       rej: false,
       group: "Work lunch",
-      expense: "Work lunch"),
+      expense: "Mario's"),
 ];
 List<bool?> isChecked = [];
 //List<bool> expenseBool = [false,false,false,false,false,false,false,false,false,false,];
@@ -385,6 +385,14 @@ class _expensePageState extends State<expensePage> {
                               fontSize: 40,
                               fontWeight: FontWeight.w400,
                               color: Colors.black),
+                        ),
+                        Text(
+                          "${(double.parse(this.amount)/membersList.length).toStringAsFixed(1)}€ each",
+                          style: TextStyle(
+                              fontFamily: "roboto",
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400,
+                              color: const Color.fromARGB(172, 0, 0, 0)),
                         )
                       ],
                     ),

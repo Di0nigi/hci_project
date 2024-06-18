@@ -22,7 +22,7 @@ List<expenseContainer> expenseList = [
     date: "20/2/24",
     author: "Billy",
     totalAmount: 25,
-    yourAmount: 5,
+    yourAmount: 8.3,
     group: "India trip",
     image: peopleStrings[0],
   ),
@@ -40,16 +40,16 @@ List<expenseContainer> expenseList = [
     date: "20/2/24",
     author: "Mark",
     totalAmount: 400,
-    yourAmount: 150,
+    yourAmount: 133.3,
     group: "Rent & bills",
     image: peopleStrings[3],
   ),
   expenseContainer(
-    title: "Mumbay hotel",
+    title: "Grand hotel",
     date: "20/2/24",
     author: "Annalaura",
-    totalAmount: 2500,
-    yourAmount: 675,
+    totalAmount: 800,
+    yourAmount: 200,
     group: "India trip",
     image: peopleStrings[7],
   ),
@@ -58,7 +58,7 @@ List<expenseContainer> expenseList = [
     date: "20/2/24",
     author: "Saad",
     totalAmount: 123,
-    yourAmount: 27,
+    yourAmount: 41,
     group: "Rent & bills",
     image: peopleStrings[5],
   ),
@@ -67,7 +67,7 @@ List<expenseContainer> expenseList = [
     date: "14/2/24",
     author: "Zoe",
     totalAmount: 43,
-    yourAmount: 12,
+    yourAmount: 8.6,
     group: "Work lunch",
     image: peopleStrings[9],
   ),
@@ -76,16 +76,16 @@ List<expenseContainer> expenseList = [
     date: "20/2/24",
     author: "Saad",
     totalAmount: 55,
-    yourAmount: 20,
+    yourAmount: 18.3,
     group: "Rent & bills",
     image: peopleStrings[5],
   ),
   expenseContainer(
-    title: "Blue Lagoon Cafe",
+    title: "Blue Cafe",
     date: "20/2/24",
     author: "Dionigi",
     totalAmount: 10,
-    yourAmount: 3,
+    yourAmount: 2.5,
     group: "India trip",
     image: peopleStrings[4],
   ),
@@ -94,16 +94,16 @@ List<expenseContainer> expenseList = [
     date: "20/2/24",
     author: "Kilian",
     totalAmount: 67,
-    yourAmount: 32,
+    yourAmount: 16.8,
     group: "Uni bros",
     image: peopleStrings[8],
   ),
   expenseContainer(
-    title: "Work lunch",
+    title: "Mario's",
     date: "20/2/24",
     author: "Christian",
     totalAmount: 80,
-    yourAmount: 30,
+    yourAmount: 26.7,
     group: "Work lunch",
     image: peopleStrings[6],
   )
@@ -130,7 +130,7 @@ expenseInfo(
 expenseInfo(
     members: ["Annalaura", "Bill", "Giordano", "You"],
     groupName: "India trip",
-    expenseName: "Mumbay hotel",
+    expenseName: "Grand hotel",
     author: "Annalaura",
   ),
 expenseInfo(
@@ -154,7 +154,7 @@ expenseInfo(
 expenseInfo(
     members: ["Annalaura", "Dionigi", "Bill", "You"],
     groupName: "India trip",
-    expenseName: "Blue Lagoon Cafe",
+    expenseName: "Blue Cafe",
     author: "Dionigi",
   ),
 expenseInfo(
@@ -166,7 +166,7 @@ expenseInfo(
 expenseInfo(
     members: ["Christian", "Kevin", "You"],
     groupName: "Work lunch",
-    expenseName: "Work lunch",
+    expenseName: "Mario's",
     author: "Christian",
   ),
 
@@ -226,7 +226,7 @@ class _groupPageState extends State<groupPage> {
                         nameString,
                         style: TextStyle(
                             fontFamily: 'roboto',
-                            fontSize: 12,
+                            fontSize: 17,
                             color: Color.fromARGB(137, 0, 0, 0)),
                       ),
                     ])),
@@ -345,8 +345,8 @@ class expenseContainer extends StatelessWidget {
           child: Container(
             height: 100,
             decoration: BoxDecoration(
-                color: Color.fromARGB(0, 255, 0, 0),
-                border: Border.all(width: 3),
+                color: Color.fromARGB(177, 0, 173, 0),
+                //border: Border.all(width: 3),
                 borderRadius: BorderRadius.circular(10)),
             padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Row(
@@ -361,6 +361,7 @@ class expenseContainer extends StatelessWidget {
                           fit: BoxFit.cover, image: AssetImage(this.image))),
                 ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
@@ -369,7 +370,7 @@ class expenseContainer extends StatelessWidget {
                         Text(
                           "${this.author}",
                           style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
+                              color: Color.fromARGB(255, 255, 255, 255),
                               fontFamily: 'roboto',
                               fontSize: 15),
                         ),
@@ -378,7 +379,7 @@ class expenseContainer extends StatelessWidget {
                     Text(
                       this.title,
                       style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontFamily: 'roboto',
                           fontSize: 20),
                     ),
@@ -389,24 +390,24 @@ class expenseContainer extends StatelessWidget {
                   ],
                 ),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment:  MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Padding(padding: EdgeInsets.all(4)),
                     Text(
                       "${this.totalAmount.toString()}\u20AC",
                       style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontFamily: 'roboto',
                           fontSize: 25),
                     ),
                     Padding(padding: EdgeInsets.all(7)),
                     Text(
-                      "you payed ${this.yourAmount.toStringAsFixed(2)}\u20AC",
+                      "you payed ${this.yourAmount.toStringAsFixed(1)}\u20AC",
                       style: TextStyle(
-                          color: Color.fromARGB(255, 106, 106, 106),
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontFamily: 'roboto',
-                          fontSize: 15),
+                          fontSize: 17),
                     ),
                   ],
                 ),

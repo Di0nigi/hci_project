@@ -80,12 +80,12 @@ class _newGroupPageState extends State<newGroupPage> {
               "Choose a new name for the group",
               style: TextStyle(
                 fontFamily: "roboto",
-                fontSize: 15,
+                fontSize: 18,
                 color: Color.fromARGB(128, 0, 0, 0),
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.all(2)),
+          Padding(padding: EdgeInsets.all(5)),
           Container(
             padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
             width: width - 20,
@@ -101,7 +101,7 @@ class _newGroupPageState extends State<newGroupPage> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-                labelText: '',
+                labelText: 'Ex. “Safari trip”, “Pizza night”…',
               ),
             ),
           ),

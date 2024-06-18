@@ -19,8 +19,8 @@ List<String> imageStrings = [
   "assets\\groupsIcons\\D430_36_724_1210.jpg",
   "assets\\groupsIcons\\ee9804028e8b743d7b19be2e376fe2fb.jpg",
   "assets\\groupsIcons\\group-of-friends-1433011.jpg",
-  "assets\\groupsIcons\\iStock-1001540984-2.jpg"
-      "assets\\groupsIcons\\1150782.jpg",
+  "assets\\groupsIcons\\iStock-1001540984-2.jpg",
+  "assets\\groupsIcons\\1150782.jpg",
   "assets\\groupsIcons\\1762722.jpg",
   "assets\\groupsIcons\\2142273.jpg",
   "assets\\groupsIcons\\2240505.jpg",

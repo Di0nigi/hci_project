@@ -1,16 +1,14 @@
-# hci_project
+### CashCows: Simplifying Group Expense Sharing
 
-A new Flutter project.
+*CashCows* is your go-to app for effortlessly managing and splitting group expenses. Whether you're planning a trip, sharing bills, or organizing events with friends, CashCows streamlines the process, saving you time and hassle.
 
-## Getting Started
+#### Key Features:
+- *Create Groups:* Easily set up groups for different activities and events.
+- *Add Shared Expenses:* Quickly add expenses and let CashCows do the math.
+- *Track the shared expenses:* Keep an eye on all shared expenses in one place.
+- *Reject Expenses:* Ensure accuracy with a simple contest feature, giving you 48 hours to review expenses before they are finalized.
 
-This project is a starting point for a Flutter application.
+Join the herd and experience the ease of seamless, automated expense splitting with CashCows!
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This mock-App was made for an Human Computer Interaction exam, where we were tasked with building an expense sharing App.
+It was coded using flutter and the Apk for android can be found in the APK folder.
