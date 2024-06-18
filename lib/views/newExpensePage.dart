@@ -23,43 +23,36 @@ String _amountController = "";
 
 List<Option> lastTransaction = [
   Option(
-      label: "Caffè del corso",
-      value: 1,
-      groupUsed: "",
-      date: "3/3/24",
-      price: "15.4",
-      card: "Mastercard"),
-  Option(
       label: "Pharmacy",
-      value: 2,
+      value: 1,
       groupUsed: "",
       date: "1/3/24",
       price: "22.0",
       card: "PostePay"),
   Option(
       label: "Pewex",
-      value: 3,
+      value: 2,
       groupUsed: "",
       date: "5/2/24",
       price: "55.6",
       card: "Mastercard"),
   Option(
       label: "Car rental",
-      value: 4,
+      value: 3,
       groupUsed: "",
       date: "19/2/24",
       price: "109.0",
       card: "Visa"),
   Option(
       label: "Mario's",
-      value: 5,
+      value: 4,
       groupUsed: "",
       date: "16/2/24",
       price: "61.0",
       card: "Visa"),
   Option(
       label: "Just eat",
-      value: 6,
+      value: 5,
       groupUsed: "",
       date: "1/2/24",
       price: "25.7",
